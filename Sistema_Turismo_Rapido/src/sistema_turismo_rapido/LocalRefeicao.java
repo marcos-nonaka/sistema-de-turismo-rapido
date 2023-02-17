@@ -9,6 +9,6 @@ package sistema_turismo_rapido;
  *
  * @author Robson
  */
-public class PontosTuristicos {
+public class LocalRefeicao {
   
 }
