@@ -1,0 +1,20 @@
+/* Color Theme Swatches in Hex */
+.Passports-to-world-travel-1-hex { color: #2D4B73; }
+.Passports-to-world-travel-2-hex { color: #253C59; }
+.Passports-to-world-travel-3-hex { color: #99B4BF; }
+.Passports-to-world-travel-4-hex { color: #D9B70D; }
+.Passports-to-world-travel-5-hex { color: #BF8D30; }
+
+/* Color Theme Swatches in RGBA */
+.Passports-to-world-travel-1-rgba { color: rgba(44, 75, 114, 1); }
+.Passports-to-world-travel-2-rgba { color: rgba(37, 59, 89, 1); }
+.Passports-to-world-travel-3-rgba { color: rgba(153, 180, 191, 1); }
+.Passports-to-world-travel-4-rgba { color: rgba(216, 182, 13, 1); }
+.Passports-to-world-travel-5-rgba { color: rgba(191, 141, 47, 1); }
+
+/* Color Theme Swatches in HSLA */
+.Passports-to-world-travel-1-hsla { color: hsla(213, 43, 31, 1); }
+.Passports-to-world-travel-2-hsla { color: hsla(213, 40, 24, 1); }
+.Passports-to-world-travel-3-hsla { color: hsla(196, 23, 67, 1); }
+.Passports-to-world-travel-4-hsla { color: hsla(50, 88, 45, 1); }
+.Passports-to-world-travel-5-hsla { color: hsla(39, 60, 46, 1); }
