@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TurismorapidobackendApplication<turismorapidobackend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.turismorapidobackend.turismorapidobackend.TurismorapidobackendApplication",
+            "projectName": "turismorapidobackend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
