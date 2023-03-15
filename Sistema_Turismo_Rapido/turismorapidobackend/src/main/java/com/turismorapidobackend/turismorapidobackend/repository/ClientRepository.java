@@ -1,5 +1,15 @@
 package com.turismorapidobackend.turismorapidobackend.repository;
 
-public interface ClientRepository {
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.turismorapidobackend.turismorapidobackend.model.Client;
+
+@Repository
+public interface ClientRepository extends JpaRepository<Client, Long> {
     
+    List <Client> findAllByName(String name);
+    List <Client> findBynameIgnoreCase(String name);
 }
