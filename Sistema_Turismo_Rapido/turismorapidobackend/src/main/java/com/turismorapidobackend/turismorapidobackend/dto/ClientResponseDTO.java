@@ -10,10 +10,12 @@ import lombok.Data;
 public class ClientResponseDTO {
     
     String name;
+    Long id_turista;
 
     public ClientResponseDTO(Client client){
 
         this.name = client.getName();
+        this.id_turista = client.getId_client();
 
     }
 }
