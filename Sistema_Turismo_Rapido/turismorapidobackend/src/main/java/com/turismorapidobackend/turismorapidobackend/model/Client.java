@@ -2,7 +2,6 @@ package com.turismorapidobackend.turismorapidobackend.model;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +19,6 @@ public class Client {
     Long id_client;
     String name;
     long cpf;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     LocalDate data_nascimento;
     Long tel_number;
 
