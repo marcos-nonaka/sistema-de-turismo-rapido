@@ -11,7 +11,7 @@ import lombok.Data;
 public class ClientRequestDTO {
     
     String name;
-    Long cpf;
+    String cpf;
     LocalDate data_nascimento;
     Long tel_number;
 

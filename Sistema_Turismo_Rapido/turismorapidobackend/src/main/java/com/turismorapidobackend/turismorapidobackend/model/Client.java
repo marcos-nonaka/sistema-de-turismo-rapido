@@ -19,9 +19,11 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id_client;
     String name;
-    long cpf;
+    String cpf;
     LocalDate data_nascimento;
     Long tel_number;
+    String login;
+    String password;
 
     @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client")
     Turista turista;
