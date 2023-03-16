@@ -17,7 +17,6 @@ public class Turista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String something;
 
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")

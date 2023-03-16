@@ -49,7 +49,6 @@ public class TuristaService {
 
         Turista turista = new Turista();
 
-        turista.setSomething("algo");
         turista.setClient(client);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(turistaRepository.save(turista));

@@ -11,11 +11,11 @@ public class TuristaResponseDTO {
     
     Long id_turista;
     Long id_client;
-    String something;
+    String name;
 
     public TuristaResponseDTO(Turista turista){
         this.id_client = turista.getClient().getId_client();
         this.id_turista = turista.getId();
-        this.something = turista.getSomething();
+        this.name = turista.getClient().getName();
     }
 }

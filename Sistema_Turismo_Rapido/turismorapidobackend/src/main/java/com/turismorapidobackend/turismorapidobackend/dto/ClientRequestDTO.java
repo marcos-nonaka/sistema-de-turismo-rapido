@@ -14,6 +14,9 @@ public class ClientRequestDTO {
     String cpf;
     LocalDate data_nascimento;
     Long tel_number;
+    String mail;
+    String username;
+    String password;
 
     public ClientRequestDTO(){
 
@@ -27,6 +30,9 @@ public class ClientRequestDTO {
         client.setCpf(cpf);
         client.setData_nascimento(data_nascimento);
         client.setTel_number(tel_number);
+        client.setMail(mail);
+        client.setUsername(username);
+        client.setPassword(password);
 
         return client;
 

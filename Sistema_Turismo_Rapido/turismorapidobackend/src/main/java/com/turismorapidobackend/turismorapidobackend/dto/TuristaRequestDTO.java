@@ -1,5 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.dto;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -7,8 +9,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class TuristaRequestDTO {
     Long id_turista;
-    String something;
     String name;
+    String cpf;
+    LocalDate data_nascimento;
+    Long tel_number;
+    String mail;
+    String username;
+    String password;
 
     public TuristaRequestDTO(){
         

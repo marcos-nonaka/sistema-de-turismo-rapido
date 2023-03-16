@@ -17,12 +17,14 @@ import lombok.Data;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     Long id_client;
     String name;
     String cpf;
     LocalDate data_nascimento;
     Long tel_number;
-    String login;
+    String mail;
+    String username;
     String password;
 
     @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client")
