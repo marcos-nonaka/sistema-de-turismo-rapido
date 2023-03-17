@@ -30,6 +30,9 @@ public class Client {
     @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client")
     Turista turista;
 
+    @OneToOne(targetEntity = Turismologo.class, cascade = CascadeType.ALL, mappedBy = "client")
+    Turismologo turismologo;
+
     public Client(){
         
     }

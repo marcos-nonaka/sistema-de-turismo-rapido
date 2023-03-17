@@ -11,10 +11,11 @@ import lombok.Data;
 public class Turismologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id_turismologo;
+    Long id;
+    String something;
 
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_client")
+    @JoinColumn(name = "client_id")
     Client client;
 
     public Turismologo() {
