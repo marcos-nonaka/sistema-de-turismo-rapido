@@ -9,7 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class TurismologoRequestDTO {
     Long id_turismologo;
-    String something;
+    Long cadastroConselho;
     String name;
     String cpf;
     LocalDate data_nascimento;

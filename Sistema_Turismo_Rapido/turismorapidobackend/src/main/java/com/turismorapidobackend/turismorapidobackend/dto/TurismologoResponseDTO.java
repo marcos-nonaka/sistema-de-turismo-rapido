@@ -7,14 +7,14 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class TurismologoResponseDTO {
-    Long id;
+    Long id_turismologo;
     Long client_id;
-    String something;
+    Long cadastroConselho;
     public TurismologoResponseDTO() {
     }
     public TurismologoResponseDTO(Turismologo turismologo) {
-        id = turismologo.getId();
-        client_id = turismologo.getClient().getId_client();
-        something = turismologo.getSomething();
+        this.id_turismologo = turismologo.getId();
+        this.client_id = turismologo.getClient().getId_client();
+        this.cadastroConselho = turismologo.getCadastroConselho();
     }
 }

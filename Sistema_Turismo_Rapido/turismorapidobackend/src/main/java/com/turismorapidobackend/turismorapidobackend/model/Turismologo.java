@@ -12,7 +12,7 @@ public class Turismologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String something;
+    Long cadastroConselho;
 
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")

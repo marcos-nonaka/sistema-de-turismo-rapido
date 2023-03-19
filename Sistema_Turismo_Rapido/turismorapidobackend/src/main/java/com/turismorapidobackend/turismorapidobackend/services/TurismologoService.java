@@ -34,11 +34,11 @@ public class TurismologoService {
         BeanUtils.copyProperties(turismologoRequestDTO, clientRequestDTO);
         Client client = clientRequestDTO.toClient();
 
-        clientRepository.save(client);
-
         Turismologo turismologo = new Turismologo();
 
-        turismologo.setSomething("teste");
+        turismologo.setCadastroConselho(turismologoRequestDTO.getCadastroConselho());
+        clientRepository.save(client);
+
         turismologo.setClient(client);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(turismologoRepository.save(turismologo));
