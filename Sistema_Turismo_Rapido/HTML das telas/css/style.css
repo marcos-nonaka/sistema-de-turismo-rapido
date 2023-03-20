@@ -1,0 +1,219 @@
+body{
+	background-color: #f9f9f9;
+	font-family: 'Oxigen', 'Roboto', sans-serif;
+	color: #333;
+}
+#main{ width:100%;}
+
+#header{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(255, 255, 255, 0.02);
+	/*background-color: rgba(49, 75, 114, 0.1);*/
+	padding: 0.5rem 0;
+}
+
+.internas #header{
+	/*background-color: rgb(76 9 88 / 98%);
+    background-color: #2e4b73;
+	
+	position: relative;*/color: #FFF;
+}
+
+#header.min{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 0 !important;
+	background-color: #2e4b73;
+}
+
+#header #logo{
+    transition: max-height .3s ease;
+    max-height: 47px;
+    width: 190px;
+}
+
+#header.min #logo{
+    max-height: 36px;
+}
+
+#header.min .btn-primary{
+	background-color: #314b72;
+    border: 1px solid #99b4bf;
+}
+
+/* Slider backround-color: #071C55 */
+
+.btn-primary, .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+	background-color: #2e4b73;
+	border: 1px solid #2e4b73;
+}
+
+.btn-outline-primary{
+	border: 1px solid #2e4b73;
+	color: #2e4b73;
+}
+
+.btn-group .btn{border-radius: 1.575rem;}
+
+.carousel-caption{
+	right: auto;
+	bottom: 7.25rem;
+}
+
+#destinations .carousel-control-next{
+    right: -120px;
+}
+
+#destinations .carousel-control-prev{
+    left: -122px;
+}
+
+#destinations .heart .bi-heart-fill{
+	color: red;
+}
+
+#destinations .heart span{
+	font-size: 14px;
+}
+
+#destinations .card{
+	border: 0;
+	-webkit-box-shadow: 0px 7px 44px 0px rgba(0,0,0,0.17);
+	-moz-box-shadow: 0px 7px 44px 0px rgba(0,0,0,0.17);
+	box-shadow: 0px -2px 30px 0px rgb(0 0 0 / 11%);
+		
+	-webkit-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	-moz-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	margin: 0 .5em;
+}
+
+#destinations .card:hover:after{
+    visibility: visible;
+    opacity: 1;
+    right: auto;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+}
+
+#destinations .card .thumb:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #d9b70d;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#destinations .card .thumb{
+    position: relative;
+    background: #d9b70d;
+    overflow: hidden;
+}
+
+
+.accordion-item {
+    border: 1px solid #f3f3f3;
+}
+
+.top-internas{
+	background-color: #2e4b73;
+    height: 260px;
+    color: #FFF;
+    padding-top: 130px;
+}
+
+#top-menu .user{color: #FFF;}
+
+.dropdown-menu{width: 200px;}
+.dropdown-menu .dropdown-item{padding: 8px 10px;}
+
+.destination-details{
+	background-color: #99b4bf;
+	color: #243c58;
+}
+
+.breadcrumb, .breadcrumb .breadcrumb-item a, .breadcrumb .breadcrumb-item.active, .breadcrumb-item+.breadcrumb-item::before{color: #FFF; text-decoration: none;}
+
+footer{
+	background-color: #2e4b73;
+	color: #FFF;
+}
+
+footer .nav-link{color: #99b4bf;}
+
+#social i{font-size: 22px;}
+
+
+#slider.carousel .ban_desktop{
+    display: block !important;
+}
+
+#slider.carousel .ban_mobile{
+    display: none;
+}
+
+
+/* Page Roteiro*/
+
+.btn-secondary{
+	background-color: #e3e3e3;
+	border: 1px solid #e3e3e3;
+	color: #333;
+}
+#comment-area #comment-form{
+	background-color: #FFF;
+	padding: 25px;
+}
+
+#comment-area .bi-star-fill{color: #dddddd;}
+#comment-area .bi-star-fill.color{color: #f3941e;}
+
+@media (max-width: 575.98px){
+	#main{margin-top: 72px;}
+	#header{background-color: #2e4b73;}
+	
+	#header .nav-item{margin-top: 1rem;}
+
+	#header .btn-primary{
+		background-color: #243c58;
+		border: 1px solid #243c58;
+	}
+	
+	#header .navbar-nav{flex-direction: row;}
+	
+	#slider.carousel .ban_desktop{
+		display: none !important;
+	}
+	
+	#slider.carousel .ban_mobile{
+		display: block !important;
+	}
+	
+	#slider .carousel-caption{display: none;}
+	
+	#destinations .carousel-control-prev {
+		left: 0;
+	}
+
+	#destinations .carousel-control-next {
+		right: 0;
+	}
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quatour - Roteiro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<style>@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Roboto:wght@100;300;400;500;700;900&display=swap');</style>
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="header">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#"><img src="images/logo-top.svg" id="logo"></a>
+				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#top-menu" aria-controls="top-menu" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse" id="top-menu">
+					<div class="navbar-nav ms-md-auto dropdown">
+						<button class="btn dropdown-toggle user" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Olá, Pedro de Alcântara
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Minha conta</a></li>
+							<li><a class="dropdown-item" href="#"><i class="bi bi-signpost"></i> Meus roteiros</a></li>
+							<li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-in-right"></i> Encerrar sessão</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>	
+    </div>
+    <div id="main">
+		<div class="w-100 top-internas">
+			<h3 class="text-center">Detalhes do roteiro</h3>
+			<div class="d-flex justify-content-center">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Detalhes do roteiro</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 pt-5">
+					<div class="rounded-4 p-5 mb-5 destination-details">
+						<h3><strong>Ouro Preto</strong></h3>
+						<p>Minas Gerais</p>
+
+						<p>Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco, em 1980. Tal reconhecimento deve-se, principalmente, ao fato da cidade ser um sítio urbano completo e pouco alterado em relação à sua essência:  formação espontânea a partir de um sistema minerador, seguido por uma marcada presença dos poderes religioso e governamental, e fortes expressões artísticas que se destacam por sua relevância internacional. </p>
+						<p class="text-end"><small>Fonte: IPHAN (http://portal.iphan.gov.br/pagina/detalhes/373/)</small></p>
+
+						<p class="mb-5"><span class="btn btn-secondary rounded-5"><i class="bi bi-calendar3"></i> 2 dias</span> <span class="btn btn-secondary rounded-5"><i class="bi bi-cash-coin ms-3"></i> A partir de <strong>R$ 140,99</strong></span></p>
+						
+						<a href="#" class="btn btn-warning rounded-pill me-2 ps-4 pe-4">Fazer reserva</a>
+					</div>
+
+					<div class="accordion mb-5" id="accordionExample">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									Quando ir?
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Como chegar?
+								</button>
+							</h2>
+							<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Onde ficar?
+								</button>
+							</h2>
+							<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingFour">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+									Onde começar?
+								</button>
+							</h2>
+							<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingFive">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+									O que fazer?
+								</button>
+							</h2>
+							<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+								</div>
+							</div>
+						</div>							
+					</div>
+					
+					<div id="comment-area" class="mb-5">
+						<div id="comment-list" class="mb-3">
+							<div class="comment-item">
+							
+								<div class="list-group w-auto">
+									<div class="list-group-item list-group-item-action d-flex gap-3 py-3 mb-3 border-0 rounded-3">
+										<img src="images/profile_pic.jpg" class="rounded-circle flex-shrink-0" alt="Foto de perfil" width="75" height="75">
+										<div class="d-flex gap-2 w-100 justify-content-between">
+											<div>
+												<p class="m-0"><strong>@nome_do_usuario</strong></p>
+												<p><small>17 de Março de 2023</small></p>
+												<p>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill"></i>
+													<i class="bi bi-star-fill"></i>
+												</p>
+												<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata</p>
+											</div>
+										</div>
+									</div>
+									<div class="list-group-item list-group-item-action d-flex gap-3 py-3 mb-3 border-0 rounded-3">
+										<img src="images/profile_pic.jpg" class="rounded-circle flex-shrink-0" alt="Foto de perfil" width="75" height="75">
+										<div class="d-flex gap-2 w-100 justify-content-between">
+											<div>
+												<p class="m-0"><strong>@nome_do_usuario</strong></p>
+												<p><small>17 de Março de 2023</small></p>
+												<p>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill color"></i>
+													<i class="bi bi-star-fill"></i>
+													<i class="bi bi-star-fill"></i>
+												</p>
+												<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata</p>
+											</div>
+										</div>
+									</div>											
+								</div>
+
+							</div>
+						</div>
+						
+						<div class="text-end"><button class="btn btn-light rounded-5 mb-3">Mais avaliações <i class="bi bi-arrow-right-short"></i></button></div>
+						
+						<div id="comment-form">
+							<form class="row g-3 rounded-4">
+							<!--
+								<div class="col-md-6">
+									<label for="nome" class="form-label">Nome</label>
+									<input type="text" class="form-control" id="nome">
+								</div>
+								<div class="col-md-6">
+									<label for="email" class="form-label">Email</label>
+									<input type="email" class="form-control" id="email">
+								</div>
+								-->
+								<div class="col-12">
+									<label for="msg" class="form-label" style="font-size: 22px;">Deixe um comentário</label>
+									<textarea class="form-control" id="msg" rows="3"></textarea>
+								</div>
+								<div class="col-12">
+									<button type="submit" class="btn btn-warning rounded-5 ps-3 pe-3">Enviar comentário</button>
+								</div>
+							</form>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="pt-5 pb-5">
+        <p class="text-center"><img src="images/logo-footer.svg" width="170"></p>
+
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Quem somos</a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="#">Roteiros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Fale conosco</a>
+            </li>
+        </ul>
+
+        <ul class="nav justify-content-center" id="social">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-instagram"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="bi bi-facebook"></i></a>
+            </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="#"><i class="bi bi-twitter"></i></a>
+            </li>
+        </ul>
+		
+		<p class="text-center m-0 d-none"><small>© Quatour 2023 - All Rights Reserved. Todos os direitos reservados.</small></p>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+	<script>
+		let elem = document.getElementById('header');
+		
+		window.addEventListener('scroll', function() {
+			let scroll = window.pageYOffset;
+
+			if(scroll > 1){
+				elem.classList.add("min");
+			}else{
+				elem.classList.remove("min");
+			}
+		})
+	
+	</script>
+</body>
+</html>
