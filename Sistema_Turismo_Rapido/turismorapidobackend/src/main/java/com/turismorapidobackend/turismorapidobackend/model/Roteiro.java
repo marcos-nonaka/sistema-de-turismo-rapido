@@ -1,39 +1,40 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @Entity
 public class Roteiro {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id_roteiro;
     
-    @ManyToOne(targetEntity = Turismologo.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Turismologo.class)
     @JoinColumn(name = "turismologo_id")
     Turismologo turismologo;
 
-    @ManyToMany(targetEntity = Turista.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "turismologo_id")
-    Turista turista;
+    @ManyToMany(targetEntity = Turista.class)
+    @JoinTable(name = "roteiro_turista",
+            joinColumns = @JoinColumn(name = "roteiro_id"),
+            inverseJoinColumns = @JoinColumn(name = "turista_id"))
+    Set<Turista> turistas;
 
-    @OneToOne(targetEntity = Cidade.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
-    @ManyToMany(targetEntity = Hotel.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "hotel_id")
-    Hotel hotel;
+    @ManyToMany(targetEntity = Hotel.class)
+    @JoinTable(name = "roteiro_hotel",
+        joinColumns = @JoinColumn(name = "roteiro_id"),
+        inverseJoinColumns = @JoinColumn(name = "hotel_id"))
+    Set<Hotel> hoteis;
 
-    @OneToMany(targetEntity = Alimentacao.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "alimentacao_id")
-    Alimentacao alimentacao;
+    @OneToMany(targetEntity = Alimentacao.class, mappedBy = "roteiro")
+    Set<Alimentacao> alimentacao;
 }

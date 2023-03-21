@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.awt.geom.Point2D;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +21,9 @@ public class Cidade {
 
     @OneToOne(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Atracao atracao;
+
+    @OneToMany(targetEntity = Hotel.class, cascade = CascadeType.ALL, mappedBy = "cidade")
+    Set<Hotel> hotels;
     public Cidade() {
     }
 }
