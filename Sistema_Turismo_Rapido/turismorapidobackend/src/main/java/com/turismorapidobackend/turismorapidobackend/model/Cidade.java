@@ -1,9 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +18,8 @@ public class Cidade {
     String name;
     //Point2D.Double coordenada;
 
+    @OneToOne(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
+    Atracao atracao;
     public Cidade() {
     }
 }
