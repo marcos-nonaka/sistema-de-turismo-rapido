@@ -262,6 +262,21 @@ footer .nav-link{color: #99b4bf;}
 
 /* Page Resultados */
 
+#search{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+#button-search{
+    border-top-right-radius: 2rem !important;
+    border-bottom-right-radius: 2rem !important;   
+}
+
+.pagination .disabled{
+    opacity: .6;
+    pointer-events: none;
+}
+
 h4 span{
 	font-weight: normal;
 	font-size: 1rem;
