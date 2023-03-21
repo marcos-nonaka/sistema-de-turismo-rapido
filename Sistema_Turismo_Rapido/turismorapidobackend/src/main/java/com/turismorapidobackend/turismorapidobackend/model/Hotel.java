@@ -1,14 +1,10 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -19,14 +15,21 @@ public class Hotel {
     Long id_hotel;
     
     String hotel_name;
+
     Long phone_number;
+
     String street_name;
+
     int street_number;
+
     String street_district;
     
-    @OneToMany(targetEntity = Cidade.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
+
+    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
+    Set<Roteiro> roteiros;
 
     public Hotel(){
 

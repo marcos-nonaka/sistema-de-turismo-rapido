@@ -1,11 +1,10 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,6 +20,10 @@ public class Alimentacao {
     String street_name;
     String street_district;
     int street_number;
+
+    @ManyToOne(targetEntity = Roteiro.class)
+    @JoinColumn(name = "roteiro_id")
+    Roteiro roteiro;
 
     public Alimentacao(){
         
