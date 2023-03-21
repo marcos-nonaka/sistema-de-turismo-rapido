@@ -1,6 +1,6 @@
 body{
 	background-color: #f9f9f9;
-	font-family: 'Oxigen', 'Roboto', sans-serif;
+	font-family: 'Oxygen', 'Roboto', sans-serif !important;
 	color: #333;
 }
 #main{ width:100%;}
@@ -45,6 +45,12 @@ body{
 #header.min .btn-primary{
 	background-color: #314b72;
     border: 1px solid #99b4bf;
+}
+
+#header .nav-link {
+    padding: 0.7rem 1rem;
+	color: #FFF;
+	font-family: 'Oxigen', 'Roboto', sans-serif;
 }
 
 /* Slider backround-color: #071C55 */
@@ -171,6 +177,73 @@ footer .nav-link{color: #99b4bf;}
 }
 
 
+.media img{
+    border-radius: 50%;
+}
+.media{
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 12px;
+}
+
+.media button{
+    background-color: transparent;
+    border: none;
+    font-size: 14px;
+}
+
+.item-img{
+    margin-right: 18px;
+    position: relative;
+}
+
+#header #top-menu .dropdown-menu{
+    min-width: 16rem;
+    border: 0;
+    border-radius: 12px;
+    -webkit-filter: drop-shadow(6px 6px 5px rgba(0,0,0,.05));
+    filter: drop-shadow(6px 6px 5px rgba(0,0,0,.05));
+    top: 50px;
+	padding: 1rem 10px;
+	right: -4px;
+}
+
+#header #dropdown-menu{
+	text-decoration: none !important;
+	color: #FFF !important;
+}
+
+#header #dropdown-menu .bi-chevron-down{font-size: .8rem;}
+
+#header .dropdown-item .bi{font-size: 1.1rem;}
+
+.avatar{
+	height: 3rem;
+	width: 3rem;
+	position: relative;
+    display: inline-block !important;
+}
+
+.avatar-p{
+	height: 2rem;
+	width: 2rem;
+}
+
+.avatar-img{
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+	margin: 7px 0;
+}
+
+.dropdown-divider{
+    border-top: 1px solid #dfdfe3;
+}
+
 /* Page Roteiro*/
 
 .btn-secondary{
@@ -185,6 +258,21 @@ footer .nav-link{color: #99b4bf;}
 
 #comment-area .bi-star-fill{color: #dddddd;}
 #comment-area .bi-star-fill.color{color: #f3941e;}
+
+
+/* Page Resultados */
+
+h4 span{
+	font-weight: normal;
+	font-size: 1rem;
+	display: block;
+	float: right;
+}
+
+.pagination .active>.page-link, .pagination .page-link.active{background-color: #2e4b73; border-color: #2e4b73; color: #FFF;}
+.pagination .page-link{color: #2e4b73;}
+
+/* Media query mobile*/
 
 @media (max-width: 575.98px){
 	#main{margin-top: 72px;}
