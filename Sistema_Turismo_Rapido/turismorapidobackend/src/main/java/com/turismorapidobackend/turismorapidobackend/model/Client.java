@@ -17,8 +17,8 @@ import lombok.Data;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     Long id_client;
+    
     String name;
     String cpf;
     LocalDate data_nascimento;
