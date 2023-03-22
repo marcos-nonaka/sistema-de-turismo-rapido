@@ -17,10 +17,10 @@ public class Cidade {
     Long id_cidade;
 
     String name;
-    //Point2D.Double coordenada;
+    Long cep;
 
-    @OneToOne(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
-    Atracao atracao;
+    @OneToMany(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
+    Set<Atracao> atracoes;
 
     @OneToMany(targetEntity = Hotel.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Hotel> hotels;

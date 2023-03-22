@@ -23,12 +23,13 @@ public class CidadeService {
     public ResponseEntity<Object> save(CidadeRequestDTO cidadeRequestDTO) {
         Cidade cidade = new Cidade();
         cidade.setName(cidadeRequestDTO.getName());
-        //cidade.setCoordenada(cidadeRequestDTO.getCoordenada());
+        cidade.setCep(cidadeRequestDTO.getCep());
         cidadeRepository.save(cidade);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));
     }
 
+    // vamos ter que alterar para buscar pelo nome e pelo cep
     public ResponseEntity<Object> findById(Long id) {
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(id);
 

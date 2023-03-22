@@ -40,7 +40,6 @@ public class TurismologoService {
         clientRepository.save(client);
 
         turismologo.setClient(client);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(turismologoRepository.save(turismologo));
     }
 
