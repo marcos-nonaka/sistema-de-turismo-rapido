@@ -3,6 +3,15 @@ body{
 	font-family: 'Oxygen', 'Roboto', sans-serif !important;
 	color: #333;
 }
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.signup-link, .forgot{
+    font-size: 0.9rem;
+}
+
 #main{ width:100%;}
 
 #header{
@@ -243,6 +252,9 @@ footer .nav-link{color: #99b4bf;}
 .dropdown-divider{
     border-top: 1px solid #dfdfe3;
 }
+
+#signup{max-width: 700px;}
+#signup .form-check{font-size: .8rem;}
 
 /* Page Roteiro*/
 

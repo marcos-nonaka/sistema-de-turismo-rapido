@@ -13,7 +13,45 @@
 
 </head>
 <body>
-    <div id="header" class="fixed-top">
+	<div id="header" class="fixed-top">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			<div class="container">
+					<a class="navbar-brand d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#"><img src="images/logo-top.svg" id="logo"></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto mb-2 mb-md-0 justify-content-center">
+						<li class="nav-item">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="quem-somos.html">Quem somos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="roteiros.html">Roteiros</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="fale-conosco.html">Fale conosco</a>
+						</li>
+					</ul>
+
+					<div class="d-flex">
+						<ul class="navbar-nav ms-md-auto">			
+							<li class="nav-item">
+								<a class="btn btn-outline-light rounded-pill ms-4  me-3 ps-4 pe-4" href="login.html">Login</a>
+							</li>
+							<li class="nav-item">
+								<a class="btn btn-outline-warning rounded-pill ps-4 pe-4" href="#">Cadastre-se</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>  
+	  
+    <div id="header" class="fixed-top d-none">
 		<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#"><img src="images/logo-top.svg" id="logo"></a>
@@ -54,11 +92,11 @@
 					<img src="images/ban2_2.jpg" class="w-100 ban_mobile" alt="Banner 1">
 					<div class="carousel-caption d-none d-md-block">
 						<a href="#" class="btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4">Explorar</a>
-						<a href="#" class="btn btn-primary btn-lg  rounded-pill ps-4 pe-4">Compartilhar</a>						
+						<!--<a href="#" class="btn btn-primary btn-lg  rounded-pill ps-4 pe-4">Compartilhar</a>	-->				
 					</div>					
                 </div>
             </div>
-			<!--
+			
             <button class="carousel-control-prev" type="button" data-bs-target="#slider" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -67,7 +105,6 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-			-->
         </div>
           <!--End Slider-->    
         <div class="container">
