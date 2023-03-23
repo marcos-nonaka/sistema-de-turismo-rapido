@@ -13,7 +13,7 @@ public class CidadeRequestDTO {
     Long id_cidade;
 
     String name;
-    //Point2D.Double coordenada;
+    Long cep;
 
     public CidadeRequestDTO() {
     }
@@ -21,6 +21,7 @@ public class CidadeRequestDTO {
     public Cidade toCidade(){
         Cidade cidade = new Cidade();
         cidade.setName(name);
+        cidade.setCep(cep);
 
         return cidade;
     }

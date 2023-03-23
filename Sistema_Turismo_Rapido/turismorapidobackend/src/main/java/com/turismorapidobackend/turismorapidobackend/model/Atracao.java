@@ -20,7 +20,7 @@ public class Atracao {
     String descricao;
     String tipo;
 
-    @OneToOne(targetEntity = Cidade.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
