@@ -13,7 +13,72 @@
 
 </head>
 <body>
-    <div id="header">
+
+	<div id="header" class="fixed-top">
+		<nav class="navbar navbar-expand-md navbar-dark">
+			<div class="container">
+					<a class="navbar-brand d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#"><img src="images/logo-top.svg" id="logo"></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<ul class="navbar-nav me-auto mb-2 mb-md-0 justify-content-center">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="quem-somos.html">Quem somos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="pesquisar-roteiro.html">Roteiros</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="fale-conosco.html">Fale conosco</a>
+						</li>
+					</ul>
+
+					<div class="d-flex">
+						<ul class="navbar-nav ms-md-auto">			
+                            <li class="nav-item dropdown ms-5">
+                                <a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="avatar avatar-p p-0 me-2"><img class="avatar-img rounded-circle" src="images/profile_pic.jpg" alt="avatar"></div>
+                                    Pedro Alcântara
+                                    <i class="ms-1 bi bi-chevron-down"></i>
+                                </a>
+                                
+    
+                                <ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+                                    <li class="px-3 mb-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar me-3">
+                                                <img class="avatar-img rounded-circle shadow" src="images/profile_pic.jpg" alt="avatar">
+                                            </div>
+                                            <div>
+                                                <p class="m-0"><strong>Pedro Alcântara</strong></p>
+                                                <p class="small m-0">email@email.com</p>
+                                            </div>
+                                        </div>
+                                    </li>
+            
+                                    <li> <hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Minha conta</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-check fa-fw me-2"></i>Minhas reservas</a></li>
+    
+                                    <li><a class="dropdown-item bg-danger-soft-hover" href="logout"><i class="bi bi-power fa-fw me-2"></i>Logout</a></li>
+                                    <li> <hr class="dropdown-divider"></li>
+    
+                                </ul>
+                            </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+
+
+    <div id="header" class="d-none">
 		<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#"><img src="images/logo-top.svg" id="logo"></a>
@@ -23,13 +88,13 @@
 				<div class="navbar-collapse collapse" id="top-menu">
 					<ul class="navbar-nav ms-md-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="/">Home</a>
+							<a class="nav-link" href="index.html">Home</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="quem-somos.html">Quem somos</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="roteiros.html">Roteiros</a>
+							<a class="nav-link" href="pesquisar-roteiro.html">Roteiros</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="fale-conosco.html">Fale conosco</a>
