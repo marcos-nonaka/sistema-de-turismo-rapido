@@ -8,6 +8,12 @@ a{
     color: #333;
 }
 
+.custom-shadow{
+	-webkit-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	-moz-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+}
+
 .signup-link, .forgot{
     font-size: 0.9rem;
 }
@@ -20,7 +26,7 @@ a{
     left: 0;
     top: 0;
     z-index: 999;
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: rgba(255, 255, 255, 0.03);
 	/*background-color: rgba(49, 75, 114, 0.1);*/
 	padding: 0.5rem 0;
 }
