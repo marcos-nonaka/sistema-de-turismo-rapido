@@ -1,5 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +21,8 @@ public class Alimentacao {
     String street_district;
     int street_number;
 
-    @ManyToOne(targetEntity = Roteiro.class)
-    @JoinColumn(name = "roteiro_id")
-    Roteiro roteiro;
+    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "alimentacao")
+    List<Roteiro> roteiros;
 
     public Alimentacao(){
         

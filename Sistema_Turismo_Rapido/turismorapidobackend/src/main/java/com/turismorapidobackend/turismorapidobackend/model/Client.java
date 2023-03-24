@@ -42,10 +42,10 @@ public class Client implements UserDetails {
     inverseJoinColumns = @JoinColumn(name = "role_id") )
     List<Role> roles;
 
-    @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.EAGER)
     Turista turista;
 
-    @OneToOne(targetEntity = Turismologo.class, cascade = CascadeType.ALL, mappedBy = "client")
+    @OneToOne(targetEntity = Turismologo.class, cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.EAGER)
     Turismologo turismologo;
 
     public Client(){

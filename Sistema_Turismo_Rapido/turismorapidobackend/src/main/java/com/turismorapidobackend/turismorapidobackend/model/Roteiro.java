@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -19,22 +20,27 @@ public class Roteiro {
     @JoinColumn(name = "turismologo_id")
     Turismologo turismologo;
 
-    @ManyToMany(targetEntity = Turista.class)
-    @JoinTable(name = "roteiro_turista",
-            joinColumns = @JoinColumn(name = "roteiro_id"),
-            inverseJoinColumns = @JoinColumn(name = "turista_id"))
+    @ManyToMany(targetEntity = Turista.class, mappedBy = "roteiros")
     Set<Turista> turistas;
 
     @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
+    // TODO: Arrumar relação para ManyToOne e OneToMany
     @ManyToMany(targetEntity = Hotel.class)
     @JoinTable(name = "roteiro_hotel",
         joinColumns = @JoinColumn(name = "roteiro_id"),
         inverseJoinColumns = @JoinColumn(name = "hotel_id"))
     Set<Hotel> hoteis;
 
-    @OneToMany(targetEntity = Alimentacao.class, mappedBy = "roteiro")
-    Set<Alimentacao> alimentacao;
+    @ManyToMany(targetEntity = Alimentacao.class)
+    @JoinTable(name = "alimentacao_roteiro",
+            joinColumns = @JoinColumn(name = "alimentacao_id"),
+            inverseJoinColumns = @JoinColumn(name = "roteiro_id")
+    )
+    List<Alimentacao> alimentacao;
+
+    //TODO: Aticionar Atrações semelhante à alimentação
+    
 }
