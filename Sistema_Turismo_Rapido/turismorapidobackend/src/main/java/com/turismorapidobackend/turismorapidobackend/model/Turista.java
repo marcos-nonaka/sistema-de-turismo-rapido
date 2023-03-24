@@ -14,7 +14,10 @@ public class Turista {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "turistas")
+    @ManyToMany(targetEntity = Roteiro.class)
+    @JoinTable(name = "turista_roteiro",
+            joinColumns = @JoinColumn(name = "turista_id"),
+            inverseJoinColumns = @JoinColumn(name = "roteiro_id"))
     Set<Roteiro> roteiros;
 
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
