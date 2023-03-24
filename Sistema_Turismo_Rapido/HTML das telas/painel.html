@@ -15,7 +15,7 @@
 	<div id="header" style="background-color: #FFF;">
 		<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="container">
-					<a class="navbar-brand d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#"><img src="images/logo-color.svg" id="logo"></a>
+					<a class="navbar-brand d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="index.html"><img src="images/logo-color.svg" id="logo"></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -25,7 +25,7 @@
                             <li class="nav-item dropdown ms-5">
                                 <a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false" style="color: #333 !important;">
                                     <div class="avatar avatar-p p-0 me-2"><img class="avatar-img rounded-circle" src="images/profile_pic.jpg" alt="avatar"></div>
-                                    Pedro Alcântara
+                                    Pedro
                                     <i class="ms-1 bi bi-chevron-down"></i>
                                 </a>
                                 
@@ -36,8 +36,8 @@
                                                 <img class="avatar-img rounded-circle shadow" src="images/profile_pic.jpg" alt="avatar">
                                             </div>
                                             <div>
-                                                <p class="m-0"><strong>Pedro Alcântara</strong></p>
-                                                <p class="small m-0">email@email.com</p>
+                                                <p class="m-0"><strong>Pedro de Alcântara...</strong></p>
+                                                <p class="small m-0">pedro@palacio.imp.br</p>
                                             </div>
                                         </div>
                                     </li>
@@ -65,17 +65,11 @@
 					<div class="rounded-4 bg-white p-4">
 						<div class=" text-center mb-5">
 							<img class="avatar-img rounded-circle" src="images/profile_pic.jpg" alt="avatar" style="width: 5.1rem;">
-							<p class="m-0"><strong>Pedro Alcântara</strong></p>
-							<p class="small m-0">email@email.com</p>
+							<p class="m-0"><strong>Pedro de Alcântara...</strong></p>
+							<p class="small m-0">pedro@palacio.imp.br</p>
 						</div>
 
 						<ul class="nav flex-column">
-							<li class="nav-item">
-							  <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-person fa-fw me-2"></i> Minha conta</a>
-							</li>
-							<li class="nav-item">
-							  <a class="nav-link" href="#"><i class="bi bi-bookmark-check fa-fw me-2"></i> Minhas reservas</a>
-							</li>
 							<li class="nav-item">
 								<a class="nav-link" href="#"><i class="bi bi-trash3"></i> Excluir cadastro</a>
 							  </li>							
@@ -84,9 +78,74 @@
 							</li>
 						  </ul>
 					</div>
-				</div>				
-                <div class="col-md-9 col-sm-12 pt-5">
-					<div class="rounded-4 bg-white p-5"></div>
+				</div>			
+                <div class="col-md-8 col-sm-12 pt-5">
+					<div class="rounded-4 bg-white p-5">
+                        <h2 class="h2 fw-bold mb-4">Bem-vindo</h2>
+                        
+                        <p class="m-0"><small>E-mail da conta</small></p>
+                        <p class="fw-bold mb-5">pedro@palacio.imp.br</p>
+
+
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account-tab-pane" type="button" role="tab" aria-controls="account-tab-pane" aria-selected="true">Minha conta</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="reservation-tab" data-bs-toggle="tab" data-bs-target="#reservation-tab-pane" type="button" role="tab" aria-controls="reservation-tab-pane" aria-selected="false">Minhas reservas</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                              <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Formas de pagamento</button>
+                            </li>
+                          </ul>
+                          <div class="tab-content" id="tabContent">
+                            <div class="tab-pane fade show active" id="account-tab-pane" role="tabpanel" aria-labelledby="account-tab" tabindex="0">
+                                <form class="row g-3 mt-2">
+                                    <div class="col-md-6">
+                                        <label for="username" class="form-label">Usuário</label>
+                                        <input type="text" class="form-control" id="username" value="pedro_imperador">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="password" class="form-label">Senha</label>
+                                        <input type="password" class="form-control" id="password" value="123456">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" value="Pedro de Alcântara de Bragança e Bourbon">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="cpf" class="form-label">CPF</label>
+                                        <input type="text" class="form-control" id="cpf" value="999.999.999-99">
+                                    </div>	
+            
+                                    <div class="col-md-3">
+                                        <label for="birthdate" class="form-label">Data nasc.</label>
+                                        <input type="text" class="form-control" id="birthdate" value="12/10/1798">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="phone" class="form-label">Telefone</label>
+                                        <input type="text" class="form-control" id="phone" value="+55 (21) 99999-9999">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" value="pedro@palacio.imp.br">
+                                    </div>
+        
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-warning rounded-5 ps-3 pe-3 float-end">Alterar cadastro</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade p-4" id="reservation-tab-pane" role="tabpanel" aria-labelledby="reservation-tab" tabindex="0">
+                                Minhas reservas
+                            </div>
+                            <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+
+                            </div>
+                          </div>
+
+
+                    </div>
 				</div>
             </div>
 
