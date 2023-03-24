@@ -2,7 +2,18 @@ body{
 	background-color: #f9f9f9;
 	font-family: 'Oxygen', 'Roboto', sans-serif !important;
 	color: #333;
+    position: relative;
 }
+
+body:before{
+    content: '';
+    background-color: #eef1f5;
+    position: absolute;
+    height: 320px;
+    width: 100%;
+    z-index: -1;
+}
+
 a{
     text-decoration: none;
     color: #333;
@@ -36,8 +47,13 @@ a{
     background-color: rgba(255, 255, 255, 0.03);
 	padding: 0.5rem 0;
 }
-
+/*
 .internas #header{
+    color: #FFF;
+}*/
+
+#header.internas{
+    background-color: #2e4b73;
     color: #FFF;
 }
 
@@ -183,6 +199,7 @@ a{
     padding-top: 130px;
 }
 
+/*
 .internas:before{
     content: '';
     background-color: #eef1f5;
@@ -191,6 +208,7 @@ a{
     width: 100%;
     z-index: -1;
 }
+*/
 
 #top-menu .user{color: #FFF;}
 
