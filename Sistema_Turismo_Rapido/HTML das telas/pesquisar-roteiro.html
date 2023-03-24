@@ -12,9 +12,8 @@
     <link href="css/style.css" rel="stylesheet">
 
 </head>
-<body>
-
-	<div id="header" class="fixed-top">
+<body class="internas position-relative">
+	<div id="header" style="background-color: #2e4b73;">
 		<nav class="navbar navbar-expand-md navbar-dark">
 			<div class="container">
 					<a class="navbar-brand d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="#"><img src="images/logo-top.svg" id="logo"></a>
@@ -27,7 +26,7 @@
 							<a class="nav-link" href="index.html">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="quem-somos.html">Quem somos</a>
+							<a class="nav-link" href="quem-somos.html">Sobre a Quatour</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="pesquisar-roteiro.html">Roteiros</a>
@@ -46,7 +45,6 @@
                                     <i class="ms-1 bi bi-chevron-down"></i>
                                 </a>
                                 
-    
                                 <ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
                                     <li class="px-3 mb-3">
                                         <div class="d-flex align-items-center">
@@ -76,67 +74,9 @@
 		</nav>
 	</div>
 
-
-
-    <div id="header" class="d-none">
-		<nav class="navbar navbar-expand-md navbar-dark">
-			<div class="container">
-				<a class="navbar-brand" href="#"><img src="images/logo-top.svg" id="logo"></a>
-				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#top-menu" aria-controls="top-menu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-collapse collapse" id="top-menu">
-					<ul class="navbar-nav ms-md-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="quem-somos.html">Quem somos</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="pesquisar-roteiro.html">Roteiros</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="fale-conosco.html">Fale conosco</a>
-						</li>                   		
-						<li class="nav-item dropdown ms-5">
-							<a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-								<div class="avatar avatar-p p-0 me-2"><img class="avatar-img rounded-circle" src="images/profile_pic.jpg" alt="avatar"></div>
-								Pedro Alcântara
-								<i class="ms-1 bi bi-chevron-down"></i>
-							</a>
-							
-
-							<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
-								<li class="px-3 mb-3">
-									<div class="d-flex align-items-center">
-										<div class="avatar me-3">
-											<img class="avatar-img rounded-circle shadow" src="images/profile_pic.jpg" alt="avatar">
-										</div>
-										<div>
-											<p class="m-0"><strong>Pedro Alcântara</strong></p>
-											<p class="small m-0">email@email.com</p>
-										</div>
-									</div>
-								</li>
-		
-								<li> <hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Minha conta</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-bookmark-check fa-fw me-2"></i>Minhas reservas</a></li>
-
-								<li><a class="dropdown-item bg-danger-soft-hover" href="logout"><i class="bi bi-power fa-fw me-2"></i>Logout</a></li>
-								<li> <hr class="dropdown-divider"></li>
-
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>	
-    </div>
     <div id="main">
 		<div class="w-100 top-internas">
-			<h3 class="text-center">Pesquisa de roteiros</h3>
+			<h3 class="text-center fw-bold">Pesquisa de roteiros</h3>
 			<div class="d-flex justify-content-center">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
@@ -149,16 +89,18 @@
     
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12 pt-5">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control rounded-5" id="search" placeholder="Pesquisar roteiro por UF ou cidade" aria-label="Pesquisar roteiro" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary btn-lg" type="button" id="button-search"><i class="bi bi-search"></i></button>
-                    </div>
-                    <div class="mb-5">
-                        <button type="button" class="btn btn-outline-secondary rounded-5">Duração</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-5">Custo</button>
-                        <button type="button" class="btn btn-outline-secondary rounded-5">Popularidade</button>
-                        <button type="button" class="btn text-mutted">Limpar filtros</button>
+                <div class="col-md-12 col-sm-12">
+                    <div class="w-100 rounded-4 bg-white p-5 mb-5">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control rounded-5" id="search" placeholder="Pesquisar roteiro por UF ou cidade" aria-label="Pesquisar roteiro" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary btn-lg" type="button" id="button-search"><i class="bi bi-search"></i></button>
+                        </div>
+                        <div id="filters">
+                            <button type="button" class="btn btn-outline-secondary rounded-5">Duração</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-5">Custo</button>
+                            <button type="button" class="btn btn-outline-secondary rounded-5">Popularidade</button>
+                            <button type="button" class="btn text-mutted">Limpar filtros</button>
+                        </div>
                     </div>
 
                     <h3 class="h3 text-center fw-bold border-bottom pb-5 mb-5">Resultados</h3>
@@ -216,37 +158,35 @@
     </div>
 
     <footer class="pt-5 pb-5">
-        <p class="text-center"><img src="images/logo-footer.svg" width="170"></p>
-
-        <ul class="nav justify-content-center">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Quem somos</a>
-            </li>
-            <li class="nav-item">
-                 <a class="nav-link" href="#">Roteiros</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link">Fale conosco</a>
-            </li>
-        </ul>
-
-        <ul class="nav justify-content-center" id="social">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-instagram"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-facebook"></i></a>
-            </li>
-            <li class="nav-item">
-                 <a class="nav-link" href="#"><i class="bi bi-twitter"></i></a>
-            </li>
-        </ul>
-		
-		<p class="text-center m-0 d-none"><small>© Quatour 2023 - All Rights Reserved. Todos os direitos reservados.</small></p>
-
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<nav class="nav initial-nav">
+						<a class="nav-link logo" href="index.html"><img src="images/logo-footer.svg" class="align-middle"></a>
+						<a class="nav-link" href="index.html">Home</a>
+						<a class="nav-link" href="quem-somos.html">Sobre a Quatour</a>
+						<a class="nav-link" href="roteiros.html">Roteiros</a>
+						<a class="nav-link" href="fale-conosco.html">Fale conosco</a>
+					</nav>
+				</div>
+				<div class="col-md-6">
+					<ul class="nav justify-content-end final-nav">
+						<li class="nav-item">
+						  <a class="nav-link social" aria-current="page" href="#"><i class="bi bi-instagram"></i></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link social" href="#"><i class="bi bi-facebook"></i></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link social" href="#"><i class="bi bi-twitter"></i></a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link">© Quatour 2023 - Todos os direitos reservados.</a>
+						</li>
+					  </ul>	
+				</div>
+			</div>
+		</div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

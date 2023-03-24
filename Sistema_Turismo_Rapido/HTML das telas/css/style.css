@@ -66,12 +66,16 @@ a{
 
 /* Slider backround-color: #071C55 */
 
-.btn-group .btn, .btn-group .btn:hover{
+#tour-days .btn-group .btn, #tour-days .btn-group .btn:hover{
     background-color: #FFF;
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
+#tour-days span{
+    line-height: 35px;
+}
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+
+#tour-days .btn-check:checked+.btn, #tour-days .btn.active, #tour-days .btn.show, #tour-days .btn:first-child:active, :not(.btn-check)+.btn:active{
 	background-color: #d9b70d;
 	border: 1px solid #d9b70d;
 }
@@ -157,16 +161,32 @@ a{
     overflow: hidden;
 }
 
+#destinations .btn-secondary:hover{
+    background-color: #e3e3e3;
+	border: 1px solid #e3e3e3;
+    color: #333;
+    cursor: text;
+}
 
 .accordion-item {
     border: 1px solid #f3f3f3;
 }
 
 .top-internas{
-	background-color: #2e4b73;
-    height: 260px;
-    color: #FFF;
+	/*background-color: #2e4b73;
+    color: #FFF;*/
+    background-color: #eef1f5;
+    height: 240px;
     padding-top: 130px;
+}
+
+.internas:before{
+    content: '';
+    background-color: #eef1f5;
+    position: absolute;
+    height: 320px;
+    width: 100%;
+    z-index: -1;
 }
 
 #top-menu .user{color: #FFF;}
@@ -176,11 +196,18 @@ a{
 
 .destination-details{
 	background-color: #99b4bf;
+    background-color: #d9e0e9;
+    background-color: #FFF;
 	color: #243c58;
+    /*top: -70px;*/
 }
 
+#rating .btn-check:checked+.btn .bi, #rating .btn.active .bi, #rating .btn.show .bi, #rating .btn:first-child:active .bi, :not(.btn-check)+.btn:active .bi{
+    color: #f3941e;
+}
+/*
 .breadcrumb, .breadcrumb .breadcrumb-item a, .breadcrumb .breadcrumb-item.active, .breadcrumb-item+.breadcrumb-item::before{color: #FFF; text-decoration: none;}
-
+*/
 #slider.carousel .ban_desktop{
     display: block !important;
 }
@@ -250,23 +277,38 @@ a{
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
-	margin: 7px 0;
+	margin: 2px 0;
 }
 
 .dropdown-divider{
     border-top: 1px solid #dfdfe3;
 }
 
+.accordion-header .accordion-button{
+    font-weight: 700;
+    padding: 1.5rem 1.25rem;
+}
+
+.accordion-header .accordion-button .bi{ font-size: 1.2rem; }
+
+.accordion-button:not(.collapsed) {
+  color: #314b72;
+}
+
+.accordion-item:first-of-type .accordion-button, .accordion-item:first-of-type{
+    border-top-right-radius: 1rem !important;
+    border-top-left-radius: 1rem !important;   
+}
+
+.accordion-item:last-of-type .accordion-button, .accordion-item:last-of-type{
+    border-bottom-right-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important; 
+}
+
 #signup{max-width: 700px;}
 #signup .form-check{font-size: .8rem;}
 
 /* Page Roteiro*/
-
-#destinations .btn-secondary:hover{
-    background-color: #e3e3e3;
-	border: 1px solid #e3e3e3;
-    color: #333;
-}
 
 #comment-area #comment-form{
 	background-color: #FFF;
