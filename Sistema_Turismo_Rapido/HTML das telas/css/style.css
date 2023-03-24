@@ -14,6 +14,13 @@ a{
 	box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
 }
 
+/* Palette color */
+.bg-palette-color1{background-color: #2e4b73;}
+.bg-palette-color2{background-color: #243c58;}
+.bg-palette-color3{background-color: #99b4bf;}
+.bg-palette-color4{background-color: #d9b70d;}
+.bg-palette-color5{background-color: #bf8c30;}
+
 .signup-link, .forgot{
     font-size: 0.9rem;
 }
@@ -304,6 +311,8 @@ a{
     border-bottom-right-radius: 1rem !important;
     border-bottom-left-radius: 1rem !important; 
 }
+
+#mission-vision-values .item{ min-height: 300px; }
 
 #signup{max-width: 700px;}
 #signup .form-check{font-size: .8rem;}
