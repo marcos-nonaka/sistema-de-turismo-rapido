@@ -406,7 +406,7 @@ footer .final-nav i{
 		border: 1px solid #243c58;
 	}
 	
-	#header .navbar-nav{flex-direction: row;}
+	/*#header .navbar-nav{flex-direction: row;}*/
 	
 	#slider.carousel .ban_desktop{
 		display: none !important;

@@ -5,15 +5,6 @@ body{
     position: relative;
 }
 
-body:before{
-    content: '';
-    background-color: #eef1f5;
-    position: absolute;
-    height: 320px;
-    width: 100%;
-    z-index: -1;
-}
-
 a{
     text-decoration: none;
     color: #333;
@@ -51,11 +42,6 @@ a{
 .internas #header{
     color: #FFF;
 }*/
-
-#header.internas{
-    background-color: #2e4b73;
-    color: #FFF;
-}
 
 #header.min{
     position: fixed;
@@ -406,7 +392,7 @@ footer .final-nav i{
 		border: 1px solid #243c58;
 	}
 	
-	#header .navbar-nav{flex-direction: row;}
+	/*#header .navbar-nav{flex-direction: row;}*/
 	
 	#slider.carousel .ban_desktop{
 		display: none !important;
