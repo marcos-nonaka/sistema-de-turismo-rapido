@@ -16,7 +16,7 @@ function Navbar() {
   });
 
   return (
-    <div id="header" className="fixed-top">
+    <div id="header" className="internas">
       <nav className="navbar navbar-expand-md navbar-dark">
         <div className="container">
           <a
