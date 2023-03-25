@@ -9,7 +9,7 @@ function About() {
       <Navbar />
       <div id="main">
         <div className="w-100 top-internas">
-          <h3 className="text-center fw-bold">Quem somos</h3>
+          <h3 className="text-center fw-bold">Sobre a Quatour</h3>
           <div className="d-flex justify-content-center">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
@@ -17,7 +17,7 @@ function About() {
                   <a href="#">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
-                  Quem somos
+                  Sobre a Quatour
                 </li>
               </ol>
             </nav>
@@ -28,7 +28,7 @@ function About() {
             <div className="col-md-12 col-sm-12">
               <div className="rounded-4 p-5 mb-5 bg-white">
                 <h3 className="h3 fw-bold mb-4">
-                  Sobre a Quatour Agência de Turismo e Roteiros Rápidos
+                  Quem somos
                 </h3>
 
                 <p>
