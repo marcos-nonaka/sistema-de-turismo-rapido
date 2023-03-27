@@ -1,28 +1,28 @@
-package com.turismorapidobackend.turismorapidobackend.model;
+// package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+// import jakarta.persistence.*;
+// import lombok.AllArgsConstructor;
+// import lombok.Data;
 
-import java.util.Set;
+// import java.util.Set;
 
 
-@Data
-@AllArgsConstructor
-@Entity
-public class Turismologo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    Long cadastroConselho;
+// @Data
+// @AllArgsConstructor
+// @Entity
+// public class Turismologo {
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     Long id;
+//     Long cadastroConselho;
 
-    @OneToMany(targetEntity = Roteiro.class, mappedBy = "turismologo")
-    Set<Roteiro> roteiros;
+//     @OneToMany(targetEntity = Roteiro.class, mappedBy = "turismologo")
+//     Set<Roteiro> roteiros;
 
-    @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id")
-    Client client;
+//     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
+//     @JoinColumn(name = "client_id")
+//     Client client;
 
-    public Turismologo() {
-    }
-}
+//     public Turismologo() {
+//     }
+// }

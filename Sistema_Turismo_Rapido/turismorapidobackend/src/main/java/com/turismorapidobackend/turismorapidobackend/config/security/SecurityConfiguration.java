@@ -1,7 +1,5 @@
 package com.turismorapidobackend.turismorapidobackend.config.security;
 
-import java.net.http.HttpRequest;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,8 +16,8 @@ public class SecurityConfiguration {
         http.httpBasic();
         http
         .authorizeHttpRequests()
-        .requestMatchers(HttpMethod.POST, "/clients").permitAll()
-        .requestMatchers(HttpMethod.GET, "/clients").hasRole("ADMIN")
+        .requestMatchers(HttpMethod.GET, "/clients").permitAll()
+        .requestMatchers(HttpMethod.POST, "/clients").hasRole("TURISMOLOGO")
         .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
         .anyRequest().authenticated();
         http.csrf().disable();

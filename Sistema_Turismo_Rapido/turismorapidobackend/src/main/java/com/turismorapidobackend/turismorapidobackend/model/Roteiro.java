@@ -16,19 +16,19 @@ public class Roteiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id_roteiro;
     
-    @ManyToOne(targetEntity = Turismologo.class)
-    @JoinColumn(name = "turismologo_id")
-    Turismologo turismologo;
+    // @ManyToOne(targetEntity = Turismologo.class)
+    // @JoinColumn(name = "turismologo_id")
+    // Turismologo turismologo;
 
-    @ManyToMany(targetEntity = Turista.class, mappedBy = "roteiros")
-    Set<Turista> turistas;
+    // @ManyToMany(targetEntity = Turista.class, mappedBy = "roteiros")
+    // Set<Turista> turistas;
 
     @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
     // TODO: Arrumar relação para ManyToOne e OneToMany
-    @ManyToMany(targetEntity = Hotel.class)
+    @ManyToOne(targetEntity = Hotel.class)
     @JoinTable(name = "roteiro_hotel",
         joinColumns = @JoinColumn(name = "roteiro_id"),
         inverseJoinColumns = @JoinColumn(name = "hotel_id"))

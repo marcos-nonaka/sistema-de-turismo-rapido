@@ -23,16 +23,21 @@ public class Hotel {
     int street_number;
 
     String street_district;
+
+    String description_hotel;
     
     @ManyToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
-    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
+    @OneToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
     Set<Roteiro> roteiros;
 
     public Hotel(){
 
+    }
+
+    public void setDescricao(String description_hotel2) {
     }
 
 }
