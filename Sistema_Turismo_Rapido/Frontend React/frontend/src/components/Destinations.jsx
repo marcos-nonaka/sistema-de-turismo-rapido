@@ -31,7 +31,6 @@ function Destinations() {
                 name="btnradio"
                 id="btn1"
                 autocomplete="off"
-                checked
               />
               <label className="btn" for="btn1">
                 1 dia
@@ -548,12 +547,6 @@ function Destinations() {
             >
               Explorar mais
             </a>{" "}
-            <a
-              href="#"
-              className="btn btn-custom-warning btn-lg rounded-pill me-2 ps-4 pe-4 mt-3 mb-5"
-            >
-              Botão cor da paleta
-            </a>
           </p>
         </div>
       </div>

@@ -54,7 +54,7 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="fale-conosco.html">
+                <a className="nav-link" href="fale-conosco">
                   Fale conosco
                 </a>
               </li>
@@ -65,7 +65,7 @@ function Navbar() {
                 <li className="nav-item">
                   <a
                     className="btn btn-outline-light rounded-pill ms-4  me-3 ps-4 pe-4"
-                    href="login.html"
+                    href="/login"
                   >
                     Login
                   </a>
@@ -73,7 +73,7 @@ function Navbar() {
                 <li className="nav-item">
                   <a
                     className="btn btn-outline-warning rounded-pill ps-4 pe-4"
-                    href="cadastre-se.html"
+                    href="/cadastre-se"
                   >
                     Cadastre-se
                   </a>

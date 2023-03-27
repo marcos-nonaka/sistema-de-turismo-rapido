@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../assets/css/internas.css";
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -14,7 +16,7 @@ function About() {
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <a href="#">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   Sobre a Quatour
