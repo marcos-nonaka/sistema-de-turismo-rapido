@@ -42,6 +42,8 @@ public class AtracaoService {
         atracao.setTipo(atracaoRequestDTO.getTipo());
         atracao.setEndereco(atracaoRequestDTO.getEndereco());
         atracao.setTel_number(atracaoRequestDTO.getTel_number());
+        atracao.setLongitude(atracaoRequestDTO.getLongitude());
+        atracao.setLatitude(atracaoRequestDTO.getLatitude());
 
         atracao.setCidade(cidade);
 

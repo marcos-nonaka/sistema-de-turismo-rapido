@@ -23,9 +23,15 @@ public class CidadeService {
     @Transactional
     public ResponseEntity<Object> save(CidadeRequestDTO cidadeRequestDTO) {
         Cidade cidade = new Cidade();
+
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
         cidade.setAtracoes(cidade.getAtracoes());
+        cidade.setAlimentacoes(cidade.getAlimentacoes());
+        cidade.setHotels(cidade.getHotels());
+        cidade.setLongitude(cidadeRequestDTO.getLongitude());
+        cidade.setLatitude(cidadeRequestDTO.getLatitude());
+
         cidadeRepository.save(cidade);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));

@@ -33,8 +33,11 @@ public class AlimentacaoService {
         alimentacao.setStreet_district(alimentacaoRequestDTO.getStreet_district());
         alimentacao.setStreet_name(alimentacaoRequestDTO.getStreet_name());
         alimentacao.setPhone_number(alimentacaoRequestDTO.getPhone_number());
-        alimentacao.setStreet_number(alimentacao.getStreet_number());
-        cidadeRepository.save(cidade);
+        alimentacao.setStreet_number(alimentacaoRequestDTO.getStreet_number());
+        alimentacao.setLongitude(alimentacaoRequestDTO.getLongitude());
+        alimentacao.setLatitude(alimentacaoRequestDTO.getLatitude());
+
+        //cidadeRepository.save(cidade);
 
         alimentacao.setCidade(cidade);
 

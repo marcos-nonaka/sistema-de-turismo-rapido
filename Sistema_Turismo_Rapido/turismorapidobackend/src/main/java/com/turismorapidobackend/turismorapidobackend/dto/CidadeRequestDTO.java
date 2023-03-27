@@ -13,16 +13,13 @@ public class CidadeRequestDTO {
     Long id_cidade;
 
     String name;
+
     Long cep;
 
+    Double longitude;
+
+    Double latitude;
+
     public CidadeRequestDTO() {
-    }
-
-    public Cidade toCidade(){
-        Cidade cidade = new Cidade();
-        cidade.setName(name);
-        cidade.setCep(cep);
-
-        return cidade;
     }
 }
