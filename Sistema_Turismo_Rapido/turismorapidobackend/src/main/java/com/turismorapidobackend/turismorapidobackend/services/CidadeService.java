@@ -2,6 +2,7 @@ package com.turismorapidobackend.turismorapidobackend.services;
 
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.model.Atracao;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
 
@@ -24,6 +25,7 @@ public class CidadeService {
         Cidade cidade = new Cidade();
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
+        cidade.setAtracoes(cidade.getAtracoes());
         cidadeRepository.save(cidade);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));

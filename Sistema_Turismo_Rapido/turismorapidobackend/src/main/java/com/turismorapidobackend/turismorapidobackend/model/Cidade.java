@@ -22,6 +22,9 @@ public class Cidade {
     @OneToMany(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Atracao> atracoes;
 
+    @OneToMany(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
+    Set<Alimentacao> alimentacoes;
+
     @OneToMany(targetEntity = Hotel.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Hotel> hotels;
     public Cidade() {

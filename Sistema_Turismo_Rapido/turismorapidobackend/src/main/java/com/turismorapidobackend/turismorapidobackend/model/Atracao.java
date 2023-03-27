@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,6 +25,8 @@ public class Atracao {
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
+    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "atracoes")
+    List<Roteiro> roteiros;
     public Atracao() {
     }
 }
