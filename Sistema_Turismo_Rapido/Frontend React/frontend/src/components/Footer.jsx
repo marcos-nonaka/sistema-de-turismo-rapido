@@ -9,19 +9,19 @@ function Footer() {
         <div class="row">
           <div class="col-md-6">
             <nav class="nav initial-nav">
-              <a class="nav-link logo" href="index.html">
+              <a class="nav-link logo" href="/">
                 <img src={logoFooter} class="align-middle" alt="Logo Footer" />
               </a>
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="/">
                 Home
               </a>
-              <a class="nav-link" href="quem-somos">
+              <a class="nav-link" href="/quem-somos">
                 Sobre a Quatour
               </a>
-              <a class="nav-link" href="roteiros.html">
+              <a class="nav-link" href="/pesquisar-roteiro">
                 Roteiros
               </a>
-              <a class="nav-link" href="fale-conosco.html">
+              <a class="nav-link" href="/fale-conosco">
                 Fale conosco
               </a>
             </nav>

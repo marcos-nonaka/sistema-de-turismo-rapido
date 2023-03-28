@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
-/* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
+
+import "../assets/css/internas.css";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";

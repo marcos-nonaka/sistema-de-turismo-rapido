@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../assets/css/style.css";
-
 import Navbar from "./Navbar";
 import Slider from "./Slider";
 import Destinations from "./Destinations";
@@ -11,8 +9,10 @@ function Home() {
   return (
     <>
       <Navbar />
-      <Slider />
-      <Destinations />
+      <div id="main">
+        <Slider />
+        <Destinations />
+      </div>
       <Footer />
     </>
   );

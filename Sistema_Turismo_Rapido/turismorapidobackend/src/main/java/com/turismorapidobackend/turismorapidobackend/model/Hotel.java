@@ -25,6 +25,11 @@ public class Hotel {
     String street_district;
 
     String description_hotel;
+
+    Double longitude;
+
+    Double latitude;
+
     
     @ManyToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
@@ -37,7 +42,7 @@ public class Hotel {
 
     }
 
-    public void setDescricao(String description_hotel2) {
-    }
+    /*public void setDescricao(String description_hotel2) {
+    }*/
 
 }

@@ -42,5 +42,11 @@ public class Roteiro {
     List<Alimentacao> alimentacao;
 
     //TODO: Aticionar Atrações semelhante à alimentação
+    @ManyToMany(targetEntity = Atracao.class)
+    @JoinTable(name = "atracao_roteiro",
+            joinColumns = @JoinColumn(name = "atracao_id"),
+            inverseJoinColumns = @JoinColumn(name = "roteiro_id")
+    )
+    List<Atracao> atracoes;
     
 }

@@ -3,14 +3,14 @@ package com.turismorapidobackend.turismorapidobackend.services;
 import com.turismorapidobackend.turismorapidobackend.dto.AtracaoRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.AtracaoResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-// import com.turismorapidobackend.turismorapidobackend.dto.TurismologoResponseDTO;
+//import com.turismorapidobackend.turismorapidobackend.dto.TurismologoResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.model.Atracao;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
-// import com.turismorapidobackend.turismorapidobackend.model.Turismologo;
+//import com.turismorapidobackend.turismorapidobackend.model.Turismologo;
 import com.turismorapidobackend.turismorapidobackend.repository.AtracaoRepository;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
 import com.turismorapidobackend.turismorapidobackend.repository.ClientRepository;
-// import com.turismorapidobackend.turismorapidobackend.repository.TurismologoRepository;
+//import com.turismorapidobackend.turismorapidobackend.repository.TurismologoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +33,7 @@ public class AtracaoService {
     CidadeRepository cidadeRepository;
     @Transactional
     public ResponseEntity<Object> save(AtracaoRequestDTO atracaoRequestDTO) {
-        CidadeRequestDTO cidadeRequestDTO = new CidadeRequestDTO();
-        BeanUtils.copyProperties(atracaoRequestDTO, cidadeRequestDTO);
-        Cidade cidade = cidadeRequestDTO.toCidade();
+        Cidade cidade = cidadeRepository.findById(atracaoRequestDTO.getId_cidade()).get();
 
         Atracao atracao = new Atracao();
 
@@ -44,7 +42,8 @@ public class AtracaoService {
         atracao.setTipo(atracaoRequestDTO.getTipo());
         atracao.setEndereco(atracaoRequestDTO.getEndereco());
         atracao.setTel_number(atracaoRequestDTO.getTel_number());
-        cidadeRepository.save(cidade);
+        atracao.setLongitude(atracaoRequestDTO.getLongitude());
+        atracao.setLatitude(atracaoRequestDTO.getLatitude());
 
         atracao.setCidade(cidade);
 

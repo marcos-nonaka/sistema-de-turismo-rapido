@@ -1,0 +1,13 @@
+body:before{
+    content: '';
+    background-color: #eef1f5;
+    position: absolute;
+    height: 320px;
+    width: 100%;
+    z-index: -1;
+}
+
+#header.internas{
+    background-color: #2e4b73;
+    color: #FFF;
+}

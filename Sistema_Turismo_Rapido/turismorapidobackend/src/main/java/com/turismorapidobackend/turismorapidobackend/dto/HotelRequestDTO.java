@@ -20,6 +20,10 @@ public class HotelRequestDTO {
 
     String description_hotel;
 
+    Double longitude;
+
+    Double latitude;
+
     public HotelRequestDTO(){
 
     }
