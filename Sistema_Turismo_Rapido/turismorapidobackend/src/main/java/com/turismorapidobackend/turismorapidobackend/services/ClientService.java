@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
@@ -29,6 +30,10 @@ public class ClientService {
         }
     }
 
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
     @Transactional
     public ClientResponseDTO save(ClientRequestDTO clientRequestDTO){
         // Verificação de regras
@@ -38,6 +43,7 @@ public class ClientService {
         Optional<Client> optionalClient = clientRepository.findByUsername(clientRequestDTO.getUsername());
 
         if(!optionalClient.isPresent()){
+            client.setPassword(passwordEncoder().encode(client.getPassword()));
             return new ClientResponseDTO(clientRepository.save(client));
         }
 
