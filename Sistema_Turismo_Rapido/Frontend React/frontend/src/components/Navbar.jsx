@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import LogoTop from "../assets/img/logo-top.svg";
 
 function Navbar() {
-  var elem = document.getElementById('header');
-      
-  window.addEventListener('scroll', function() {
-    let scroll = window.pageYOffset;
+  const [isNavbarNormal, setIsNavbarNormal] = useState(false);
 
-    if(scroll > 1){
-      elem.classList.add("min");
-    }else{
-      elem.classList.remove("min");
-    }
-  });
+  useEffect(() => {
+    window.addEventListener(
+      "scroll", () => {
+        const scroll = window.pageYOffset;
+
+        if(scroll > 1){
+          setIsNavbarNormal(true);
+        }else{
+          setIsNavbarNormal(false);
+        }
+      },
+    );
+  }, []);
 
   return (
-    <div id="header" className="internas">
+    <div id="header" className={`${isNavbarNormal ? "min" : ""}`}>
       <nav className="navbar navbar-expand-md navbar-dark">
         <div className="container">
           <a
@@ -54,7 +58,7 @@ function Navbar() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="fale-conosco">
+                <a className="nav-link" href="/fale-conosco">
                   Fale conosco
                 </a>
               </li>
