@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import LogoTop from "../assets/img/logo-top.svg";
 
 function Navbar() {
-  const [isNavbarNormal, setIsNavbarNormal] = useState(false);
-
+   const [isNavbarNormal, setIsNavbarNormal] = useState(false);
+   const url = useLocation();
+   let internas = '';
+   
+   if(url.pathname != '/'){
+     internas = 'internas';
+   }
+  
   useEffect(() => {
     window.addEventListener(
       "scroll", () => {
@@ -20,7 +27,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div id="header" className={`${isNavbarNormal ? "min" : ""}`}>
+    <div id="header" className={`${isNavbarNormal ? "min" : ""} ${internas}`}>
       <nav className="navbar navbar-expand-md navbar-dark">
         <div className="container">
           <a

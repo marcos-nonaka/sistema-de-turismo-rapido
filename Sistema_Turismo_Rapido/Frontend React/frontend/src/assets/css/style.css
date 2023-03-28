@@ -47,15 +47,6 @@ a{
     background-color: rgba(255, 255, 255, 0.03);
 	padding: 0.5rem 0;
 }
-/*
-.internas #header{
-    color: #FFF;
-}*/
-
-#header.internas{
-    background-color: #2e4b73;
-    color: #FFF;
-}
 
 #header.min{
     position: fixed;
@@ -85,6 +76,20 @@ a{
     padding: 0.7rem 1rem;
 	color: #FFF;
 	font-family: 'Oxygen', 'Roboto', sans-serif;
+}
+
+body:before{
+    content: '';
+    background-color: #eef1f5;
+    position: absolute;
+    height: 320px;
+    width: 100%;
+    z-index: -1;
+}
+
+#header.internas{
+    background-color: #2e4b73;
+    color: #FFF;
 }
 
 /* Slider backround-color: #071C55 */
