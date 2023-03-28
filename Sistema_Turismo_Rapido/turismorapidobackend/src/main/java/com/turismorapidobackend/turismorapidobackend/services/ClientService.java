@@ -1,6 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,13 @@ public class ClientService {
 
         Client client = clientRequestDTO.toClient();
 
-        return new ClientResponseDTO(clientRepository.save(client));
+        Optional<Client> optionalClient = clientRepository.findByUsername(clientRequestDTO.getUsername());
+
+        if(!optionalClient.isPresent()){
+            return new ClientResponseDTO(clientRepository.save(client));
+        }
+
+        throw new Error("Usuário já existe!");
 
     }
     
