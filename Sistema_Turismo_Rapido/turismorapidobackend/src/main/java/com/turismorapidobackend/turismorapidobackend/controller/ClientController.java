@@ -44,8 +44,8 @@ public class ClientController {
     }
 
     @PostMapping("/role")
-    public List<ClientResponseDTO> defineUserRole(@RequestBody RoleRequestDTO roleRequestDTO){
-        return roleRequestDTO.save(roleRequestDTO);
+    public ClientResponseDTO adicionarUserRole(@RequestBody RoleRequestDTO roleRequestDTO){
+        return clientService.addRole(roleRequestDTO);
     }
     
     

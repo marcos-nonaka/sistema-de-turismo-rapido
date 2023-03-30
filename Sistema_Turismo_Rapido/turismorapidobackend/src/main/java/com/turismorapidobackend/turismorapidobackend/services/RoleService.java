@@ -20,12 +20,10 @@ public class RoleService {
 
     @Autowired
     ClientRepository clientRepository;
-
-    @Autowired
-    ClientRequestDTO clientRequestDTO;
     
-    public ClientRequestDTO save(RoleRequestDTO roleRequestDTO){
-        Optional<ClientRequestDTO> optionalClient;
+    public ClientResponseDTO save(RoleRequestDTO roleRequestDTO){
+        Optional<Client> optionalClient =
+                clientRepository.findById(roleRequestDTO.getClient_id());
 
         List<Role> roles = new ArrayList<>();
 
@@ -33,17 +31,14 @@ public class RoleService {
             throw new Error("Usuário não encontrado!");
         }
 
-        roles = roleRequestDTO.getId_roles().stream().map(role -> {
-            return new Role(role);
-        }).collect(Collectors.toList());
+//        roles = roleRequestDTO.getId_roles().stream().map(role -> {
+//            return new Role(role);
+//        }).collect(Collectors.toList());
+//
 
-        ClientRequestDTO clientRequestDTO = optionalClient.get();
+//        clientRequestDTO.setRoles(roles);
 
-        clientRequestDTO.setRoles(roles);
-
-        clientRepository.save(clientRequestDTO);
-        
-        return clientRequestDTO;
+        return new ClientResponseDTO(clientRepository.save(optionalClient.get()));
 
     }
 }
