@@ -27,6 +27,7 @@ public class CidadeService {
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
         cidade.setAtracoes(cidade.getAtracoes());
+        //Perguntar ao Thalyson
         cidade.setAlimentacoes(cidade.getAlimentacoes());
         cidade.setHotels(cidade.getHotels());
         cidade.setLongitude(cidadeRequestDTO.getLongitude());

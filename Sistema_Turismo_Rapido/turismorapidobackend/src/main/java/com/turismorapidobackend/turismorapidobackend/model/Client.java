@@ -3,9 +3,14 @@ package com.turismorapidobackend.turismorapidobackend.model;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +19,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -32,6 +38,11 @@ public class Client implements UserDetails {
     String mail;
     String username;
     String password;
+    // RoleName rolename;
+
+
+    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
+    List<Roteiro> roteiros;
 
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinTable(name = "client_role",
@@ -39,11 +50,9 @@ public class Client implements UserDetails {
     inverseJoinColumns = @JoinColumn(name = "role_id") )
     List<Role> roles;
 
-    // @OneToOne(targetEntity = Turista.class, cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.EAGER)
-    // Turista turista;
+    @OneToOne(targetEntity = Comentarios.class, cascade = CascadeType.ALL, mappedBy = "client")
+    Comentarios comentarios;
 
-    // @OneToOne(targetEntity = Turismologo.class, cascade = CascadeType.ALL, mappedBy = "client", fetch = FetchType.EAGER)
-    // Turismologo turismologo;
 
     public Client(){
         

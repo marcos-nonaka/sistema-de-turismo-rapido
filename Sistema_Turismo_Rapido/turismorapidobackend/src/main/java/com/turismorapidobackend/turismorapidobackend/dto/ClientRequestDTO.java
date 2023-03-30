@@ -1,6 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.dto;
 import java.time.LocalDate;
 
+import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 
 import lombok.AllArgsConstructor;
@@ -18,6 +19,8 @@ public class ClientRequestDTO {
     String username;
     String password;
 
+    RoleName rolename;
+
     public ClientRequestDTO(){
 
     }
@@ -33,6 +36,7 @@ public class ClientRequestDTO {
         client.setMail(mail);
         client.setUsername(username);
         client.setPassword(password);
+        // client.setRolename(rolename);
 
         return client;
 

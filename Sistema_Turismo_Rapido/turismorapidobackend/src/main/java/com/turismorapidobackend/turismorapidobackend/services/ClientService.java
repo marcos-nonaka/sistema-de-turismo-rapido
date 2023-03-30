@@ -40,6 +40,9 @@ public class ClientService {
 
         Client client = clientRequestDTO.toClient();
 
+        
+        
+
         Optional<Client> optionalClient = clientRepository.findByUsername(clientRequestDTO.getUsername());
 
         if(!optionalClient.isPresent()){
