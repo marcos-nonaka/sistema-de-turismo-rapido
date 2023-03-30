@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.services.ClientService;
+import com.turismorapidobackend.turismorapidobackend.services.RoleService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class ClientController {
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    RoleService roleService;
 
     @GetMapping
     public List<ClientResponseDTO> find(@RequestParam(name="name", defaultValue="") String name){
@@ -35,6 +41,11 @@ public class ClientController {
 
         return clientService.save(clientRequestDTO);
         
+    }
+
+    @PostMapping("/role")
+    public List<ClientResponseDTO> defineUserRole(@RequestBody RoleRequestDTO roleRequestDTO){
+        return roleRequestDTO.save(roleRequestDTO);
     }
     
     
