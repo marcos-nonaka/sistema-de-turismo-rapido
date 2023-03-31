@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+    min-height: 100vh;   
+    font-family: 'Oxygen', 'Roboto', sans-serif !important; 
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+.login-form{
+    max-width: 440px;
+    width: 100%; 
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: block;
+}
+
+.login-form form{
+    background-color: #FFF;
+    padding: 72px 32px;
+	-webkit-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	-moz-box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);
+	box-shadow: 0px 2px 30px -15px rgba(0,0,0,0.11);    
+}
+
+.login-form img{width: 100px;}
+
+.login-form .form-control{
+    border: 1px solid #dee2e6;
+}
+
+.login-form .form-control::placeholder {
+    font-size: 0.875rem;
+    color: #9090a3; 
+}
+  
+.login-form .form-control::placeholder, .signup-link, .forgot{
+    font-size: 0.9rem;
+    color: #9090a3; 
+}
+
+.login-form .input-group-text{
+    cursor: pointer;
+}
+
+.small, small {
+    font-size: .75rem;
+}

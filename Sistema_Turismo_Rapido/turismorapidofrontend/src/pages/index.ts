@@ -1,0 +1,8 @@
+export {default as Home} from './home/Home'
+export {default as NotFound} from './notFound/NotFound'
+export {default as About} from './about/About'
+export {default as Contact} from './contact/Contact'
+export {default as Itinerary} from './itinerary/Itinerary'
+export {default as Result} from './searchResult/Result'
+export {default as Login} from './login/Login'
+export {default as Signup} from './signup/Signup'
