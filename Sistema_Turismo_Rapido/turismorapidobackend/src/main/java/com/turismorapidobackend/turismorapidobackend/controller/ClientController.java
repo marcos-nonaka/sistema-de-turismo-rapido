@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.ResponseEntity;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
@@ -47,7 +50,10 @@ public class ClientController {
     public ClientResponseDTO adicionarUserRole(@RequestBody RoleRequestDTO roleRequestDTO){
         return clientService.addRole(roleRequestDTO);
     }
-    
-    
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
+        return clientService.delete(id);
+    }
     
 }

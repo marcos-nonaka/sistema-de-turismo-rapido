@@ -10,6 +10,8 @@ import com.turismorapidobackend.turismorapidobackend.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
@@ -78,5 +80,11 @@ public class ClientService {
         }
 
         return new ClientResponseDTO(clientRepository.save(client));
+    }
+
+    public ResponseEntity<Object> delete(Long id) {
+        Client client = clientRepository.findById(id).orElseThrow();
+        clientRepository.delete(client);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
