@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 
 @Service
@@ -26,10 +27,10 @@ public class CidadeService {
 
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
-        cidade.setAtracoes(cidade.getAtracoes());
+        cidade.setAtracoes(new HashSet<>());
         //Perguntar ao Thalyson
-        cidade.setAlimentacoes(cidade.getAlimentacoes());
-        cidade.setHotels(cidade.getHotels());
+        cidade.setAlimentacoes(new HashSet<>());
+        cidade.setHotels(new HashSet<>());
         cidade.setLongitude(cidadeRequestDTO.getLongitude());
         cidade.setLatitude(cidadeRequestDTO.getLatitude());
 

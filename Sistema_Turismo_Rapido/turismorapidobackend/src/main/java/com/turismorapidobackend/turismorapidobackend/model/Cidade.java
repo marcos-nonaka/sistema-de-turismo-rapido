@@ -2,14 +2,16 @@ package com.turismorapidobackend.turismorapidobackend.model;
 
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.awt.geom.Point2D;
 import java.util.Set;
 
-@Data
+
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Cidade {
     @Id
@@ -30,8 +32,7 @@ public class Cidade {
     @OneToMany(targetEntity = Atracao.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Alimentacao> alimentacoes;
 
-    @OneToMany(targetEntity = Hotel.class, cascade = CascadeType.ALL, mappedBy = "cidade")
+    @OneToMany(targetEntity = Hotel.class, mappedBy = "cidade")
     Set<Hotel> hotels;
-    public Cidade() {
-    }
+
 }

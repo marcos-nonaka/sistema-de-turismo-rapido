@@ -5,7 +5,12 @@ import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
 
 @Data
 @AllArgsConstructor
@@ -14,7 +19,7 @@ public class CidadeResponseDTO {
     String name;
     List<Long> atracoes;
     List<Long> alimentacoes;
-    List<Long> hotels;
+    List<IdNameDTO> hotels;
 
     public CidadeResponseDTO() {
     }
@@ -24,6 +29,6 @@ public class CidadeResponseDTO {
         this.name = cidade.getName();
         this.atracoes = cidade.getAtracoes().stream().map(atracao -> atracao.getId_atracao()).toList();
         this.alimentacoes = cidade.getAlimentacoes().stream().map(alimentacao -> alimentacao.getId_alimentacao()).toList();
-        this.hotels = cidade.getHotels().stream().map(hotel -> hotel.getId_hotel()).toList();
+        this.hotels = cidade.getHotels().stream().map(hotel -> new IdNameDTO(hotel.getId_hotel(), hotel.getHotel_name()) ).toList();
     }
 }

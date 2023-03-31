@@ -1,13 +1,14 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Set;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Hotel {
     @Id
@@ -30,7 +31,6 @@ public class Hotel {
 
     Double latitude;
 
-    
     @ManyToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
@@ -38,9 +38,6 @@ public class Hotel {
     @OneToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
     Set<Roteiro> roteiros;
 
-    public Hotel(){
-
-    }
 
     /*public void setDescricao(String description_hotel2) {
     }*/

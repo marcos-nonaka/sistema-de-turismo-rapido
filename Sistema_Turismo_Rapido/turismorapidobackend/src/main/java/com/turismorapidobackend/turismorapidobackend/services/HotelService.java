@@ -1,6 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +45,14 @@ public class HotelService {
         hotel.setLongitude(hotelRequestDTO.getLongitude());
         hotel.setLatitude(hotelRequestDTO.getLatitude());
 
-        //cidadeRepository.save(cidade);
-
         hotel.setCidade(cidade);
+        hotel = hotelRepository.save(hotel);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(hotelRepository.save(hotel));
+
+        cidade.getHotels().add(hotel);
+        cidadeRepository.save(cidade);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new HotelResponseDTO(hotel));
     }
 
     public ResponseEntity<Object> findAll() {
