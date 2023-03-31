@@ -3,13 +3,10 @@ package com.turismorapidobackend.turismorapidobackend.model;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -51,8 +48,8 @@ public class Client implements UserDetails {
     inverseJoinColumns = @JoinColumn(name = "role_id") )
     List<Role> roles;
 
-    @OneToOne(targetEntity = Comentarios.class, cascade = CascadeType.ALL, mappedBy = "client")
-    Comentarios comentarios;
+    @OneToOne(targetEntity = Comentario.class, cascade = CascadeType.ALL, mappedBy = "client")
+    Comentario comentarios;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
