@@ -16,6 +16,8 @@ public class Roteiro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id_roteiro;
 
+    Double valor;
+
     @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
@@ -46,5 +48,7 @@ public class Roteiro {
             inverseJoinColumns = @JoinColumn(name = "roteiro_id")
     )
     Set<Client> client;
-    
+
+    public Roteiro() {
+    }
 }

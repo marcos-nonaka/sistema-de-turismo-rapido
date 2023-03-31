@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "dbdddd82-3a10-4277-9335-272dbd93e339",
+		"name": "APP_STR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "SAVE_CLIENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ze\",\r\n    \"cpf\": \"00000000021\",\r\n    \"data_nascimento\": \"1979-09-09\",\r\n    \"tel_number\": \"999999999\",\r\n    \"mail\": \"ze@zezinho\",\r\n    \"username\": \"Jose\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_CLIENT",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ze\",\r\n    \"cpf\": \"00000000021\",\r\n    \"data_nascimento\": \"1979-09-09\",\r\n    \"tel_number\": \"999999999\",\r\n    \"login\": \"ze@zezinho\",\r\n    \"password\": \"123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turista",
+			"item": [
+				{
+					"name": "SAVE_TURISTA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Turista\",\r\n    \"cpf\": \"00000000021\",\r\n    \"data_nascimento\": \"1979-09-09\",\r\n    \"tel_number\": \"999999999\",\r\n    \"mail\": \"ze2@zezinho\",\r\n    \"username\": \"123\",\r\n    \"password\": \"1233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/turistas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"turistas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETONE_TURISTA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/turistas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"turistas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Turismologo",
+			"item": [
+				{
+					"name": "SAVE_TURISMOLOGO",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cadastroConselho\": \"123\",\r\n    \"name\": \"Turismologo\",\r\n    \"cpf\": \"00000000021\",\r\n    \"data_nascimento\": \"1979-09-09\",\r\n    \"tel_number\": \"999999999\",\r\n    \"mail\": \"asdavadfasd\",\r\n    \"username\": \"ze2@zezinho\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/turismologo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"turismologo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETALL_TURISMOLOGO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/turismologo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"turismologo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETONE_TURISMOLOGO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/turismologo/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"turismologo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cidade",
+			"item": [
+				{
+					"name": "SAVE_CIDADE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Florianópolis\",\r\n    \"cep\": \"32122100\",\r\n    \"latitude\": \"312.46\",\r\n    \"longitude\": \"312.46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_CIDADE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidades/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atracoes",
+			"item": [
+				{
+					"name": "SAVE_ATRACOES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Trilha Mar\",\r\n    \"tel_number\": \"999999999\",\r\n    \"id_cidade\": \"1\",\r\n    \"endereco\": \"asdavadfasd\",\r\n    \"descricao\": \"ze2@zezinho\",\r\n    \"tipo\": \"trilha\",\r\n    \"latitude\": \"312.46\",\r\n    \"longitude\": \"312.46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/atracoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETALL_ATRACOES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alimentacao",
+			"item": [
+				{
+					"name": "SAVE_ALIMENTACAO",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cidade\": \"1\",\r\n    \"local_name\": \"Restaurante Mar2\",\r\n    \"description\": \"Altos rango\",\r\n    \"phone_number\": \"999999999\",\r\n    \"street_name\": \"Rua Sol e Mar\",\r\n    \"street_district\": \"Campeche\",\r\n    \"street_number\": \"130\",\r\n    \"latitude\": \"312.46\",\r\n    \"longitude\": \"312.46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alimentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETTALL_ALIMENTACAO",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alimentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GETONE_ALIMENTACAO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alimentacao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "GETALL_HOTEIS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE_HOTEIS",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cidade\": \"1\",\r\n    \"hotel_name\": \"Hotel Mar2\",\r\n    \"phone_number\": \"999999999\",\r\n    \"street_name\": \"Rua Sol e Mar\",\r\n    \"street_district\": \"Campeche\",\r\n    \"street_number\": \"130\",\r\n    \"description_hotel\": \"bem massa\",\r\n    \"latitude\": \"312.46\",\r\n    \"longitude\": \"312.46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/hoteis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "123",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "doug",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
