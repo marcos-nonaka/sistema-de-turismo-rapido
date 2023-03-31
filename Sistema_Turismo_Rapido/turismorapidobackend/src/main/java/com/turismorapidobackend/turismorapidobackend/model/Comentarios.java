@@ -8,12 +8,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Entity
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Entity
 public class Comentarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +25,5 @@ public class Comentarios {
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
     Client client;
-
-    public Comentarios(){
-
-    }
-
-
     
 }

@@ -46,8 +46,12 @@ public class AtracaoService {
         atracao.setLatitude(atracaoRequestDTO.getLatitude());
 
         atracao.setCidade(cidade);
+        atracao = atracaoRepository.save(atracao);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(atracaoRepository.save(atracao));
+        cidade.getAtracoes().add(atracao);
+        cidadeRepository.save(cidade);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new AtracaoResponseDTO(atracao));
     }
 
     public ResponseEntity<Object> findById(Long id) {

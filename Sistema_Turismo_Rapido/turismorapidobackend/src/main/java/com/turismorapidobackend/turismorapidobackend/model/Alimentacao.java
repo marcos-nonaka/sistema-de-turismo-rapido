@@ -3,11 +3,12 @@ package com.turismorapidobackend.turismorapidobackend.model;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Alimentacao {
     @Id
@@ -38,7 +39,4 @@ public class Alimentacao {
     @ManyToMany(targetEntity = Roteiro.class, mappedBy = "alimentacao")
     List<Roteiro> roteiros;
 
-    public Alimentacao(){
-        
-    }
 }

@@ -37,11 +37,14 @@ public class AlimentacaoService {
         alimentacao.setLongitude(alimentacaoRequestDTO.getLongitude());
         alimentacao.setLatitude(alimentacaoRequestDTO.getLatitude());
 
-        //cidadeRepository.save(cidade);
 
         alimentacao.setCidade(cidade);
+        alimentacao = alimentacaoRepository.save(alimentacao);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(alimentacaoRepository.save(alimentacao));
+        cidade.getAlimentacoes().add(alimentacao);
+        cidadeRepository.save(cidade);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new AlimentacaoResponseDTO(alimentacao));
     }
 
     public ResponseEntity<Object> findById(Long id) {

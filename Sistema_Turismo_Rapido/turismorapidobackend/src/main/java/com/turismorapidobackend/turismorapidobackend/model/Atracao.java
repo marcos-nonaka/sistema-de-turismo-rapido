@@ -1,14 +1,15 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Atracao {
     @Id
@@ -36,6 +37,4 @@ public class Atracao {
 
     @ManyToMany(targetEntity = Roteiro.class, mappedBy = "atracoes")
     List<Roteiro> roteiros;
-    public Atracao() {
-    }
 }

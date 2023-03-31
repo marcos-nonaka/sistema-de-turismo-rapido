@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,11 +21,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Client implements UserDetails {
     @Id
@@ -52,11 +53,6 @@ public class Client implements UserDetails {
 
     @OneToOne(targetEntity = Comentarios.class, cascade = CascadeType.ALL, mappedBy = "client")
     Comentarios comentarios;
-
-
-    public Client(){
-        
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

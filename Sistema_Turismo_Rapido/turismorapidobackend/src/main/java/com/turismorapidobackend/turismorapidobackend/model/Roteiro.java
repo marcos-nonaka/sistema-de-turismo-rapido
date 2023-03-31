@@ -1,14 +1,15 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Roteiro {
     
@@ -49,6 +50,4 @@ public class Roteiro {
     )
     Set<Client> client;
 
-    public Roteiro() {
-    }
 }
