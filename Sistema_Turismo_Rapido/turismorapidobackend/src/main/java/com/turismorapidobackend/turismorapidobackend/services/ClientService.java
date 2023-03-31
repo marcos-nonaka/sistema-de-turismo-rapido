@@ -54,10 +54,11 @@ public class ClientService {
             RoleName roleName = clientRequestDTO.getRolename();
 
             if(roleName == RoleName.ROLE_ADMIN){
-                throw new Error("Não é possível criar admin.");
+                throw new Error("Acesso não autorizado!");
             }
 
             Role role = roleRepository.findByRole(roleName).get();
+            
 
             client.setRoles( List.of(role) );
 
