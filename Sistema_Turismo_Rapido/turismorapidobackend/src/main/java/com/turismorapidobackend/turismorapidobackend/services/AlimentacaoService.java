@@ -2,9 +2,7 @@ package com.turismorapidobackend.turismorapidobackend.services;
 
 import com.turismorapidobackend.turismorapidobackend.dto.AlimentacaoRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.AlimentacaoResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.AtracaoResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.model.Alimentacao;
-import com.turismorapidobackend.turismorapidobackend.model.Atracao;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.repository.AlimentacaoRepository;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;

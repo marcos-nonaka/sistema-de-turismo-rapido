@@ -1,7 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.dto;
 
 import com.turismorapidobackend.turismorapidobackend.model.Atracao;
-import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

@@ -3,7 +3,6 @@ package com.turismorapidobackend.turismorapidobackend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor

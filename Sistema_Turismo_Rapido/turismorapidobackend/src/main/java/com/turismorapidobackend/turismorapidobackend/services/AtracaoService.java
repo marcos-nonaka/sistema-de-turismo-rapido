@@ -2,17 +2,11 @@ package com.turismorapidobackend.turismorapidobackend.services;
 
 import com.turismorapidobackend.turismorapidobackend.dto.AtracaoRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.AtracaoResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-//import com.turismorapidobackend.turismorapidobackend.dto.TurismologoResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.model.Atracao;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
-//import com.turismorapidobackend.turismorapidobackend.model.Turismologo;
 import com.turismorapidobackend.turismorapidobackend.repository.AtracaoRepository;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
-import com.turismorapidobackend.turismorapidobackend.repository.ClientRepository;
-//import com.turismorapidobackend.turismorapidobackend.repository.TurismologoRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
