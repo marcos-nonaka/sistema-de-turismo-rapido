@@ -11,6 +11,7 @@ import {
 	Result,
 	Login,
 	Signup,
+	Painel
 } from '../pages'
 
 
@@ -26,6 +27,7 @@ const MainRouter = () => {
 		<Route path='/roteiro' element={<Result />} />
 		<Route path='/login' element={<Login />} />
 		<Route path='/cadastre-se' element={<Signup />} />
+		<Route path='/painel' element={<Painel />} />
       </Routes>
     </Router>
   )
