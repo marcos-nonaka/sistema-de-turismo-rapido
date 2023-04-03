@@ -30,7 +30,7 @@ public class Atracao {
 
     Double latitude;
 
-    @ManyToOne(targetEntity = Cidade.class)
+    @ManyToOne(targetEntity = Cidade.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 

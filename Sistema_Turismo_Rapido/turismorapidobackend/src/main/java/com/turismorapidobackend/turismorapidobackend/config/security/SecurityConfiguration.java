@@ -26,7 +26,7 @@ public class SecurityConfiguration {
         .requestMatchers(HttpMethod.POST, "/cidade").hasAnyRole("ADMIN", "TURISMOLOGO")
         .requestMatchers(HttpMethod.POST, "/hoteis").hasAnyRole("ADMIN", "TURISMOLOGO")
         .requestMatchers(HttpMethod.POST, "/atracoes").hasAnyRole("ADMIN", "TURISMOLOGO")
-        .requestMatchers(HttpMethod.DELETE, "/alimentacao").hasAnyRole("ADMIN", "TURISMOLOGO")
+        .requestMatchers(HttpMethod.POST, "/alimentacao").hasAnyRole("ADMIN", "TURISMOLOGO")
         .requestMatchers(HttpMethod.DELETE, "/roteiros").hasAnyRole("ADMIN", "TURISMOLOGO")
         .requestMatchers(HttpMethod.DELETE, "/cidade").hasAnyRole("ADMIN", "TURISMOLOGO")
         .requestMatchers(HttpMethod.DELETE, "/hoteis").hasAnyRole("ADMIN", "TURISMOLOGO")
