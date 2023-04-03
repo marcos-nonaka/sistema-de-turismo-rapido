@@ -8,6 +8,9 @@ import com.turismorapidobackend.turismorapidobackend.model.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.BeanUtils;
+
+import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullPropertyNames;
 
 @Data
 @AllArgsConstructor
@@ -30,20 +33,14 @@ public class ClientRequestDTO {
     }
 
     public Client toClient(){
-
         Client client = new Client();
-
-        client.setName(name);
-        client.setCpf(cpf);
-        client.setData_nascimento(data_nascimento);
-        client.setTel_number(tel_number);
-        client.setMail(mail);
-        client.setUsername(username);
-        client.setPassword(password);
-        client.setRoles(roles);
+        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
         // client.setRolename(rolename);
-
         return client;
+    }
 
+    public Client toClient(Client client){
+        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
+        return client;
     }
 }

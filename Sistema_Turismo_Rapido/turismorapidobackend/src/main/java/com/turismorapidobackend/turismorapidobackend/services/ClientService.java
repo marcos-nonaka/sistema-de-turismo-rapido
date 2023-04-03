@@ -7,18 +7,23 @@ import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 import com.turismorapidobackend.turismorapidobackend.repository.RoleRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.repository.ClientRepository;
 
 import jakarta.transaction.Transactional;
+
+import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullPropertyNames;
+
 
 @Service
 public class ClientService {
@@ -82,9 +87,21 @@ public class ClientService {
         return new ClientResponseDTO(clientRepository.save(client));
     }
 
+    public Client findById(Long id) {
+        Optional<Client> client = clientRepository.findById(id);
+        return client.orElseThrow(() -> new ObjectNotFoundException(id));
+    }
+
+    @Transactional
     public ResponseEntity<Object> delete(Long id) {
-        Client client = clientRepository.findById(id).orElseThrow();
-        clientRepository.delete(client);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        clientRepository.delete(this.findById(id));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Transactional
+    public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
+        Client client = this.findById(id);
+        clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save(clientRequestDTO.toClient(client))));
     }
 }

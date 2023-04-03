@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.lang.NonNull;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
@@ -52,8 +55,13 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@PathVariable(name = "id") Long id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
         return clientService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
+        return clientService.update(id, clientRequestDTO);
     }
     
 }
