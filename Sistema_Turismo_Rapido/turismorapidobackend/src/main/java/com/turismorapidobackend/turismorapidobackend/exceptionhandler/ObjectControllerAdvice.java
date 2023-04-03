@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.Instant;
-//https://pt.linkedin.com/pulse/tratando-erros-e-exce%C3%A7%C3%B5es-com-spring-boot-tiago-perroni
 @ControllerAdvice(basePackages = "com.turismorapidobackend.turismorapidobackend.controller")
 public class ObjectControllerAdvice {
     @ResponseBody
