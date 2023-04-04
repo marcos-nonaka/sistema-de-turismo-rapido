@@ -2,15 +2,15 @@ package com.turismorapidobackend.turismorapidobackend.services;
 
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.model.Cidade;
-import com.turismorapidobackend.turismorapidobackend.model.Roteiro;
-import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
-import com.turismorapidobackend.turismorapidobackend.repository.RoteiroRepository;
+import com.turismorapidobackend.turismorapidobackend.model.*;
+import com.turismorapidobackend.turismorapidobackend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,22 +20,46 @@ public class RoteiroService {
 
     @Autowired
     CidadeRepository cidadeRepository;
+
+    @Autowired
+    AlimentacaoRepository alimentacaoRepository;
+
+    @Autowired
+    AtracaoRepository atracaoRepository;
+
+    @Autowired
+    HotelRepository hotelRepository;
+
     public ResponseEntity<Object> save(RoteiroRequestDTO roteiroRequestDTO) {
-        Cidade cidade = cidadeRepository.findById(roteiroRequestDTO.getId_cidade()).get();
         Roteiro roteiro = new Roteiro();
 
-        /*roteiro.setAlimentacao(roteiroRequestDTO.get());
-        roteiro.setHoteis(roteiroRequestDTO.getCep());
-        roteiro.setAtracoes(roteiroRequestDTO.getAtracoes());
-        //Perguntar ao Thalyson
-        roteiro.setClient(roteiroRequestDTO.getAlimentacoes());
-        roteiro.setValor(roteiroRequestDTO.getHotels());
-        roteiro.setLongitude(roteiroRequestDTO.getLongitude());
-        roteiro.setLatitude(roteiroRequestDTO.getLatitude());*/
+        Optional<Alimentacao> alimentacaoOptional = alimentacaoRepository.findById(roteiroRequestDTO.getId_alimentacao());
+        Optional<Atracao> atracaoOptional = atracaoRepository.findById(roteiroRequestDTO.getId_atracao());
+        Optional<Hotel> hotelOptional = hotelRepository.findById(roteiroRequestDTO.getId_hotel());
+        Optional<Cidade> cidadeOptional = cidadeRepository.findById(roteiroRequestDTO.getId_cidade());
+         /*if (alimentacaoOptional.isEmpty()) {
+             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Alimentacao não encontrado");
+         }*/
 
-        cidadeRepository.save(cidade);
+        roteiro.setValor(roteiroRequestDTO.getValor());
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));
+        List<Alimentacao> alimentacoes = new ArrayList<>();
+        alimentacoes.add(alimentacaoOptional.get());
+        roteiro.setAlimentacao(alimentacoes);
+
+        List<Atracao> atracoes = new ArrayList<>();
+        atracoes.add(atracaoOptional.get());
+        roteiro.setAtracoes(atracoes);
+
+        List<Hotel> hoteis = new ArrayList<>();
+        hoteis.add(hotelOptional.get());
+        roteiro.setHoteis(hoteis);
+
+        roteiro.setCidade(cidadeOptional.get());
+
+        roteiroRepository.save(roteiro);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiro));
     }
 
     public ResponseEntity<Object> findById(Long id) {
