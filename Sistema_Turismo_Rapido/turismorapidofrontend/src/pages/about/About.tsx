@@ -79,7 +79,7 @@ function About() {
 
           <div className="row mb-5" id="mission-vision-values">
             <div className="col-md-4 mb-3">
-              <div className="rounded-4 bg-palette-color4 p-5 item">
+              <div className="rounded-4 bg-palette-color1 p-5 item">
                 <h5 className="h4 fw-bold mb-3">Missão</h5>
 
                 <p>
@@ -92,7 +92,7 @@ function About() {
               </div>
             </div>
             <div className="col-md-4 mb-3">
-              <div className="rounded-4 bg-palette-color4 p-5 item">
+              <div className="rounded-4 bg-palette-color1 p-5 item">
                 <h5 className="h4 fw-bold mb-3">Visão</h5>
 
                 <p>
@@ -103,7 +103,7 @@ function About() {
               </div>
             </div>
             <div className="col-md-4 mb-3">
-              <div className="rounded-4 bg-palette-color4 p-5 item">
+              <div className="rounded-4 bg-palette-color1 p-5 item">
                 <h5 className="h4 fw-bold mb-3">Valores</h5>
 
                 <ul>

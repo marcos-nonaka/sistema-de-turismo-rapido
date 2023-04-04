@@ -68,7 +68,7 @@ function Contact() {
 					  <div className="col-12">
 						<button
 						  type="submit"
-						  className="btn btn-custom-warning ps-3 pe-3 float-end rounded-5"
+						  className="btn btn-warning ps-3 pe-3 float-end rounded-5"
 						>
 						  Enviar
 						</button>
