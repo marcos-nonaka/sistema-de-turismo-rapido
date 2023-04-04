@@ -24,4 +24,9 @@ public class CidadeController {
             @PathVariable(name = "id") Long id){
         return cidadeService.findById(id);
     }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll(){
+        return cidadeService.findAll();
+    }
 }

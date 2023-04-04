@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CidadeService {
@@ -46,6 +48,17 @@ public class CidadeService {
             return ResponseEntity.ok().body(new CidadeResponseDTO(cidadeOptional.get()));
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cidade não encontrada");
+        }
+    }
+
+    public ResponseEntity<Object> findAll() {
+        List<Cidade> cidades = cidadeRepository.findAll();
+
+        if(!cidades.isEmpty()){
+            List<CidadeResponseDTO> cidadeResponseDTOs = cidades.stream().map(CidadeResponseDTO::new).collect(Collectors.toList());
+            return ResponseEntity.ok().body(cidadeResponseDTOs);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhuma cidade encontrada");
         }
     }
 }

@@ -24,7 +24,7 @@ public class AlimentacaoController {
         return alimentacaoService.findById(id);
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<Object> findAll(){
         return alimentacaoService.findAll();
     }
