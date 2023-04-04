@@ -23,11 +23,11 @@ public class Roteiro {
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
-    @ManyToOne(targetEntity = Hotel.class)
+    @ManyToMany(targetEntity = Hotel.class)
     @JoinTable(name = "roteiro_hotel",
         joinColumns = @JoinColumn(name = "roteiro_id"),
         inverseJoinColumns = @JoinColumn(name = "hotel_id"))
-    Set<Hotel> hoteis;
+    List<Hotel> hoteis;
 
     @ManyToMany(targetEntity = Alimentacao.class)
     @JoinTable(name = "alimentacao_roteiro",

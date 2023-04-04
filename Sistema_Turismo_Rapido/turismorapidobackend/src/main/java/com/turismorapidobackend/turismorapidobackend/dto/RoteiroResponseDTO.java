@@ -17,6 +17,7 @@ public class RoteiroResponseDTO {
     Double valor;
 
     public RoteiroResponseDTO(Roteiro roteiro){
+        this.id_roteiro = roteiro.getId_roteiro();
         this.hotels = roteiro.getHoteis().stream().map(hotel -> hotel.getId_hotel()).toList();
         this.atracoes = roteiro.getAtracoes().stream().map(atracao -> atracao.getId_atracao()).toList();
         this.alimentacoes = roteiro.getAlimentacao().stream().map(alimentacao -> alimentacao.getId_alimentacao()).toList();
