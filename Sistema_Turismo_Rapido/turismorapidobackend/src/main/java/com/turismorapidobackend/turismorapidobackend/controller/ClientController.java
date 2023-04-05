@@ -36,13 +36,17 @@ public class ClientController {
 
     @GetMapping
     public List<ClientResponseDTO> find(@RequestParam(name="name", defaultValue="") String name){
+        
         List<Client> list = clientService.findAll(name);
+
         return list.stream().map(ClientResponseDTO:: new).toList();
     }
 
     @PostMapping
     public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO) {
+
         return clientService.save(clientRequestDTO);
+        
     }
 
     @PostMapping("/role")
@@ -59,4 +63,5 @@ public class ClientController {
     public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.update(id, clientRequestDTO);
     }
+    
 }
