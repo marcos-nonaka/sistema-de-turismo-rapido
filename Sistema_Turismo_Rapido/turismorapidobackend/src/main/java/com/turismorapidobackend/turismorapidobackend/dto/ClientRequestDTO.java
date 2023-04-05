@@ -6,6 +6,7 @@ import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -16,6 +17,7 @@ import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullP
 @AllArgsConstructor
 public class ClientRequestDTO {
     
+    @NotBlank
     String name;
     String cpf;
     LocalDate data_nascimento;

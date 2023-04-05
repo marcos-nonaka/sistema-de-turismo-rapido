@@ -21,6 +21,8 @@ import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.services.ClientService;
 import com.turismorapidobackend.turismorapidobackend.services.RoleService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -43,7 +45,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO) {
+    public ClientResponseDTO save(@RequestBody @Valid ClientRequestDTO clientRequestDTO) {
 
         return clientService.save(clientRequestDTO);
         
