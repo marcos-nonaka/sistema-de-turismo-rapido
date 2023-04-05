@@ -66,6 +66,11 @@ function Navbar(){
                 </a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/cadastre-se">
+                  Seja um turismólogo
+                </a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/fale-conosco">
                   Fale conosco
                 </a>
