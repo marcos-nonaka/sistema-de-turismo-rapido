@@ -1,5 +1,7 @@
-import { default as PTBR } from "./pt-br";
+import ptBrTranslations from './pt-br'
+import enUsTranslations from './en-us'
 
 export default {
-    'pt-BR': PTBR
+    'pt-BR': ptBrTranslations,
+    'en-US': enUsTranslations
 }

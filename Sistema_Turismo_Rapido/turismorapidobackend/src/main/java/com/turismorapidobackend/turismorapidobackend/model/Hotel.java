@@ -3,6 +3,7 @@ package com.turismorapidobackend.turismorapidobackend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -35,11 +36,7 @@ public class Hotel {
     @JoinColumn(name = "cidade_id")
     Cidade cidade;
 
-    @OneToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
-    Set<Roteiro> roteiros;
-
-
-    /*public void setDescricao(String description_hotel2) {
-    }*/
+    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
+    List<Roteiro> roteiros;
 
 }

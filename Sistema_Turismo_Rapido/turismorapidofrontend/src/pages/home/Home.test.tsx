@@ -4,6 +4,6 @@ import Home from './Home'
 
 test('renders login page', () => {
     render(<Home />)
-    //const linkElement = screen.getByText(/TeamsList/i)
-    //expect(linkElement).toBeInTheDocument()
+    const linkElement = screen.getByText(/TeamsList/i)
+    expect(linkElement).toBeInTheDocument()
 })

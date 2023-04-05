@@ -10,21 +10,21 @@ function Navbar(){
 	let internas = '';
 
 	if(url.pathname != '/'){
-	 internas = 'internas';
+		internas = 'internas';
 	}
 
 	useEffect(() => {
-	window.addEventListener(
-	  "scroll", () => {
-		const scroll = window.pageYOffset;
+		window.addEventListener(
+			"scroll", () => {
+				const scroll = window.pageYOffset;
 
-		if(scroll > 1){
-		  setIsNavbarNormal(true);
-		}else{
-		  setIsNavbarNormal(false);
-		}
-	  },
-	);
+				if(scroll > 1){
+					setIsNavbarNormal(true);
+				}else{
+					setIsNavbarNormal(false);
+				}
+			},
+		);
 	}, []);
   
     return(
@@ -63,6 +63,11 @@ function Navbar(){
               <li className="nav-item">
                 <a className="nav-link" href="/pesquisar-roteiro">
                   Roteiros
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/cadastre-se">
+                  Seja um turismólogo
                 </a>
               </li>
               <li className="nav-item">

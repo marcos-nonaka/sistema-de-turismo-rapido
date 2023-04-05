@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CidadeService {
@@ -27,7 +29,6 @@ public class CidadeService {
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
         cidade.setAtracoes(new HashSet<>());
-        //Perguntar ao Thalyson
         cidade.setAlimentacoes(new HashSet<>());
         cidade.setHotels(new HashSet<>());
         cidade.setLongitude(cidadeRequestDTO.getLongitude());
@@ -38,7 +39,6 @@ public class CidadeService {
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));
     }
 
-    // vamos ter que alterar para buscar pelo nome e pelo cep
     public ResponseEntity<Object> findById(Long id) {
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(id);
 
@@ -46,6 +46,15 @@ public class CidadeService {
             return ResponseEntity.ok().body(new CidadeResponseDTO(cidadeOptional.get()));
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cidade não encontrada");
+        }
+    }
+
+    public List<Cidade> findAll(String name) {
+        if (name.equals("")){
+            return cidadeRepository.findAll();
+        }
+        else{
+            return cidadeRepository.findAllByNameIgnoreCase(name);
         }
     }
 }

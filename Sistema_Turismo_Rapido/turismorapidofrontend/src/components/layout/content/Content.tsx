@@ -103,8 +103,8 @@ function Content(){
               <div className="carousel-item active" data-bs-interval="10000">
                 <div className="row row-cols-1 row-cols-md-3 g-4 pb-5">
                   <div className="col-md-3 col-sm-12">
-                    <div className="card position-relative">
-                      <div className="thumb position-relative">
+                    <div className="card">
+                      <div className="thumb">
                         <img
                           src={ouroPreto}
                           className="card-img-top w-100"
