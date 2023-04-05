@@ -29,7 +29,6 @@ public class CidadeService {
         cidade.setName(cidadeRequestDTO.getName());
         cidade.setCep(cidadeRequestDTO.getCep());
         cidade.setAtracoes(new HashSet<>());
-        //Perguntar ao Thalyson
         cidade.setAlimentacoes(new HashSet<>());
         cidade.setHotels(new HashSet<>());
         cidade.setLongitude(cidadeRequestDTO.getLongitude());
@@ -40,7 +39,6 @@ public class CidadeService {
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));
     }
 
-    // vamos ter que alterar para buscar pelo nome e pelo cep
     public ResponseEntity<Object> findById(Long id) {
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(id);
 
@@ -51,14 +49,12 @@ public class CidadeService {
         }
     }
 
-    public ResponseEntity<Object> findAll() {
-        List<Cidade> cidades = cidadeRepository.findAll();
-
-        if(!cidades.isEmpty()){
-            List<CidadeResponseDTO> cidadeResponseDTOs = cidades.stream().map(CidadeResponseDTO::new).collect(Collectors.toList());
-            return ResponseEntity.ok().body(cidadeResponseDTOs);
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Nenhuma cidade encontrada");
+    public List<Cidade> findAll(String name) {
+        if (name.equals("")){
+            return cidadeRepository.findAll();
+        }
+        else{
+            return cidadeRepository.findAllByNameIgnoreCase(name);
         }
     }
 }
