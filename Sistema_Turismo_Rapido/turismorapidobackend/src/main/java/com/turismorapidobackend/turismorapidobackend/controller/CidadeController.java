@@ -29,12 +29,12 @@ public class CidadeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
         return cidadeService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody CidadeRequestDTO cidadeRequestDTO) {
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody CidadeRequestDTO cidadeRequestDTO) {
         return cidadeService.update(id, cidadeRequestDTO);
     }
 }

@@ -49,7 +49,7 @@ public class CidadeService {
     public ResponseEntity<Object> find(Optional<Long> id) {
         List<Cidade> list = new ArrayList<>();
         if (id.isPresent()) {
-            list.add(this.findById(id.get()));
+            list.add(this.findById(id));
         } else {
             list = cidadeRepository.findAll();
         }
@@ -66,19 +66,23 @@ public class CidadeService {
     }
 
     @Transactional
-    public Cidade findById(Long id) {
-        Optional<Cidade> cidade = cidadeRepository.findById(id);
-        return cidade.orElseThrow(() -> new ObjectNotFoundException(id));
+    public Cidade findById(Optional<Long> id) {
+        Optional<Cidade> cidade = cidadeRepository.findById(id.get());
+        if (id.isPresent()) {
+            return cidade.orElseThrow(() -> new ObjectNotFoundException(id.get()));
+        } else {
+            return null;
+        }
     }
 
     @Transactional
-    public ResponseEntity<Object> delete(Long id) {
+    public ResponseEntity<Object> delete(Optional<Long> id) {
         cidadeRepository.delete(this.findById(id));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
-    public ResponseEntity<Object> update(Long id, CidadeRequestDTO cidadeRequestDTO) {
+    public ResponseEntity<Object> update(Optional<Long> id, CidadeRequestDTO cidadeRequestDTO) {
         Cidade cidade = this.findById(id);
         return ResponseEntity.status(HttpStatus.CREATED).body(new CidadeResponseDTO(cidadeRepository.save((Cidade) cidadeRequestDTO.toObject(cidade))));
     }

@@ -1,6 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,12 +56,12 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
         return clientService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.update(id, clientRequestDTO);
     }
     

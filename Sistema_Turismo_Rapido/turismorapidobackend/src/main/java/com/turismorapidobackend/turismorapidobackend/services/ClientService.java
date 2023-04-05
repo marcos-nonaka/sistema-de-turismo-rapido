@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
+import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 import com.turismorapidobackend.turismorapidobackend.repository.RoleRepository;
 import org.springframework.beans.BeanUtils;
@@ -88,19 +89,23 @@ public class ClientService {
     }
 
     @Transactional
-    public Client findById(Long id) {
-        Optional<Client> client = clientRepository.findById(id);
-        return client.orElseThrow(() -> new ObjectNotFoundException(id));
+    public Client findById(Optional<Long> id) {
+        Optional<Client> client = clientRepository.findById(id.get());
+        if (id.isPresent()) {
+            return client.orElseThrow(() -> new ObjectNotFoundException(id.get()));
+        } else {
+            return null;
+        }
     }
 
     @Transactional
-    public ResponseEntity<Object> delete(Long id) {
+    public ResponseEntity<Object> delete(Optional<Long> id) {
         clientRepository.delete(this.findById(id));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
-    public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> update(Optional<Long> id, ClientRequestDTO clientRequestDTO) {
         Client client = this.findById(id);
         clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
