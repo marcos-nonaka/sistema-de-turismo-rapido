@@ -51,7 +51,7 @@ public class ClientService {
     @Transactional
     public ClientResponseDTO save(ClientRequestDTO clientRequestDTO){
         // Verificação de regras
-        Client client = clientRequestDTO.toClient();
+        Client client = (Client) clientRequestDTO.toObject(new Client());
 
         Optional<Client> optionalClient = clientRepository.findByUsername(clientRequestDTO.getUsername());
 
@@ -87,6 +87,7 @@ public class ClientService {
         return new ClientResponseDTO(clientRepository.save(client));
     }
 
+    @Transactional
     public Client findById(Long id) {
         Optional<Client> client = clientRepository.findById(id);
         return client.orElseThrow(() -> new ObjectNotFoundException(id));
@@ -102,6 +103,6 @@ public class ClientService {
     public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
         Client client = this.findById(id);
         clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save(clientRequestDTO.toClient(client))));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
     }
 }

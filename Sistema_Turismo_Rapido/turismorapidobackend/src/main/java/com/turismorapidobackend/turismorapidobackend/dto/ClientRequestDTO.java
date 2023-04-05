@@ -14,7 +14,7 @@ import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullP
 
 @Data
 @AllArgsConstructor
-public class ClientRequestDTO {
+public class ClientRequestDTO extends AbstractRequestDTO {
     
     String name;
     String cpf;
@@ -32,15 +32,11 @@ public class ClientRequestDTO {
 
     }
 
-    public Client toClient(){
-        Client client = new Client();
-        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
-        // client.setRolename(rolename);
-        return client;
-    }
+//    public Client toClient(){
+//        Client client = new Client();
+//        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
+//        // client.setRolename(rolename);
+//        return client;
+//    }
 
-    public Client toClient(Client client){
-        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
-        return client;
-    }
 }

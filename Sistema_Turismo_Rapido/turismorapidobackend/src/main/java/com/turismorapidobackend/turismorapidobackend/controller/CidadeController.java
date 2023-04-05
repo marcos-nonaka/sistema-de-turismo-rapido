@@ -1,17 +1,15 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.model.Cidade;
-import com.turismorapidobackend.turismorapidobackend.model.Client;
+import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.CidadeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cidades")
@@ -25,17 +23,18 @@ public class CidadeController {
         return cidadeService.save(cidadeRequestDTO);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(
-            @PathVariable(name = "id") Long id){
-        return cidadeService.findById(id);
+    @GetMapping(value= {"", "/", "/{id}"})
+    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
+        return cidadeService.find(id);
     }
 
-    @GetMapping
-    public List<CidadeResponseDTO> findAll(@RequestParam(name="name", defaultValue="") String name){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
+        return cidadeService.delete(id);
+    }
 
-        List<Cidade> list = cidadeService.findAll(name);
-
-        return list.stream().map(CidadeResponseDTO:: new).toList();
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody CidadeRequestDTO cidadeRequestDTO) {
+        return cidadeService.update(id, cidadeRequestDTO);
     }
 }

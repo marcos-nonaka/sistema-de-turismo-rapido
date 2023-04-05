@@ -2,7 +2,11 @@ package com.turismorapidobackend.turismorapidobackend.services;
 
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
+import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
 
 import jakarta.transaction.Transactional;
@@ -12,7 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,14 +45,15 @@ public class CidadeService {
         return ResponseEntity.status(HttpStatus.CREATED).body(cidadeRepository.save(cidade));
     }
 
-    public ResponseEntity<Object> findById(Long id) {
-        Optional<Cidade> cidadeOptional = cidadeRepository.findById(id);
-
-        if(cidadeOptional.isPresent()){
-            return ResponseEntity.ok().body(new CidadeResponseDTO(cidadeOptional.get()));
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cidade não encontrada");
+    @Transactional
+    public ResponseEntity<Object> find(Optional<Long> id) {
+        List<Cidade> list = new ArrayList<>();
+        if (id.isPresent()) {
+            list.add(this.findById(id.get()));
+        } else {
+            list = cidadeRepository.findAll();
         }
+        return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(CidadeResponseDTO:: new).toList());
     }
 
     public List<Cidade> findAll(String name) {
@@ -56,5 +63,23 @@ public class CidadeService {
         else{
             return cidadeRepository.findAllByNameIgnoreCase(name);
         }
+    }
+
+    @Transactional
+    public Cidade findById(Long id) {
+        Optional<Cidade> cidade = cidadeRepository.findById(id);
+        return cidade.orElseThrow(() -> new ObjectNotFoundException(id));
+    }
+
+    @Transactional
+    public ResponseEntity<Object> delete(Long id) {
+        cidadeRepository.delete(this.findById(id));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Transactional
+    public ResponseEntity<Object> update(Long id, CidadeRequestDTO cidadeRequestDTO) {
+        Cidade cidade = this.findById(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new CidadeResponseDTO(cidadeRepository.save((Cidade) cidadeRequestDTO.toObject(cidade))));
     }
 }
