@@ -56,6 +56,7 @@ public class CidadeService {
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(CidadeResponseDTO:: new).toList());
     }
 
+    @Transactional
     public List<Cidade> findAll(String name) {
         if (name.equals("")){
             return cidadeRepository.findAll();

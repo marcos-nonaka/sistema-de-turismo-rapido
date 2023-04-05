@@ -1,16 +1,15 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
+import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.*;
 
 import com.turismorapidobackend.turismorapidobackend.dto.HotelRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.HotelService;
+
+import java.util.Optional;
 
 
 @RestController
@@ -25,14 +24,29 @@ public class HotelController {
         return hotelService.save(hotelRequestDTO);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(
-            @PathVariable(name = "id") Long id){
-        return hotelService.findById(id);
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Object> findById(
+//            @PathVariable(name = "id") Long id){
+//        return hotelService.findById(id);
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<Object> findAll(){
+//        return hotelService.findAll();
+//    }
+
+    @GetMapping(value= {"", "/", "/{id}"})
+    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
+        return hotelService.find(id);
     }
 
-    @GetMapping
-    public ResponseEntity<Object> findAll(){
-        return hotelService.findAll();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
+        return hotelService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody HotelRequestDTO hotelRequestDTO) {
+        return hotelService.update(id, hotelRequestDTO);
     }
 }
