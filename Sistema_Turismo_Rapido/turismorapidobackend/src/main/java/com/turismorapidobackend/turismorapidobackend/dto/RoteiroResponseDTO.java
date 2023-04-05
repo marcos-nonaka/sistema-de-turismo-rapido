@@ -10,18 +10,18 @@ import java.util.List;
 @AllArgsConstructor
 public class RoteiroResponseDTO {
     Long id_roteiro;
-    Long id_cidade;
-    List<Long> atracoes;
-    List<Long> alimentacoes;
-    List<Long> hotels;
+    CidadeResponseDTO cidade;
+    List<AtracaoResponseDTO> atracoes;
+    List<AlimentacaoResponseDTO> alimentacoes;
+    List<HotelResponseDTO> hotels;
     Double valor;
 
     public RoteiroResponseDTO(Roteiro roteiro){
         this.id_roteiro = roteiro.getId_roteiro();
-        this.hotels = roteiro.getHoteis().stream().map(hotel -> hotel.getId_hotel()).toList();
-        this.atracoes = roteiro.getAtracoes().stream().map(atracao -> atracao.getId_atracao()).toList();
-        this.alimentacoes = roteiro.getAlimentacao().stream().map(alimentacao -> alimentacao.getId_alimentacao()).toList();
-        this.id_cidade = roteiro.getCidade().getId_cidade();
+        this.hotels = roteiro.getHoteis().stream().map(hotel -> new HotelResponseDTO(hotel)).toList();
+        this.atracoes = roteiro.getAtracoes().stream().map(atracao -> new AtracaoResponseDTO(atracao)).toList();
+        this.alimentacoes = roteiro.getAlimentacao().stream().map(alimentacao -> new AlimentacaoResponseDTO(alimentacao)).toList();
+        this.cidade = new CidadeResponseDTO(roteiro.getCidade());
         this.valor = roteiro.getValor();
     }
 }
