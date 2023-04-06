@@ -13,7 +13,7 @@ public class ObjectControllerAdvice {
     @ResponseBody
     @ExceptionHandler(ObjectNotFoundException.class)
     public ResponseEntity<MessageExceptionHandler> objectNotFoundException(ObjectNotFoundException objectNotFoundException, HttpServletRequest request){
-        MessageExceptionHandler error = new MessageExceptionHandler(Instant.now(), HttpStatus.NOT_FOUND.value(), "Not Found", objectNotFoundException.getMessage(), request.getRequestURI());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        MessageExceptionHandler error = new MessageExceptionHandler(Instant.now(), objectNotFoundException.getHttpStatus().value(), objectNotFoundException.getHttpStatus().getReasonPhrase(), objectNotFoundException.getMessage(), request.getRequestURI());
+        return new ResponseEntity<>(error, objectNotFoundException.getHttpStatus());
     }
 }
