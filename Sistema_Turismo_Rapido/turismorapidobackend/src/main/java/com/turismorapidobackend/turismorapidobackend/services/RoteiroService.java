@@ -1,9 +1,13 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
+import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.model.*;
 import com.turismorapidobackend.turismorapidobackend.repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,20 +66,38 @@ public class RoteiroService {
         return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiro));
     }
 
-    public ResponseEntity<Object> findById(Long id) {
-        Optional<Roteiro> roteiroOptional = roteiroRepository.findById(id);
-
-        if(roteiroOptional.isPresent()){
-            return ResponseEntity.status(HttpStatus.OK).body(new RoteiroResponseDTO(roteiroOptional.get()));
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Roteiro não encontrado.");
+    public ResponseEntity<Object> find(Optional<Long> id) {
+        List<Roteiro> list = new ArrayList<>();
+        if (id.isPresent()) {
+            list.add(this.findById(id));
+        } else {
+            list = roteiroRepository.findAll();
         }
+        if (list.isEmpty()) {
+            throw new ObjectNotFoundException();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(RoteiroResponseDTO:: new).toList());
     }
 
+    @Transactional
+    public Roteiro findById(Optional<Long> id) {
+        System.out.printf("ID: " + id);
+        Optional<Roteiro> roteiro = roteiroRepository.findById(id.get());
+        if (id.isPresent()) {
+            return roteiro.orElseThrow(() -> new ObjectNotFoundException(id.get()));
+        }
+        return null;
+    }
 
-    public ResponseEntity<Object> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(
-                roteiroRepository.findAll().stream().map((roteiro)->new RoteiroResponseDTO(roteiro)).toList()
-        );
+    @Transactional
+    public ResponseEntity<Object> delete(Optional<Long> id) {
+        roteiroRepository.delete(this.findById(id));
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @Transactional
+    public ResponseEntity<Object> update(Optional<Long> id, RoteiroRequestDTO roteiroRequestDTO) {
+        Roteiro roteiro = this.findById(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiroRepository.save((Roteiro) roteiroRequestDTO.toObject(roteiro))));
     }
 }
