@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AtracaoRequestDTO {
+public class AtracaoRequestDTO extends AbstractRequestDTO {
     Long id_atracao;
 
     Long id_cidade;

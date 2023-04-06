@@ -1,10 +1,14 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
 import com.turismorapidobackend.turismorapidobackend.dto.AtracaoRequestDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.AtracaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/atracoes")
@@ -18,14 +22,18 @@ public class AtracaoController {
         return atracaoService.save(atracaoRequestDTO);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(
-            @PathVariable(name = "id") Long id){
-        return atracaoService.findById(id);
+    @GetMapping(value= {"", "/", "/{id}"})
+    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
+        return atracaoService.find(id);
     }
 
-    @GetMapping
-    public ResponseEntity<Object> findAll(){
-        return atracaoService.findAll();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
+        return atracaoService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody AtracaoRequestDTO atracaoRequestDTO) {
+        return atracaoService.update(id, atracaoRequestDTO);
     }
 }
