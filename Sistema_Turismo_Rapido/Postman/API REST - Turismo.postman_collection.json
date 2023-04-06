@@ -9,7 +9,7 @@
 			"name": "clients",
 			"item": [
 				{
-					"name": "clients",
+					"name": "delete",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -28,10 +28,19 @@
 					"response": []
 				},
 				{
-					"name": "clients",
+					"name": "update",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"a\",\n  \"cpf\":\"a\",\n  \"data_nascimento\":\"2022-01-01\",\n  \"mail\":\"a@gmail.com\",\n  \"username\":\"a\",\n  \"password\":\"a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:8080/clients/2",
 							"protocol": "http",
@@ -48,12 +57,12 @@
 					"response": []
 				},
 				{
-					"name": "clients_byName",
+					"name": "get",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/clients?name=Douglas",
+							"raw": "http://localhost:8080/clients",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -61,19 +70,13 @@
 							"port": "8080",
 							"path": [
 								"clients"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "Douglas"
-								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "clients",
+					"name": "save",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -95,6 +98,406 @@
 							"port": "8080",
 							"path": [
 								"clients"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cidades",
+			"item": [
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"cidade teste II\",\n  \"cep\":444,\n  \"latitude\": 51.5,\n  \"longitude\": 52.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidades/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidades/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\":\"cidade teste\",\n  \"cep\":121,\n  \"latitude\": 11.1,\n  \"longitude\": 22.2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/cidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "alimentacao",
+			"item": [
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alimentacao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"local_name\": \"test II\",\n    \"phone_number\": 10,\n    \"street_name\": \"test II\",\n    \"description\": \"test II\",\n    \"street_district\": \"test II\", \n    \"street_number\": 3,\n    \"latitude\": 4, \n    \"longitude\": 21,\n    \"id_cidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alimentacao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/alimentacao/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"local_name\": \"test\",\n    \"phone_number\": 1,\n    \"street_name\": \"test\",\n    \"description\": \"test\",\n    \"street_district\": \"test\", \n    \"street_number\": 2,\n    \"latitude\": 7, \n    \"longitude\": 1,\n    \"id_cidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/alimentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimentacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "hoteis",
+			"item": [
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hotel_name\": \"test II\",\n    \"phone_number\": 2,\n    \"street_name\": \"test II\",\n    \"street_number\": 2,\n    \"street_district\": \"test II\", \n    \"description_hotel\": \"test II\",\n    \"longitude\": 2, \n    \"latitude\": 2,\n    \"id_cidade\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/hoteis/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hotel_name\": \"test\",\n    \"phone_number\": 1,\n    \"street_name\": \"test\",\n    \"street_number\": 12,\n    \"street_district\": \"test\", \n    \"description_hotel\": \"test\",\n    \"longitude\": 7, \n    \"latitude\": 1,\n    \"id_cidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/hoteis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "atracoes",
+			"item": [
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test II\",\n    \"tel_number\": 2,\n    \"endereco\": \"test II\",\n    \"descricao\": \"test II\",\n    \"tipo\": \"test II\", \n    \"longitude\": 2, \n    \"latitude\": 2,\n    \"id_cidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/atracoes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"tel_number\": 1,\n    \"endereco\": \"test\",\n    \"descricao\": \"test\",\n    \"tipo\": \"test\", \n    \"longitude\": 1, \n    \"latitude\": 1,\n    \"id_cidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/atracoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes"
 							]
 						}
 					},
