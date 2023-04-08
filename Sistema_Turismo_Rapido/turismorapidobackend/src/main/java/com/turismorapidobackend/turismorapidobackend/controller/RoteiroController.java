@@ -22,8 +22,10 @@ public class RoteiroController {
     }
 
     @GetMapping(value= {"", "/", "/{id}"})
-    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
-        return roteiroService.find(id);
+    public ResponseEntity<Object> find(
+            @PathVariable(name = "id") Optional<Long> id,
+            @RequestParam(value="name", required=false) Optional<String> name){
+        return roteiroService.find(id, name);
     }
 
     @DeleteMapping("/{id}")

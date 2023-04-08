@@ -15,9 +15,16 @@ public class Roteiro {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id_roteiro;
+    @Column(name = "id_roteiro")
+    Long idRoteiro;
 
     Double valor;
+
+    String name;
+
+    Integer numberOfDays;
+
+    String description;
 
     @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")

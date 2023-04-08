@@ -1,9 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.RoteiroRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.RoteiroResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.*;
 import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.model.*;
 import com.turismorapidobackend.turismorapidobackend.repository.*;
@@ -66,10 +63,15 @@ public class RoteiroService {
         return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiro));
     }
 
-    public ResponseEntity<Object> find(Optional<Long> id) {
+    @Transactional
+    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
         List<Roteiro> list = new ArrayList<>();
-        if (id.isPresent()) {
+        if (id.isPresent() && name.isPresent()) {
+            list = roteiroRepository.findByIdRoteiroAndNameContainingIgnoreCase(id.get(), name.get());
+        } else if (id.isPresent()) {
             list.add(this.findById(id));
+        } else if (name.isPresent()) {
+            list = roteiroRepository.findByNameContainingIgnoreCase(name.get());
         } else {
             list = roteiroRepository.findAll();
         }
@@ -81,7 +83,6 @@ public class RoteiroService {
 
     @Transactional
     public Roteiro findById(Optional<Long> id) {
-        System.out.printf("ID: " + id);
         Optional<Roteiro> roteiro = roteiroRepository.findById(id.get());
         if (id.isPresent()) {
             return roteiro.orElseThrow(() -> new ObjectNotFoundException(id.get()));
