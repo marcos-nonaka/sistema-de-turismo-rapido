@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "2befd23a-d375-4a03-b907-30590bce6716",
+		"_postman_id": "83ebb4ed-bda0-4138-ae12-78e09f356147",
 		"name": "API REST - Turismo",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21888425"
 	},
 	"item": [
 		{
@@ -498,6 +499,31 @@
 							"port": "8080",
 							"path": [
 								"atracoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quatour",
+			"item": [
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/quatour/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quatour",
+								"user"
 							]
 						}
 					},

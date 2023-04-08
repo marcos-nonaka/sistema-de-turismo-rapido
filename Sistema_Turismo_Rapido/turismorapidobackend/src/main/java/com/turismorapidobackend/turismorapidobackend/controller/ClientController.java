@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.lang.NonNull;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
@@ -46,6 +48,14 @@ public class ClientController {
     @PostMapping
     public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO) {
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        }
+        
         return clientService.save(clientRequestDTO);
         
     }
@@ -56,12 +66,12 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
         return clientService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.update(id, clientRequestDTO);
     }
     
