@@ -24,6 +24,6 @@ public class CidadeResponseDTO {
         this.name = cidade.getName();
         this.atracoes = cidade.getAtracoes().stream().map(atracao -> new IdNameDTO(atracao.getId_atracao(), atracao.getName())).toList();
         this.alimentacoes = cidade.getAlimentacoes().stream().map(alimentacao -> new IdNameDTO(alimentacao.getId_alimentacao(), alimentacao.getLocal_name())).toList();
-        this.hotels = cidade.getHotels().stream().map(hotel -> new IdNameDTO(hotel.getId_hotel(), hotel.getHotel_name()) ).toList();
+        this.hotels = cidade.getHotels().stream().map(hotel -> new IdNameDTO(hotel.getIdHotel(), hotel.getHotelName()) ).toList();
     }
 }
