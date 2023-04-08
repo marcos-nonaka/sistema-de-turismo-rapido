@@ -1,13 +1,9 @@
 package com.turismorapidobackend.turismorapidobackend.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,12 +13,23 @@ import lombok.*;
 public class Comentario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @Column(name = "id_comentario")
+    Long idComentario;
 
     String comentario;
 
-    @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL)
+    Instant instant;
+
+    @PrePersist
+    public void prePersist() {
+        this.instant = Instant.now();
+    }
+
+    @OneToOne(targetEntity = Client.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     Client client;
-    
+
+    @OneToOne(targetEntity = Roteiro.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "roteiro_id")
+    Roteiro roteiro;
 }
