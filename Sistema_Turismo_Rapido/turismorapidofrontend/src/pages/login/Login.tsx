@@ -13,12 +13,16 @@ type LoginData = {
   password: string
 }
 
+
 function Login(){
 	const auth = useContext(AuthContext);
 	const navigate = useNavigate();
 	const { t } = useTranslation()
 	const [state, setState] = useState<LoginData>({ username: '', password: '' })
 	const api = useAPI()
+	const [isActive, setIsActive] = useState(false);
+	const [inputType, setInputType] = useState<string>("password")
+
 
 	const onUpdate = (e: React.ChangeEvent<any>, name: 'username' | 'password') => {
 		setState((state) => ({ ...state, [name]: e.target.value }))
@@ -38,6 +42,16 @@ function Login(){
 				console.log(res)
 			})
 
+		}
+	}
+ 
+	const showPassword = () => {
+		setIsActive(current => !current);
+		
+		if(!isActive){
+			setInputType("text")
+		}else{
+			setInputType("password")
 		}
 	}
   
@@ -67,7 +81,7 @@ function Login(){
 				<div className="col-md-12 mb-4">
 				  <div className="input-group">
 					<input
-						type="password"
+						type={inputType}
 						name="password"
 						className="form-control"
 						id="password"
@@ -76,8 +90,8 @@ function Login(){
 						value={state.password}
 						onChange={(e) => onUpdate(e, 'password')}
 					/>
-					<span className="input-group-text">
-					  <i className="bi bi-eye-slash"></i>
+					<span className="input-group-text" onClick={() => showPassword()}>
+					  <i className={isActive ? 'bi bi-eye' : 'bi bi-eye-slash'}></i>
 					</span>
 				  </div>
 				</div>
@@ -87,7 +101,7 @@ function Login(){
 					Esqueceu sua senha?
 				  </a>
 
-				  <button className="btn btn-primary rounded-5 float-end" type="submit">
+				  <button className="btn btn-warning rounded-5 float-end" type="submit">
 					{t('auth.login.enter')}
 				  </button>
 				</div>
@@ -95,7 +109,7 @@ function Login(){
 
 			  <p className="mt-4 text-muted signup-link">
 				Não possui uma conta?{" "}
-				<a href="cadastre-se">
+				<a href="/cadastre-se">
 				  <strong>Cadastre-se.</strong>
 				</a>
 			  </p>
