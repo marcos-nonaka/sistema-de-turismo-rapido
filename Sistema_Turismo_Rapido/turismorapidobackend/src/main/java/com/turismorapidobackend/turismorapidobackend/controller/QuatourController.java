@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.services.ClientService;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/quatour")
 public class QuatourController {
@@ -27,7 +29,7 @@ public class QuatourController {
 
     if(principal instanceof Client client) {
         return ResponseEntity.status(HttpStatus.OK)
-        .body(clientService.findById(client.getId_client()).getBody());
+        .body(clientService.findById(Optional.of(client.getIdClient())));
     }else{
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }

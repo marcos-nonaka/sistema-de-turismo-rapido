@@ -67,9 +67,8 @@ public class CidadeService {
         Optional<Cidade> cidade = cidadeRepository.findById(id.get());
         if (id.isPresent()) {
             return cidade.orElseThrow(() -> new ObjectNotFoundException(id.get()));
-        } else {
-            return null;
         }
+        return null;
     }
 
     @Transactional

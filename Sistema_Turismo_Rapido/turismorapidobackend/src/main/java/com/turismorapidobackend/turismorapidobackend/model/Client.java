@@ -4,20 +4,10 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,8 +17,8 @@ import jakarta.persistence.OneToOne;
 public class Client implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id_client;
-    
+    @Column(name = "id_client")
+    Long idClient;
     String name;
     String cpf;
     LocalDate data_nascimento;
