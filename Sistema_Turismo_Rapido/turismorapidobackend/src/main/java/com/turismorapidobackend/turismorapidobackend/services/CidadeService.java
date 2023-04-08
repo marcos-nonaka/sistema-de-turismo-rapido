@@ -1,12 +1,10 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
+import com.turismorapidobackend.turismorapidobackend.dto.*;
 import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
+import com.turismorapidobackend.turismorapidobackend.model.Hotel;
 import com.turismorapidobackend.turismorapidobackend.repository.CidadeRepository;
 
 import jakarta.transaction.Transactional;
@@ -46,25 +44,23 @@ public class CidadeService {
     }
 
     @Transactional
-    public ResponseEntity<Object> find(Optional<Long> id) {
+    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
         List<Cidade> list = new ArrayList<>();
-        if (id.isPresent()) {
+        if (id.isPresent() && name.isPresent()) {
+            list = cidadeRepository.findByIdCidadeAndNameContainingIgnoreCase(id.get(), name.get());
+        } else if (id.isPresent()) {
             list.add(this.findById(id));
+        } else if (name.isPresent()) {
+            list = cidadeRepository.findByNameContainingIgnoreCase(name.get());
         } else {
             list = cidadeRepository.findAll();
+        }
+        if (list.isEmpty()) {
+            throw new ObjectNotFoundException();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(CidadeResponseDTO:: new).toList());
     }
 
-    @Transactional
-    public List<Cidade> findAll(String name) {
-        if (name.equals("")){
-            return cidadeRepository.findAll();
-        }
-        else{
-            return cidadeRepository.findAllByNameIgnoreCase(name);
-        }
-    }
 
     @Transactional
     public Cidade findById(Optional<Long> id) {

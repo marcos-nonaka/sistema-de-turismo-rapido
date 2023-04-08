@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CidadeRequestDTO extends AbstractRequestDTO {
-    Long id_cidade;
+    Long idCidade;
 
     String name;
 

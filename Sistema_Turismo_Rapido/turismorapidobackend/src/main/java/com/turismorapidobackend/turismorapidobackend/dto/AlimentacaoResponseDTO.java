@@ -15,7 +15,7 @@ public class AlimentacaoResponseDTO {
 
     public AlimentacaoResponseDTO(Alimentacao alimentacao) {
         this.id_alimentacao = alimentacao.getId_alimentacao();
-        this.id_cidade = alimentacao.getCidade().getId_cidade();
+        this.id_cidade = alimentacao.getCidade().getIdCidade();
         this.nameCidade = alimentacao.getCidade().getName();
         this.local_name = alimentacao.getLocal_name();
         this.description = alimentacao.getDescription();

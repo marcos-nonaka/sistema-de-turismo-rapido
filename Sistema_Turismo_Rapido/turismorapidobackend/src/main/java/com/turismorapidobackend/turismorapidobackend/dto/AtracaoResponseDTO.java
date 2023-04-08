@@ -18,7 +18,7 @@ public class AtracaoResponseDTO {
 
     public AtracaoResponseDTO(Atracao atracao) {
         this.id_atracao = atracao.getId_atracao();
-        this.id_cidade = atracao.getCidade().getId_cidade();
+        this.id_cidade = atracao.getCidade().getIdCidade();
         this.name = atracao.getName();
         this.nameCidade = atracao.getCidade().getName();
         this.descricao = atracao.getDescricao();

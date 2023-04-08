@@ -15,7 +15,7 @@ public class HotelResponseDTO {
 
     public HotelResponseDTO(Hotel hotel){
         this.idHotel = hotel.getIdHotel();
-        this.idCidade = hotel.getCidade().getId_cidade();
+        this.idCidade = hotel.getCidade().getIdCidade();
         this.hotelName = hotel.getHotelName();
         this.description_hotel = hotel.getDescription_hotel();
     }

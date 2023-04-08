@@ -24,8 +24,10 @@ public class CidadeController {
     }
 
     @GetMapping(value= {"", "/", "/{id}"})
-    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
-        return cidadeService.find(id);
+    public ResponseEntity<Object> find(
+            @PathVariable(name = "id") Optional<Long> id,
+            @RequestParam(value="name", required=false) Optional<String> name){
+        return cidadeService.find(id, name);
     }
 
     @DeleteMapping("/{id}")

@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class CidadeResponseDTO {
-    Long id_cidade;
+    Long idCidade;
     String name;
     List<IdNameDTO> atracoes;
     List<IdNameDTO> alimentacoes;
@@ -20,7 +20,7 @@ public class CidadeResponseDTO {
     }
 
     public CidadeResponseDTO(Cidade cidade) {
-        this.id_cidade = cidade.getId_cidade();
+        this.idCidade = cidade.getIdCidade();
         this.name = cidade.getName();
         this.atracoes = cidade.getAtracoes().stream().map(atracao -> new IdNameDTO(atracao.getId_atracao(), atracao.getName())).toList();
         this.alimentacoes = cidade.getAlimentacoes().stream().map(alimentacao -> new IdNameDTO(alimentacao.getId_alimentacao(), alimentacao.getLocal_name())).toList();

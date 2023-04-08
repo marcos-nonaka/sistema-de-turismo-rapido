@@ -15,7 +15,8 @@ import java.util.Set;
 public class Cidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id_cidade;
+    @Column(name = "id_cidade")
+    Long idCidade;
 
     String name;
 
@@ -24,6 +25,8 @@ public class Cidade {
     Double longitude;
 
     Double latitude;
+
+    String description;
 
     @OneToMany(targetEntity = Roteiro.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Roteiro> roteiros;
