@@ -76,6 +76,77 @@
 					"response": []
 				},
 				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients?name=r",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "r"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/clients/2?name=r",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clients",
+								"2"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "r"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "save",
 					"request": {
 						"method": "POST",
@@ -162,7 +233,26 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/cidades/",
+							"raw": "http://localhost:8080/cidades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidades/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -170,7 +260,58 @@
 							"port": "8080",
 							"path": [
 								"cidades",
-								""
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidades?name=paulo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "paulo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cidades/2?name=paulo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cidades",
+								"2"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "paulo"
+								}
 							]
 						}
 					},
@@ -361,21 +502,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/hoteis/1?name=le",
+							"raw": "http://localhost:8080/hoteis",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"hoteis",
-								"1"
-							],
-							"query": [
-								{
-									"key": "name",
-									"value": "le"
-								}
+								"hoteis"
 							]
 						}
 					},
@@ -387,14 +521,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/hoteis",
+							"raw": "http://localhost:8080/hoteis/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"hoteis"
+								"hoteis",
+								"1"
 							]
 						}
 					},
@@ -553,6 +688,77 @@
 					"response": []
 				},
 				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndAName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/atracoes/1?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"atracoes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "save",
 					"request": {
 						"method": "POST",
@@ -648,6 +854,77 @@
 							"port": "8080",
 							"path": [
 								"roteiros"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/roteiros/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roteiros",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/roteiros?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roteiros"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndAName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/roteiros/1?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roteiros",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
 							]
 						}
 					},
@@ -760,14 +1037,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/hoteis",
+							"raw": "http://localhost:8080/comentarios/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"hoteis"
+								"comentarios",
+								"1"
 							]
 						}
 					},
@@ -779,19 +1057,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/hoteis?name=mole",
+							"raw": "http://localhost:8080/comentarios?comment=o",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"hoteis"
+								"comentarios"
 							],
 							"query": [
 								{
-									"key": "name",
-									"value": "mole"
+									"key": "comment",
+									"value": "o"
 								}
 							]
 						}
@@ -799,12 +1077,12 @@
 					"response": []
 				},
 				{
-					"name": "getIdAndName Copy",
+					"name": "getIdAndComment",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/comentarios/1?comment=mole",
+							"raw": "http://localhost:8080/comentarios/2?comment=bom",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -812,12 +1090,12 @@
 							"port": "8080",
 							"path": [
 								"comentarios",
-								"1"
+								"2"
 							],
 							"query": [
 								{
 									"key": "comment",
-									"value": "mole"
+									"value": "bom"
 								}
 							]
 						}
@@ -847,6 +1125,31 @@
 							"port": "8080",
 							"path": [
 								"comentarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quatour",
+			"item": [
+				{
+					"name": "/quatour/user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/quatour/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quatour",
+								"user"
 							]
 						}
 					},
