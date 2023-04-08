@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "83ebb4ed-bda0-4138-ae12-78e09f356147",
+		"_postman_id": "2befd23a-d375-4a03-b907-30590bce6716",
 		"name": "API REST - Turismo",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21888425"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -362,6 +361,32 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "http://localhost:8080/hoteis/1?name=le",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "le"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
 							"raw": "http://localhost:8080/hoteis",
 							"protocol": "http",
 							"host": [
@@ -370,6 +395,57 @@
 							"port": "8080",
 							"path": [
 								"hoteis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis/1?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis",
+								"1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
 							]
 						}
 					},
@@ -499,31 +575,6 @@
 							"port": "8080",
 							"path": [
 								"atracoes"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "quatour",
-			"item": [
-				{
-					"name": "user",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/quatour/user",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"quatour",
-								"user"
 							]
 						}
 					},
@@ -698,6 +749,76 @@
 							"port": "8080",
 							"path": [
 								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getComment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hoteis?name=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hoteis"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "mole"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIdAndName Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comentarios/1?comment=mole",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comentarios",
+								"1"
+							],
+							"query": [
+								{
+									"key": "comment",
+									"value": "mole"
+								}
 							]
 						}
 					},
