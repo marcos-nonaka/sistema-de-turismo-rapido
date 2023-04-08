@@ -23,8 +23,10 @@ public class AtracaoController {
     }
 
     @GetMapping(value= {"", "/", "/{id}"})
-    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
-        return atracaoService.find(id);
+    public ResponseEntity<Object> find(
+            @PathVariable(name = "id") Optional<Long> id,
+            @RequestParam(value="name", required=false) Optional<String> name){
+        return atracaoService.find(id, name);
     }
 
     @DeleteMapping("/{id}")

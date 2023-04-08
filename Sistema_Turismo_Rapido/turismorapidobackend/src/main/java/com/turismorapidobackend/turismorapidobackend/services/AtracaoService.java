@@ -54,20 +54,21 @@ public class AtracaoService {
     }
 
     @Transactional
-    public ResponseEntity<Object> find(Optional<Long> id) {
+    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
         List<Atracao> list = new ArrayList<>();
-        if (id.isPresent()) {
+        if (id.isPresent() && name.isPresent()) {
+            list = atracaoRepository.findByIdAtracaoAndNameContainingIgnoreCase(id.get(), name.get());
+        } else if (id.isPresent()) {
             list.add(this.findById(id));
+        } else if (name.isPresent()) {
+            list = atracaoRepository.findByNameContainingIgnoreCase(name.get());
         } else {
             list = atracaoRepository.findAll();
         }
+        if (list.isEmpty()) {
+            throw new ObjectNotFoundException();
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(AtracaoResponseDTO:: new).toList());
-    }
-
-    public ResponseEntity<Object> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(
-                atracaoRepository.findAll().stream().map((atracao)->new AtracaoResponseDTO(atracao)).toList()
-        );
     }
 
     @Transactional
@@ -75,9 +76,8 @@ public class AtracaoService {
         Optional<Atracao> atracao = atracaoRepository.findById(id.get());
         if (id.isPresent()) {
             return atracao.orElseThrow(() -> new ObjectNotFoundException(id.get()));
-        } else {
-            return null;
         }
+        return null;
     }
 
     @Transactional
