@@ -45,6 +45,12 @@ public class ClientController {
         return list.stream().map(ClientResponseDTO:: new).toList();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> findById(@NonNull @PathVariable(name="id") Long id){
+        return clientService.findById(id);
+    }
+
+
     @PostMapping
     public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO) {
 
@@ -64,6 +70,7 @@ public class ClientController {
     public ClientResponseDTO adicionarUserRole(@RequestBody RoleRequestDTO roleRequestDTO){
         return clientService.addRole(roleRequestDTO);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
