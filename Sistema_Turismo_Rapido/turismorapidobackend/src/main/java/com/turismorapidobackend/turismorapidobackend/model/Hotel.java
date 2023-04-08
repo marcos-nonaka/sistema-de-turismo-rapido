@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,9 +13,12 @@ import java.util.Set;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id_hotel;
-    
-    String hotel_name;
+    @Column(name = "id_hotel")
+    Long idHotel;
+
+    @Column(name = "hotel_name")
+    String hotelName;
+
 
     Long phone_number;
 

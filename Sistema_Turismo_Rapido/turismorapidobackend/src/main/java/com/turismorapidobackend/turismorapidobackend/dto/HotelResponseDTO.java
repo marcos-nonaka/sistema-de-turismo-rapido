@@ -8,15 +8,15 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class HotelResponseDTO {
-    Long id_hotel;
-    Long id_cidade;
-    String hotel_name;
+    Long idHotel;
+    Long idCidade;
+    String hotelName;
     String description_hotel;
 
     public HotelResponseDTO(Hotel hotel){
-        this.id_hotel = hotel.getId_hotel();
-        this.id_cidade = hotel.getCidade().getId_cidade();
-        this.hotel_name = hotel.getHotel_name();
+        this.idHotel = hotel.getIdHotel();
+        this.idCidade = hotel.getCidade().getId_cidade();
+        this.hotelName = hotel.getHotelName();
         this.description_hotel = hotel.getDescription_hotel();
     }
     

@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class HotelRequestDTO extends AbstractRequestDTO {
-    Long id_cidade;
+    Long idCidade;
 
-    String hotel_name;
+    String hotelName;
 
     Long phone_number;
 

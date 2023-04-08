@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +24,17 @@ public class HotelService {
     HotelRepository hotelRepository;
 
     @Autowired
-    HotelService hotelService;
-
-    @Autowired
     CidadeRepository cidadeRepository;
     @Transactional
     public ResponseEntity<Object> save(HotelRequestDTO hotelRequestDTO) {
         /*CidadeRequestDTO cidadeRequestDTO = new CidadeRequestDTO();
         BeanUtils.copyProperties(hotelRequestDTO, cidadeRequestDTO);
         Cidade cidade = cidadeRequestDTO.toCidade();*/
-        Cidade cidade = cidadeRepository.findById(hotelRequestDTO.getId_cidade()).get();
+        Cidade cidade = cidadeRepository.findById(hotelRequestDTO.getIdCidade()).get();
 
         Hotel hotel = new Hotel();
 
-        hotel.setHotel_name(hotelRequestDTO.getHotel_name());
+        hotel.setHotelName(hotelRequestDTO.getHotelName());
         hotel.setDescription_hotel(hotelRequestDTO.getDescription_hotel());
         hotel.setStreet_district(hotelRequestDTO.getStreet_district());
         hotel.setStreet_name(hotelRequestDTO.getStreet_name());
@@ -58,18 +53,20 @@ public class HotelService {
         return ResponseEntity.status(HttpStatus.CREATED).body(new HotelResponseDTO(hotel));
     }
 
-//    public ResponseEntity<Object> findAll() {
-//        return ResponseEntity.status(HttpStatus.OK).body(
-//                hotelRepository.findAll().stream().map((hotel)->new HotelResponseDTO(hotel)).toList()
-//        );
-//    }
     @Transactional
-    public ResponseEntity<Object> find(Optional<Long> id) {
+    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
         List<Hotel> list = new ArrayList<>();
-        if (id.isPresent()) {
+        if (id.isPresent() && name.isPresent()) {
+            list = hotelRepository.findByIdHotelAndHotelNameContainingIgnoreCase(id.get(), name.get());
+        } else if (id.isPresent()) {
             list.add(this.findById(id));
+        } else if (name.isPresent()) {
+            list = hotelRepository.findByHotelNameContainingIgnoreCase(name.get());
         } else {
             list = hotelRepository.findAll();
+        }
+        if (list.isEmpty()) {
+            throw new ObjectNotFoundException();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(HotelResponseDTO:: new).toList());
     }
@@ -79,9 +76,8 @@ public class HotelService {
         Optional<Hotel> hotel = hotelRepository.findById(id.get());
         if (id.isPresent()) {
             return hotel.orElseThrow(() -> new ObjectNotFoundException(id.get()));
-        } else {
-            return null;
         }
+        return null;
     }
 
     @Transactional

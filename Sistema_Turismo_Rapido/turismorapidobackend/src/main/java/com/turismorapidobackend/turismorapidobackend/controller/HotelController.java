@@ -1,6 +1,5 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -24,20 +23,11 @@ public class HotelController {
         return hotelService.save(hotelRequestDTO);
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Object> findById(
-//            @PathVariable(name = "id") Long id){
-//        return hotelService.findById(id);
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<Object> findAll(){
-//        return hotelService.findAll();
-//    }
-
     @GetMapping(value= {"", "/", "/{id}"})
-    public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id){
-        return hotelService.find(id);
+    public ResponseEntity<Object> find(
+            @PathVariable(name = "id") Optional<Long> id,
+            @RequestParam(value="name", required=false) Optional<String> name) {
+        return hotelService.find(id, name);
     }
 
     @DeleteMapping("/{id}")
