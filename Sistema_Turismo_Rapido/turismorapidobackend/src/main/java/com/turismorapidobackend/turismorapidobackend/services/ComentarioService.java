@@ -31,15 +31,6 @@ public class ComentarioService {
         return ResponseEntity.status(HttpStatus.CREATED).body(new ComentarioResponseDTO(comentario));
     }
 
-    public ResponseEntity<Object> find(Optional<Long> id) {
-        List<Comentario> list = new ArrayList<>();
-        if (id.isPresent()) {
-            list.add(this.findById(id));
-        } else {
-            list = comentarioRepository.findAll();
-        }
-        return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(ComentarioResponseDTO:: new).toList());
-    }
     @Transactional
     public ResponseEntity<Object> find(Optional<Long> id, Optional<String> comment) {
         List<Comentario> list = new ArrayList<>();
