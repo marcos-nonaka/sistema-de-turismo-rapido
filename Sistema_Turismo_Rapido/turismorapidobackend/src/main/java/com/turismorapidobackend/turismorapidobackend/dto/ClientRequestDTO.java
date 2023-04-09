@@ -25,6 +25,7 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     String mail;
     String username;
     String password;
+    String photo;
 
     RoleName rolename;
 

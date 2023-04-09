@@ -10,12 +10,14 @@ import lombok.Data;
 public class ClientResponseDTO {
     String name;
     Long idClient;
+    String photo;
     // Long id_turista;
     // Long id_turismologo;
 
     public ClientResponseDTO(Client client){
         this.name = client.getName();
         this.idClient = client.getIdClient();
+        this.photo = client.getPhoto();
         //usuario e senha
         //nome
         //email
