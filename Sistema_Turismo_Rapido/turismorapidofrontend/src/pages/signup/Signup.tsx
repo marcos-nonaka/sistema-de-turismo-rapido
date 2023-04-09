@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
+import axios, { AxiosError } from 'axios'
+import Alertify from "../../components/alertify/Alertify";
 import { useNavigate } from 'react-router-dom'
 import { Navbar, Footer } from '../../components'
 //import '../../assets/css/signup-login.css';
@@ -6,6 +8,8 @@ import { useAPI } from '../../data/API'
 import {AuthContext} from "../../store/authContext";
 
 import LogoQuatour from "../../assets/img/logo-color.svg";
+//import spinner from "../../assets/img/loader.svg";
+import { ReactComponent as Loader } from '../../assets/img/loader.svg'
 
 type UserData = {
   name: string
@@ -18,7 +22,6 @@ type UserData = {
   rolename: string
 }
 
-//"rolename":"ROLE_TURISTA"
 
 function Signup() {
 	const auth = useContext(AuthContext)
@@ -36,9 +39,14 @@ function Signup() {
 	const navigate = useNavigate()
 	const updateState = (e: any, field: string) => {
 		setState((state) => ({ ...state, [field]: e.target.value }))
-	}	
+	}
+	const [loading, setloading] = useState(false);
 	const [block, setBlock] = useState(false)
 	const [checked, setChecked] = useState(false)
+	const [role, setRole] = useState("ROLE_TURISTA")
+
+	const basicAuth = 'Basic ' + btoa('doug:123')
+	//Authorization: auth.user?.basicAuth,
 	
 	useEffect(() => {
 	   document.body.classList.add('bg-internas-signup')	
@@ -51,8 +59,10 @@ function Signup() {
 	
 	if(target == 'ROLE_TURISTA'){
 		setBlock(false)
+		setRole("ROLE_TURISTA")
 	}else{
 		setBlock(true)
+		setRole("ROLE_TURISMOLOGO")
 	}
   }
  
@@ -70,65 +80,40 @@ function Signup() {
   function handleSubmit(e: any) {
     e.preventDefault()
 	
-	console.log('Requisição POST');
-    const htmlConfig = {
-      headers: {
-        'Content-Type': 'multipart/form-data;',
-        'Access-Control-Allow-Origin': '*',
-        Authorization: auth.user?.basicAuth,
-      },
-    }
-
-    const formData = new FormData()
-    formData.append('name', state.name)
-    formData.append('cpf', state.cpf)
-    formData.append('tel_number', state.tel_number)
-    formData.append('data_nascimento', state.data_nascimento)
-    formData.append('mail', state.mail)
-    formData.append('username', state.username)
-    formData.append('password', state.password)
-    formData.append('rolename', state.rolename)		
-
-    api.post('/clients', formData, {}).then(() => {
-      navigate('/')
-    })
-  }	
+	setloading(true)
+	
+	const data = JSON.stringify({
+	  "name": state.name,
+	  "cpf": state.cpf,
+	  "data_nascimento": state.data_nascimento,
+	  "tel_number": state.tel_number,
+	  "mail": state.mail,
+	  "username": state.username,
+	  "password": state.password,
+	  "rolename": role
+	});	
 	
 
-/*
-const axios = require('axios');
-let data = JSON.stringify({
-  "name": "Gilmar Santana",
-  "cpf": "999999999999",
-  "data_nascimento": "2022-02-02",
-  "tel_number": "11999999999",
-  "mail": "gilmar@teste.com.br",
-  "username": "gilmar",
-  "password": "1234",
-  "rolename": "ROLE_TURISTA"
-});
+    const headers = {
+      headers: {
+        //'Authorization': basicAuth,
+		'Content-Type': 'application/json'
+      }
+    }
 
-let config = {
-  method: 'post',
-  maxBodyLength: Infinity,
-  url: 'http://localhost:8080/clients',
-  headers: { 
-    'Authorization': 'Basic ZG91ZzoxMjM=', 
-    'Content-Type': 'application/json'
-  },
-  data : data
-};
+	axios.post('/clients', data, headers).then((response) => {
+		if(response.status == 200){
+			setloading(false)
+			//console.log("Cadastro efetuao com sucesso!")
+			Alertify.alert("", "Cadastro realizado com sucesso!")
+		}else{
+			console.log('Erro ao tentar realizar cadastro!')
+			//Alertify.alert('Erro ao tentar realizar cadastro!');
+				
+		}
+	})	
 
-axios.request(config)
-.then((response) => {
-  console.log(JSON.stringify(response.data));
-})
-.catch((error) => {
-  console.log(error);
-});
-*/
-
-
+  }
 
     return(
 		<div>
@@ -201,7 +186,7 @@ axios.request(config)
 									<input type="text" className="form-control" id="tourismologistID" />
 								  </div>
 								  <div className="col-md-3">
-									<label htmlFor="birthdate" className="form-label">
+									<label htmlFor="data_nascimento" className="form-label">
 									  Data nasc.
 									</label>
 									<input
@@ -211,7 +196,7 @@ axios.request(config)
 									/>
 								  </div>
 								  <div className="col-md-3">
-									<label htmlFor="phone" className="form-label">
+									<label htmlFor="tel_number" className="form-label">
 									  Telefone
 									</label>
 									<input
@@ -221,7 +206,7 @@ axios.request(config)
 									/>
 								  </div>
 								  <div className="col-md-6">
-									<label htmlFor="email" className="form-label">
+									<label htmlFor="mail" className="form-label">
 									  E-mail
 									</label>
 									<input
@@ -248,12 +233,15 @@ axios.request(config)
 								  <div className="col-12">
 									<button
 									  type="submit"
-									  className={checked ? 'btn btn-primary rounded-5 ps-3 pe-3 float-end' : 'disabled btn btn-primary rounded-5 ps-3 pe-3 float-end'}>
-									  Cadastrar
+									  className={checked ? 'btn btn-warning rounded-5 ps-3 pe-3 float-end' : 'disabled btn btn-warning rounded-5 ps-3 pe-3 float-end'}>
+									  {loading ? <Loader className="spinner" /> : 'Cadastrar'}
 									</button>
+									
 								  </div>
 								</form>
 							</div>
+							
+							<p className="mt-4 text-muted signup-link text-center">Já tem uma conta? <a href="/login"><strong>Fazer login.</strong></a></p>
 						</div>
 					</div>
 				</div>

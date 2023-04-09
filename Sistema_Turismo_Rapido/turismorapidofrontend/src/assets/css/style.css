@@ -487,8 +487,26 @@ footer .final-nav i{
 	padding: 15px;
 }
 
-/* Media query mobile*/
 
+
+/* Loader */
+.spinner {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media query mobile*/
 @media (max-width: 575.98px){
 	#main{margin-top: 72px;}
 	#header{background-color: #2e4b73;}
