@@ -25,7 +25,7 @@ public class ComentarioResponseDTO {
         this.idComentario = comentario.getIdComentario();
         this.comentario = comentario.getComentario();
         this.instant = comentario.getInstant();
-        this.id_client = comentario.getClient().getId_client();
+        this.id_client = comentario.getClient().getIdClient();
         this.name = comentario.getClient().getName();
         this.id_roteiro = comentario.getRoteiro().getIdRoteiro();
     }

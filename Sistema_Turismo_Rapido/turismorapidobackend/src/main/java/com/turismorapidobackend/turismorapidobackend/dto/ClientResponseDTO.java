@@ -9,13 +9,13 @@ import lombok.Data;
 @AllArgsConstructor
 public class ClientResponseDTO {
     String name;
-    Long id_client;
+    Long idClient;
     // Long id_turista;
     // Long id_turismologo;
 
     public ClientResponseDTO(Client client){
         this.name = client.getName();
-        this.id_client = client.getId_client();
+        this.idClient = client.getIdClient();
         //usuario e senha
         //nome
         //email

@@ -13,8 +13,8 @@ import java.util.List;
 public class Atracao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    Long id_atracao;
+    @Column(name = "id_atracao")
+    Long idAtracao;
 
     String name;
 

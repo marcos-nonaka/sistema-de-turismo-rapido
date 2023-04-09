@@ -1,11 +1,14 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
+import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 import com.turismorapidobackend.turismorapidobackend.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,13 +37,32 @@ public class ClientService {
     RoleRepository roleRepository;
 
 
-    public List<Client> findAll(String name) {
-        if (name.equals("")){
-            return clientRepository.findAll();
+    @Transactional
+    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
+        List<Client> list = new ArrayList<>();
+        if (id.isPresent() && name.isPresent()) {
+            list = clientRepository.findByIdClientAndNameContainingIgnoreCase(id.get(), name.get());
+        } else if (id.isPresent()) {
+            list.add(this.findById(id));
+        } else if (name.isPresent()) {
+            list = clientRepository.findByNameContainingIgnoreCase(name.get());
+        } else {
+            list = clientRepository.findAll();
         }
-        else{
-            return clientRepository.findBynameIgnoreCase(name);
+        if (list.isEmpty()) {
+            throw new ObjectNotFoundException();
         }
+        return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(ClientResponseDTO:: new).toList());
+    }
+
+
+    @Transactional
+    public Client findById(Optional<Long> id) {
+        Optional<Client> client = clientRepository.findById(id.get());
+        if (id.isPresent()) {
+            return client.orElseThrow(() -> new ObjectNotFoundException(id.get()));
+        }
+        return null;
     }
 
     public BCryptPasswordEncoder passwordEncoder(){
@@ -87,21 +109,14 @@ public class ClientService {
     }
 
     @Transactional
-    public ResponseEntity<Object> findById(Long id) {
-        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
-        return ResponseEntity.status(HttpStatus.OK).body(new ClientResponseDTO(client));
-    }
-
-    @Transactional
-    public ResponseEntity<Object> delete(Long id) {
-        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
-        clientRepository.delete(client);
+    public ResponseEntity<Object> delete(Optional<Long> id) {
+        clientRepository.delete(this.findById(id));
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
-    public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
-        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
+    public ResponseEntity<Object> update(Optional<Long> id, ClientRequestDTO clientRequestDTO) {
+        Client client = this.findById(id);
         clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
     }

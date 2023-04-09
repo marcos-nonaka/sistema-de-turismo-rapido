@@ -37,19 +37,12 @@ public class ClientController {
     @Autowired
     RoleService roleService;
 
-    @GetMapping
-    public List<ClientResponseDTO> find(@RequestParam(name="name", defaultValue="") String name){
-        
-        List<Client> list = clientService.findAll(name);
-
-        return list.stream().map(ClientResponseDTO:: new).toList();
+    @GetMapping(value= {"", "/", "/{id}"})
+    public ResponseEntity<Object> find(
+            @PathVariable(name = "id") Optional<Long> id,
+            @RequestParam(value="name", required=false) Optional<String> name) {
+        return clientService.find(id, name);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> findById(@NonNull @PathVariable(name="id") Long id){
-        return clientService.findById(id);
-    }
-
 
     @PostMapping
     public ClientResponseDTO save(@RequestBody ClientRequestDTO clientRequestDTO) {
@@ -73,12 +66,12 @@ public class ClientController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
         return clientService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.update(id, clientRequestDTO);
     }
     

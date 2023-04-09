@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AtracaoResponseDTO {
-    Long id_atracao;
+    Long idAtracao;
     Long id_cidade;
     String name;
     String nameCidade;
@@ -17,7 +17,7 @@ public class AtracaoResponseDTO {
     }
 
     public AtracaoResponseDTO(Atracao atracao) {
-        this.id_atracao = atracao.getId_atracao();
+        this.idAtracao = atracao.getIdAtracao();
         this.id_cidade = atracao.getCidade().getIdCidade();
         this.name = atracao.getName();
         this.nameCidade = atracao.getCidade().getName();
