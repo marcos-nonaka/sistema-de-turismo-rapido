@@ -36,6 +36,8 @@ public class Client implements UserDetails {
     String mail;
     String username;
     String password;
+    String photo;
+    //
     // RoleName rolename;
 
 

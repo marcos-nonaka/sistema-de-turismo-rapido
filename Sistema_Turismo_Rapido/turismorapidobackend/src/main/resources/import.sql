@@ -25,3 +25,8 @@ INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME) VALUES (3, 3.1, 3.2, 'CURITI
 INSERT INTO ATRACAO(NAME, TEL_NUMBER, ENDERECO, DESCRICAO, TIPO, LATITUDE, LONGITUDE, cidade_id) VALUES ('Praia Mole', 123123123, 'Rodovia Sc 403', 'Praia para surf', 'Praia', 27.6022, 48.4327, 1);
 INSERT INTO ALIMENTACAO(local_name, phone_number, street_name, description, street_district, street_number, latitude, longitude, cidade_id) VALUES ('Bar do Boni', 123123123, 'Av. Rendeiras', 'Bar com frutos do mar', 'Lagoa da conceição', 2600, 27.607, 48.441, 1);
 INSERT INTO HOTEL(hotel_name, phone_number, street_name, street_district, street_number, description_hotel, latitude, longitude, cidade_id) VALUES ('Hotel Praia Mole', 123123123, 'Rodovia Sc 403', 'Lagoa da Conceição', 260, 'Hotel a beira mar', 27.604, 48.436, 1);
+
+INSERT INTO ROTEIRO (VALOR, CIDADE_ID) VALUES (1.0, 1);
+INSERT INTO ROTEIRO (VALOR, CIDADE_ID) VALUES (1.0, 2);
+INSERT INTO ROTEIRO (VALOR, CIDADE_ID) VALUES (1.0, 3);
+INSERT INTO ROTEIRO (VALOR, CIDADE_ID) VALUES (1.0, 4);

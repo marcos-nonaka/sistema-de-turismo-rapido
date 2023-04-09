@@ -19,6 +19,7 @@ public class Roteiro {
 
     Double valor;
 
+    //@ManyToOne(targetEntity = Cidade.class)
     @OneToOne(targetEntity = Cidade.class)
     @JoinColumn(name = "cidade_id")
     Cidade cidade;

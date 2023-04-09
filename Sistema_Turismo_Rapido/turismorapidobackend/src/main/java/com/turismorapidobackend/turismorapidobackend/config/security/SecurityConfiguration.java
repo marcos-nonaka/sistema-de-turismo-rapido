@@ -23,6 +23,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/atracoes").permitAll()
                 .requestMatchers(HttpMethod.GET, "/alimentacao").permitAll()
                 .requestMatchers(HttpMethod.POST, "/clients").permitAll()
+                //put
                 .requestMatchers(HttpMethod.POST, "/roteiros").hasAnyRole("ADMIN", "TURISMOLOGO")
                 .requestMatchers(HttpMethod.POST, "/cidades").hasAnyRole("ADMIN", "TURISMOLOGO")
                 .requestMatchers(HttpMethod.POST, "/hoteis").hasAnyRole("ADMIN", "TURISMOLOGO")

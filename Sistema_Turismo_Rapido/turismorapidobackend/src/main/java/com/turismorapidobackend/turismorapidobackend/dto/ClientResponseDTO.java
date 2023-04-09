@@ -12,10 +12,14 @@ public class ClientResponseDTO {
     Long id_client;
     // Long id_turista;
     // Long id_turismologo;
+    String photo;
+    
 
     public ClientResponseDTO(Client client){
         this.name = client.getName();
         this.id_client = client.getId_client();
+        this.photo = client.getPhoto();
+        
         //usuario e senha
         //nome
         //email

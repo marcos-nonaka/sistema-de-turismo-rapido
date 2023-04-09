@@ -3,21 +3,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
-import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.BeanUtils;
-
-import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullPropertyNames;
 
 @Data
 @AllArgsConstructor
 public class ClientRequestDTO extends AbstractRequestDTO {
     
-    @NotBlank
+    @NotEmpty
     String name;
     String cpf;
     LocalDate data_nascimento;
@@ -25,6 +21,7 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     String mail;
     String username;
     String password;
+    String photo;
 
     RoleName rolename;
 
