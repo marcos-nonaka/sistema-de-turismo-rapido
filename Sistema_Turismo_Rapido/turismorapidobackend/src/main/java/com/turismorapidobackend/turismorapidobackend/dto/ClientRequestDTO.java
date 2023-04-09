@@ -5,6 +5,7 @@ import java.util.List;
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
 import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
+import com.turismorapidobackend.turismorapidobackend.model.Roteiro;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,8 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     RoleName rolename;
 
     List<Role> roles;
+
+    List<Roteiro> roteiros;
 
     public ClientRequestDTO(){
 

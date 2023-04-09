@@ -46,23 +46,25 @@ public class QuatourController {
     }
     }
 
-    // @GetMapping("/roteiros-salvos")
-    // public ResponseEntity<Object> findRoteirosSalvos(){
-    //     Object principal = SecurityContextHolder
-    //     .getContext()
-    //     .getAuthentication()
-    //     .getPrincipal();
+    @GetMapping("/roteirossalvos")
+    public ResponseEntity<Object> findRoteirosSalvos(){
+        Object principal = SecurityContextHolder
+        .getContext()
+        .getAuthentication()
+        .getPrincipal();
 
-    //     if(principal instanceof Client client){
-    //         Long client_id = client.getId_client();
+        if(principal instanceof Client client){
+            Long client_id = client.getIdClient();
 
-    //         Optional<Roteiro> roteiroOptional = roteiroRepository.findById(client_id);
+            // Optional<Roteiro> roteiroOptional = roteiroRepository.findByIdClient(client_id); perguntar ao thalyson
 
-    //         return ResponseEntity.status(HttpStatus.OK)
-    //             .body(clientService.findById(client.getId_client()).getBody());
-    //         }else{
-    //             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.OK)
+                .body(clientService.findById(client.getIdClient()).getBody());
+            }else{
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 
-    //     }
+        }
+    }
+
     }
 

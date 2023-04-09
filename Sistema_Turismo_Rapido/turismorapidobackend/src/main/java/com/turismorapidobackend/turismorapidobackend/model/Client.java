@@ -30,7 +30,11 @@ public class Client implements UserDetails {
     // RoleName rolename;
 
 
-    @ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
+    //@ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
+    @ManyToMany(targetEntity = Roteiro.class)
+    @JoinTable(name = "client_roteiro",
+    joinColumns = @JoinColumn(name = "client_id"),
+    inverseJoinColumns = @JoinColumn(name = "roteiro_id"))
     List<Roteiro> roteiros;
 
     @ManyToMany(targetEntity = Role.class, fetch = FetchType.EAGER)

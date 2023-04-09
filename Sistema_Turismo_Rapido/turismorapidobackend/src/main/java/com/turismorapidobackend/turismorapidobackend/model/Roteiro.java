@@ -50,11 +50,16 @@ public class Roteiro {
     )
     List<Atracao> atracoes;
 
-    @ManyToMany(targetEntity = Client.class, fetch = FetchType.EAGER)
-    @JoinTable(name = "client_roteiro",
-            joinColumns = @JoinColumn(name = "client_id"),
-            inverseJoinColumns = @JoinColumn(name = "roteiro_id")
-    )
-    Set<Client> client;
+    @ManyToMany(
+            targetEntity = Client.class,
+            mappedBy = "roteiros")
+    Set<Client> clients;
+
+//     @ManyToMany(targetEntity = Client.class, fetch = FetchType.EAGER)
+//     @JoinTable(name = "client_roteiro",
+//             joinColumns = @JoinColumn(name = "client_id"),
+//             inverseJoinColumns = @JoinColumn(name = "roteiro_id")
+//     )
+//     Set<Client> client;
 
 }
