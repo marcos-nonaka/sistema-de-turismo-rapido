@@ -39,7 +39,7 @@ public class ClientController {
 
     @GetMapping(value= {"", "/", "/{id}"})
     public ResponseEntity<Object> find(
-            @PathVariable(name = "id") Optional<Long> id,
+            @PathVariable(name = "id", required=false) Long id,
             @RequestParam(value="name", required=false) Optional<String> name) {
         return clientService.find(id, name);
     }
@@ -66,12 +66,12 @@ public class ClientController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){
+    public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Long id){
         return clientService.delete(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Optional<Long> id, @RequestBody ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> update(@NonNull @PathVariable(name = "id") Long id, @RequestBody ClientRequestDTO clientRequestDTO) {
         return clientService.update(id, clientRequestDTO);
     }
     

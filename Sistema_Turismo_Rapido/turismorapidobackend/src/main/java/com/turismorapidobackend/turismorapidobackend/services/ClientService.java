@@ -38,12 +38,12 @@ public class ClientService {
 
 
     @Transactional
-    public ResponseEntity<Object> find(Optional<Long> id, Optional<String> name) {
+    public ResponseEntity<Object> find(Long id, Optional<String> name) {
         List<Client> list = new ArrayList<>();
-        if (id.isPresent() && name.isPresent()) {
-            list = clientRepository.findByIdClientAndNameContainingIgnoreCase(id.get(), name.get());
-        } else if (id.isPresent()) {
-            list.add(this.findById(id));
+        if (id != null && name.isPresent()) {
+            list = clientRepository.findByIdClientAndNameContainingIgnoreCase(id, name.get());
+        } else if (id != null) {
+            list.add(clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found")));
         } else if (name.isPresent()) {
             list = clientRepository.findByNameContainingIgnoreCase(name.get());
         } else {
@@ -57,12 +57,14 @@ public class ClientService {
 
 
     @Transactional
-    public Client findById(Optional<Long> id) {
-        Optional<Client> client = clientRepository.findById(id.get());
-        if (id.isPresent()) {
-            return client.orElseThrow(() -> new ObjectNotFoundException(id.get()));
-        }
-        return null;
+    public ResponseEntity<Object> findById(Long id) {
+        // Optional<Client> client = clientRepository.findById(id);
+        // if (id != null) {
+        //     return client.orElseThrow(() -> new ObjectNotFoundException(id));
+        // }
+        // return null;
+        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
+        return ResponseEntity.status(HttpStatus.OK).body(new ClientResponseDTO(client));
     }
 
     public BCryptPasswordEncoder passwordEncoder(){
@@ -109,14 +111,18 @@ public class ClientService {
     }
 
     @Transactional
-    public ResponseEntity<Object> delete(Optional<Long> id) {
-        clientRepository.delete(this.findById(id));
+    public ResponseEntity<Object> delete(Long id) {
+        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
+        clientRepository.delete(client);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
-    public ResponseEntity<Object> update(Optional<Long> id, ClientRequestDTO clientRequestDTO) {
-        Client client = this.findById(id);
+    public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
+        // Client client = this.findById(id.get());
+        // clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
+        // return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
+        Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("client not found"));
         clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
     }
