@@ -1,9 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.exceptionhandler;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -17,16 +15,14 @@ public class ValidationExceptionHandler {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<Map<String, String>> HandleMethotdArgumentNotValidException(MethodArgumentNotValidException exception) {
-        List<Map<String, String>> errors = new ArrayList<>();
+    public List<ErrorDTO> HandleMethotdArgumentNotValidException(MethodArgumentNotValidException exception) {
+        List<ErrorDTO> errors = new ArrayList<>();
+
         exception
             .getBindingResult()
             .getAllErrors()
             .forEach(error -> {
-                Map<String, String> entry = new HashMap<>();
-                entry.put("field", ((FieldError) error).getField());
-                entry.put("error", error.getDefaultMessage());
-                errors.add(entry);
+                errors.add(new ErrorDTO((((FieldError) error).getField()), error.getDefaultMessage()));
             });
         return errors;
    }

@@ -20,14 +20,12 @@ public class Client implements UserDetails {
     @Column(name = "id_client")
     Long idClient;
     String name;
-    String cpf;
     LocalDate data_nascimento;
     Long tel_number;
     String mail;
     String username;
     String password;
     String photo;
-    // RoleName rolename;
 
 
     //@ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
