@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import Login from './Login'
+import Logout from './Logout'
 
 test('renders login page', () => {
-    render(<Login />)
+    render(<Logout />)
     const linkElement = screen.getByText(/quatour/i)
     expect(linkElement).toBeInTheDocument()
 })

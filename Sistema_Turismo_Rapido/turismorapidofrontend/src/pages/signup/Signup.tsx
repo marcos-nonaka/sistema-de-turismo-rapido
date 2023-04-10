@@ -104,7 +104,7 @@ function Signup() {
 	axios.post('/clients', data, headers).then((response) => {
 		if(response.status == 200){
 			setloading(false)
-			//console.log("Cadastro efetuao com sucesso!")
+			//console.log("Cadastro efetuado com sucesso!")
 			Alertify.alert("", "Cadastro realizado com sucesso!")
 		}else{
 			console.log('Erro ao tentar realizar cadastro!')

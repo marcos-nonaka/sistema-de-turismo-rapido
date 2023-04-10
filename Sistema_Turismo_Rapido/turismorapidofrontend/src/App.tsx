@@ -9,6 +9,7 @@ import {
 	Contact,
 	Login,
 	Signup,
+	Logout,
 	//Itinerary,
 	Dashboard,
 	ItinerarySearch,
@@ -18,10 +19,12 @@ import {
 } from './pages'
 
 const RequireAuth = ({ children }: { children: any }) => {
-	//const user = getUserLocalStorage()
+	const session = getUserLocalStorage()
 	const auth = useContext(AuthContext)
-
-	if (!auth.user) {
+	console.log('Session: ')
+	console.log(session)
+	if(!session){
+	//if(!auth.user) {
 		return <Navigate to='/login' />
 	}
 
@@ -39,6 +42,7 @@ function App() {
 				<Route path='/quem-somos' element={<About />} />
 				<Route path='/fale-conosco' element={<Contact />} />
 				<Route path='/login' element={<Login />} />
+				<Route path='/logout' element={<Logout />} />
 				<Route path='/cadastre-se' element={<Signup />} />				
 				<Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}></Route>
 				<Route path={'pesquisar-roteiro'} element={<RequireAuth><ItinerarySearch /></RequireAuth>}></Route>
