@@ -3,6 +3,9 @@ package com.turismorapidobackend.turismorapidobackend.controller;
 import com.turismorapidobackend.turismorapidobackend.dto.AlimentacaoRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.AlimentacaoService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -18,7 +21,7 @@ public class AlimentacaoController {
 
     @PostMapping
     public ResponseEntity<Object> save(
-            @RequestBody AlimentacaoRequestDTO alimentacaoRequestDTO){
+            @RequestBody @Valid AlimentacaoRequestDTO alimentacaoRequestDTO){
         return alimentacaoService.save(alimentacaoRequestDTO);
     }
 
