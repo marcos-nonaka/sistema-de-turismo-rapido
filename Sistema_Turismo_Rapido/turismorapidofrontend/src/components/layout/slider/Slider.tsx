@@ -12,7 +12,7 @@ function Slider(){
 					<img src={Banner1mobile} className="w-100 ban_mobile" alt="Banner 1" />
 					<div className="carousel-caption d-none d-md-block">
 						<a
-						href="pesquisar-roteiro.html"
+						href="/pesquisar-roteiro"
 						className="btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4"
 						>
 						Explorar roteiros

@@ -1,16 +1,19 @@
 import React, {useEffect, useContext, useState} from 'react'
-import axios, { AxiosError } from 'axios'
+//import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import { Navbar, Footer } from '../../components'
 import { useTranslation } from 'react-i18next'
 import { useAPI } from '../../data/API'
-import {AuthContext} from "../../store/authContext";
-import {useNavigate} from "react-router-dom";
+import {AuthContext} from '../../store/authContext';
+import {Navigate, useNavigate} from 'react-router-dom';
+import Alertify from '../../components/alertify/Alertify'
+import { setUserLocalStorage, getUserLocalStorage } from '../../store/util'
 
-import LogoQuatour from "../../assets/img/logo-icon.svg";
+import LogoQuatour from '../../assets/img/logo-icon.svg'
 
 type LoginData = {
-  username: string
-  password: string
+  email: string;
+  password: string;
 }
 
 
@@ -18,13 +21,12 @@ function Login(){
 	const auth = useContext(AuthContext);
 	const navigate = useNavigate();
 	const { t } = useTranslation()
-	const [state, setState] = useState<LoginData>({ username: '', password: '' })
+	const [state, setState] = useState<LoginData>({ email: '', password: '' })
 	const api = useAPI()
 	const [isActive, setIsActive] = useState(false);
 	const [inputType, setInputType] = useState<string>("password")
 
-
-	const onUpdate = (e: React.ChangeEvent<any>, name: 'username' | 'password') => {
+	const onUpdate = (e: React.ChangeEvent<any>, name: 'email' | 'password') => {
 		setState((state) => ({ ...state, [name]: e.target.value }))
 	}
 
@@ -33,18 +35,35 @@ function Login(){
 	}, []);
 
 	function handleSubmit(e: any){
-		e.preventDefault()		
-		console.log('Requisição GET');
+		e.preventDefault()
 
-		if (state.username && state.password){			
-			//passando parâmetro na segunda posição -> {name: 'Rafael'}
-			api.get('/clients', {}, {}).then((res) => {
-				console.log(res)
-			})
+		const data = JSON.stringify({
+		  "email": state.email,
+		  "password": state.password
+		});
 
+        const headers = {
+            headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+            }
+        }
+
+		try{
+			axios.post('https://reqres.in/api/login', data, headers).then((response) => {
+				//console.log(response)
+				const session = { username: state.email, token: response.data.token }
+				//console.log(session)
+				auth.updateUser ? auth.updateUser({...session}) : null;
+				setUserLocalStorage(session)
+				navigate('/me/profile');
+			})			
+		}catch(error){
+			console.log('Invalid email or password')
 		}
+
 	}
- 
+
 	const showPassword = () => {
 		setIsActive(current => !current);
 		
@@ -69,12 +88,13 @@ function Login(){
 				<div className="col-md-12 mb-2">
 				  <input
 						type="text"
-						id="username"
-						name="username"
+						id="email"
+						name="email"
 						className="form-control"
 						placeholder="Seu usuário"
-						value={state.username}
-						onChange={(e) => onUpdate(e, 'username')}					
+						value={state.email}
+						onChange={(e) => onUpdate(e, 'email')}
+						
 				  />
 				</div>
 

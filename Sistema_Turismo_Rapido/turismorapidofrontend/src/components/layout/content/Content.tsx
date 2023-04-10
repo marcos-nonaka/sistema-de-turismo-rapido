@@ -542,11 +542,11 @@ function Content(){
 
           <p className="text-center">
             <a
-              href="#"
+              href="/pesquisar-roteiro"
               className="btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4 mt-3 mb-5"
             >
               Explorar mais
-            </a>{" "}
+            </a>
           </p>
         </div>
       </div>
