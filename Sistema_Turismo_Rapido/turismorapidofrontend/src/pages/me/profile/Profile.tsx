@@ -3,14 +3,15 @@ import { Meheader, Menav, Footer } from '../../../components'
 
 function Profile(){
 	useEffect(() => {
-	   document.body.classList.add('bg-internas-dashboard');
+		document.body.classList.remove('bg-internas-login');
+		document.body.classList.add('bg-internas-dashboard');
 	}, []);
 	
     return(
 		<>
 		<Meheader />
 		<div id="main">
-			<div className="container mt-5">				
+			<div className="container">				
 				<div className="row">
 					<div className="col-md-3 col-sm-12">
 						<Menav />

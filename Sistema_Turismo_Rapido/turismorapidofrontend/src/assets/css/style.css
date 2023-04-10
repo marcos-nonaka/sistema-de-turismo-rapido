@@ -478,7 +478,7 @@ footer .final-nav i{
 .menav .active{ background-color: #99b4bf; background-color: #fcc12b; border-radius: 22px; }
 .menav .disabled{opacity: .5}
 .menav .bi{ font-size: 1.2em; }
-.dashboard-content{height: 100vh;}
+/*.dashboard-content{height: 100vh;}*/
 .dashboard-content .card-header{ font-size: 1.2em; font-weight: bold; }
 
 .dashboard-content .card-header{
