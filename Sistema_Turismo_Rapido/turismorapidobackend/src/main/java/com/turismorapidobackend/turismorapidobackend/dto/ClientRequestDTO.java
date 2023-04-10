@@ -28,14 +28,14 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
     String name;
 
-    @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Formato de data inválida")
-    @NotNull(message = "Data de nascimento obrigatório")
-    @NotEmpty(message="Insira a data de nascimento")
+    // @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Formato de data inválida")
+    // @NotNull(message = "Data de nascimento obrigatório")
+    // @NotEmpty(message="Insira a data de nascimento")
     LocalDate data_nascimento;
 
-    @Pattern(regexp = "\\d{2}) \\d{4}-\\d{4}", message="Telefone inválido")
-    @NotNull(message = "Telefone obrigatório")
-    @NotEmpty(message="Insira o telefone")
+    // @Pattern(regexp = "\\d{2}) \\d{4}-\\d{4}")
+    // @NotNull(message = "Telefone obrigatório")
+    // @NotEmpty(message="Insira o telefone")
     Long tel_number;
 
     @Email(message = "Informe um email válido")
