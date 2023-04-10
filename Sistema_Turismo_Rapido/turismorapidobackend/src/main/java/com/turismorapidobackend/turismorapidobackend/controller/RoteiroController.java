@@ -3,6 +3,9 @@ package com.turismorapidobackend.turismorapidobackend.controller;
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.RoteiroService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -17,7 +20,7 @@ public class RoteiroController {
     RoteiroService roteiroService;
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody RoteiroRequestDTO roteiroRequestDTO){
+    public ResponseEntity<Object> save(@RequestBody @Valid RoteiroRequestDTO roteiroRequestDTO){
         return roteiroService.save(roteiroRequestDTO);
     }
 

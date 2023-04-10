@@ -4,6 +4,8 @@ import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.CidadeService;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -19,7 +21,7 @@ public class CidadeController {
 
     @PostMapping
     public ResponseEntity<Object> save(
-            @RequestBody CidadeRequestDTO cidadeRequestDTO){
+            @RequestBody @Valid CidadeRequestDTO cidadeRequestDTO){
         return cidadeService.save(cidadeRequestDTO);
     }
 

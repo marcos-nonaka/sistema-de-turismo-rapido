@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.turismorapidobackend.turismorapidobackend.dto.HotelRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.HotelService;
 
+import jakarta.validation.Valid;
+
 import java.util.Optional;
 
 
@@ -19,7 +21,7 @@ public class HotelController {
 
     @PostMapping
     public ResponseEntity<Object> save(
-            @RequestBody HotelRequestDTO hotelRequestDTO){
+            @RequestBody @Valid HotelRequestDTO hotelRequestDTO){
         return hotelService.save(hotelRequestDTO);
     }
 

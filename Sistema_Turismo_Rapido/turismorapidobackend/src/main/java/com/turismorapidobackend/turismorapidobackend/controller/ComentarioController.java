@@ -2,6 +2,9 @@ package com.turismorapidobackend.turismorapidobackend.controller;
 
 import com.turismorapidobackend.turismorapidobackend.dto.ComentarioRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.ComentarioService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
@@ -17,7 +20,7 @@ public class ComentarioController {
     ComentarioService comentarioService;
 
     @PostMapping
-    public ResponseEntity<Object> save(@RequestBody ComentarioRequestDTO comentarioRequestDTO){
+    public ResponseEntity<Object> save(@RequestBody @Valid ComentarioRequestDTO comentarioRequestDTO){
         return comentarioService.save(comentarioRequestDTO);
     }
 
