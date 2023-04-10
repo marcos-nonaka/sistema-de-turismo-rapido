@@ -47,7 +47,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ClientResponseDTO save(@RequestBody @Valid ClientRequestDTO clientRequestDTO) {
+    public ResponseEntity<Object> save(@RequestBody @Valid ClientRequestDTO clientRequestDTO) {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

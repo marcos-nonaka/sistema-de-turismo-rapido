@@ -1,5 +1,7 @@
 package com.turismorapidobackend.turismorapidobackend.exceptionhandler;
 
+import java.time.Instant;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -7,7 +9,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class ErrorDTO {
 
-    String field;
+    Instant timestamp;
+    Integer status;
     String error;
+    String message;
+    String path;
+
+    public ErrorDTO(){
+
+    }
     
 }
