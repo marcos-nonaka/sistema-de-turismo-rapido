@@ -8,7 +8,7 @@ import {AuthContext} from '../../store/authContext';
 import {Navigate, useNavigate} from 'react-router-dom';
 import Alertify from '../../components/alertify/Alertify'
 import { setUserLocalStorage, getUserLocalStorage } from '../../store/util'
-
+import { ReactComponent as Loader } from '../../assets/img/loader.svg'
 import LogoQuatour from '../../assets/img/logo-icon.svg'
 
 type LoginData = {
@@ -25,6 +25,7 @@ function Login(){
 	const api = useAPI()
 	const [isActive, setIsActive] = useState(false);
 	const [inputType, setInputType] = useState<string>("password")
+	const [loading, setloading] = useState(false);
 
 	const onUpdate = (e: React.ChangeEvent<any>, name: 'email' | 'password') => {
 		setState((state) => ({ ...state, [name]: e.target.value }))
@@ -40,13 +41,9 @@ function Login(){
 	
 	function handleSubmit(e: any){
 		e.preventDefault()
-		/*
-		const data = JSON.stringify({
-		  "username": state.email,
-		  "password": state.password
-		});
-		*/
-
+		
+		setloading(true)
+		
         const headers = {
             headers: {
 				'Accept': 'application/json',
@@ -55,9 +52,9 @@ function Login(){
             }
         }
 
+/*
 		try{
 			console.log(headers)
-			//axios.post('https://reqres.in/api/login', data, headers).then((response) => {
 			axios.get('http://localhost:3000/quatour/user', headers).then((response) => {
 				console.log(response)
 				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: '' }
@@ -70,6 +67,29 @@ function Login(){
 			console.log('Invalid email or password')
 			Alertify.alert('Erro', 'Usuário ou senha inválidos!');
 		}
+*/
+
+		if(state.email != '' && state.password != ''){
+			axios.get('http://localhost:3000/quatour/user', headers).then(response => { 
+				console.log(response)
+				setloading(false)
+				
+				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: '' }
+				auth.updateUser ? auth.updateUser({...session}) : null;
+				setUserLocalStorage(session)
+				navigate('/me/profile');				
+			})
+			.catch(error => {
+				console.log(error.response)
+				Alertify.alert('Erro', 'Usuário ou senha inválidos!');
+			});
+		}else{
+			Alertify.alert('Erro', 'Digite seus dados de acesso!');
+		}
+
+
+
+
 
 	}
 
@@ -131,7 +151,7 @@ function Login(){
 				  </a>
 
 				  <button className="btn btn-warning rounded-5 float-end" type="submit">
-					{t('auth.login.enter')}
+					{loading ? <Loader className="spinner" /> : 'Acessar'} 
 				  </button>
 				</div>
 			  </form>

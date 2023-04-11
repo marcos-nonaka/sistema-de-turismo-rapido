@@ -10,7 +10,7 @@ function Profile(){
 		document.body.classList.add('bg-internas-dashboard');
 
 	}, []);
-	
+
     return(
 		<>
 		<Meheader />
@@ -25,7 +25,7 @@ function Profile(){
 						<p className="mb-4">Administre sua experiência na Quatour</p>
 				
 						<div className="dashboard-content rounded-4 bg-white p-5 mb-5">
-							<h2 className="h2 fw-bold mb-4">Bem-vindo</h2>
+							<h2 className="h2 fw-bold mb-4">Bem-vindo(a)</h2>
 	
 							<p className="m-0"><small>E-mail da conta</small></p>
 							<p className="fw-bold mb-5">{userData.mail}</p>
@@ -38,20 +38,20 @@ function Profile(){
 									<form className="row g-3 mt-2">
 										<div className="col-md-8">
 											<label htmlFor="name" className="form-label">Nome</label>
-											<input type="text" className="form-control" id="name" value={userData.name} />
+											<input type="text" className="form-control" id="name" placeholder={userData.name} />
 										</div>
 										<div className="col-md-4">
 											<label htmlFor="cpf" className="form-label">CPF</label>
-											<input type="text" className="form-control" id="cpf" value="999.999.999-99" />
+											<input type="text" className="form-control" id="cpf" placeholder="999.999.999-99" />
 										</div>	
 				
 										<div className="col-md-3">
 											<label htmlFor="birthdate" className="form-label">Data nasc.</label>
-											<input type="text" className="form-control" id="birthdate" value={userData.birthdate} />
+											<input type="text" className="form-control" id="birthdate" placeholder={userData.birthdate} />
 										</div>
 										<div className="col-md-3">
 											<label htmlFor="phone" className="form-label">Telefone</label>
-											<input type="text" className="form-control" id="phone" value={userData.phone} />
+											<input type="text" className="form-control" id="phone" placeholder={userData.phone} />
 										</div>
 										<div className="col-md-6">
 											<label htmlFor="email" className="form-label">E-mail</label>
