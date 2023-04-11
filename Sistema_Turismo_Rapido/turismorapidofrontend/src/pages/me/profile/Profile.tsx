@@ -1,10 +1,14 @@
 import React, {useEffect, useContext, useState} from 'react'
 import { Meheader, Menav, Footer } from '../../../components'
+import { getUserLocalStorage } from '../../../store/util'
 
 function Profile(){
+	const userData = getUserLocalStorage()
+	
 	useEffect(() => {
 		document.body.classList.remove('bg-internas-login');
 		document.body.classList.add('bg-internas-dashboard');
+
 	}, []);
 	
     return(
@@ -24,7 +28,7 @@ function Profile(){
 							<h2 className="h2 fw-bold mb-4">Bem-vindo</h2>
 	
 							<p className="m-0"><small>E-mail da conta</small></p>
-							<p className="fw-bold mb-5">pedro@palacio.imp.br</p>
+							<p className="fw-bold mb-5">{userData.mail}</p>
 						
 							<div className="card rounded-4 mb-4">
 								<div className="card-header bg-white">
@@ -34,7 +38,7 @@ function Profile(){
 									<form className="row g-3 mt-2">
 										<div className="col-md-8">
 											<label htmlFor="name" className="form-label">Nome</label>
-											<input type="text" className="form-control" id="name" value="Pedro de Alcântara de Bragança e Bourbon" />
+											<input type="text" className="form-control" id="name" value={userData.name} />
 										</div>
 										<div className="col-md-4">
 											<label htmlFor="cpf" className="form-label">CPF</label>
@@ -43,15 +47,15 @@ function Profile(){
 				
 										<div className="col-md-3">
 											<label htmlFor="birthdate" className="form-label">Data nasc.</label>
-											<input type="text" className="form-control" id="birthdate" value="12/10/1798" />
+											<input type="text" className="form-control" id="birthdate" value={userData.birthdate} />
 										</div>
 										<div className="col-md-3">
 											<label htmlFor="phone" className="form-label">Telefone</label>
-											<input type="text" className="form-control" id="phone" value="+55 (21) 99999-9999" />
+											<input type="text" className="form-control" id="phone" value={userData.phone} />
 										</div>
 										<div className="col-md-6">
 											<label htmlFor="email" className="form-label">E-mail</label>
-											<input type="email" className="form-control" id="email" value="pedro@palacio.imp.br" />
+											<input type="email" className="form-control" id="email" value={userData.mail} />
 										</div>
 			
 										<div className="col-12">

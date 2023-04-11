@@ -46,6 +46,7 @@ function App() {
 				<Route path='/cadastre-se' element={<Signup />} />				
 				<Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}></Route>
 				<Route path={'pesquisar-roteiro'} element={<RequireAuth><ItinerarySearch /></RequireAuth>}></Route>
+				<Route path={'detalhes'} element={<RequireAuth><Result /></RequireAuth>}></Route>
 				<Route path='/me/profile' element={<RequireAuth><Profile /></RequireAuth>}></Route>
 				<Route path='/me/booking' element={<RequireAuth><Booking /></RequireAuth>}></Route>
 			</Routes>

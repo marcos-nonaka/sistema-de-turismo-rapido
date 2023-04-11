@@ -1,15 +1,17 @@
 import React from "react";
 import { NavLink, useMatch, useResolvedPath } from 'react-router-dom';
-import avatar from "../../../assets/img/profile_pic.jpg";
+import avatar from "../../../assets/img/profile_pic.png";
+import { getUserLocalStorage } from '../../../store/util'
 
 function Menav(){
-
+	const userData = getUserLocalStorage()
+	
 	return(
 		<div className="rounded-4 p-4 pt-0 menav">
 			<div className=" text-center mb-5">
 				<img className="avatar-img rounded-circle" src={avatar} alt="avatar" />
-				<p className="m-0"><strong>Pedro de Alcântara...</strong></p>
-				<p className="small m-0">pedro@palacio.imp.br</p>
+				<p className="m-0"><strong>{userData.name}...</strong></p>
+				<p className="small m-0">{userData.mail}</p>
 			</div>
 			<ul className="nav flex-column">
 				<li className="nav-item">

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-
 import logoDashboard from "../../../assets/img/logo-color.svg";
-import avatar from "../../../assets/img/profile_pic.jpg";
+import avatar from "../../../assets/img/profile_pic.png";
+import { getUserLocalStorage } from '../../../store/util'
 
 function Meheader(){
+	const userData = getUserLocalStorage()
+
 	return(
 		<div id="header" className="bg-white dashboard-header">
 			<nav className="navbar navbar-expand-md">
@@ -19,7 +21,7 @@ function Meheader(){
 						<li className="nav-item dropdown ms-5">
 						<a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 							<div className="avatar avatar-p p-0 me-2"><img className="avatar-img rounded-circle" src={avatar} alt="avatar" /></div>
-							Pedro de Alcântara...
+							{userData.name}...
 							<i className="ms-1 bi bi-chevron-down"></i>
 						</a>
 						<ul className="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
@@ -29,8 +31,8 @@ function Meheader(){
 										<img className="avatar-img rounded-circle shadow" src={avatar} alt="avatar" />
 									</div>
 								<div>
-									<p className="m-0"><strong>Pedro de Alcântara...</strong></p>
-									<p className="small m-0">pedro@palacio.imp.br</p>
+									<p className="m-0"><strong>{userData.name}...</strong></p>
+									<p className="small m-0">{userData.mail}</p>
 								</div>
 							</div>
 							</li>

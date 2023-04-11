@@ -31,28 +31,36 @@ function Login(){
 	}
 
 	useEffect(() => {
-	   document.body.classList.add('bg-internas-login');
+		document.body.classList.remove('bg-internas-dashboard');
+		document.body.classList.add('bg-internas-login');
 	}, []);
-
+	
+	const basicAuth = 'Basic ' + btoa(state.email +':'+state.password)
+	const token = btoa(state.email +':'+state.password)
+	
 	function handleSubmit(e: any){
 		e.preventDefault()
-
+		/*
 		const data = JSON.stringify({
-		  "email": state.email,
+		  "username": state.email,
 		  "password": state.password
 		});
+		*/
 
         const headers = {
             headers: {
 				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': basicAuth,
             }
         }
 
 		try{
-			axios.post('https://reqres.in/api/login', data, headers).then((response) => {
-				//console.log(response)
-				const session = { username: state.email, token: response.data.token }
+			console.log(headers)
+			//axios.post('https://reqres.in/api/login', data, headers).then((response) => {
+			axios.get('http://localhost:3000/quatour/user', headers).then((response) => {
+				console.log(response)
+				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: '' }
 				//console.log(session)
 				auth.updateUser ? auth.updateUser({...session}) : null;
 				setUserLocalStorage(session)
@@ -60,6 +68,7 @@ function Login(){
 			})			
 		}catch(error){
 			console.log('Invalid email or password')
+			Alertify.alert('Erro', 'Usuário ou senha inválidos!');
 		}
 
 	}

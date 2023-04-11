@@ -2,11 +2,14 @@ import { createContext } from 'react'
 import { getUserLocalStorage } from './util'
 
 export type User = {
-  //name: string
-  username: string
-  //user_id: number
-  token: string
-  //roles: { authority: string }[]
+	user_id: string
+	name: string
+	username: string
+	mail: string
+	phone: string
+	birthdate: string
+	token: string
+	role: string
 }
 
 export type AuthType = {

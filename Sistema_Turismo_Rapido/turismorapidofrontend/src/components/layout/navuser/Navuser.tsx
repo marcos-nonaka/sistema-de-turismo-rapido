@@ -5,7 +5,7 @@ import { getUserLocalStorage } from '../../../store/util'
 import LogoTop from "../../../assets/img/logo-top.svg";
 
 
-function Navbar(){
+function Navuser(){
 	const [isNavbarNormal, setIsNavbarNormal] = useState(false);
 	//const [isLogged, setIsLogged] = useState(false);
 	//const [currentUser, setCurrentUser] = useState(false);
@@ -90,23 +90,39 @@ function Navbar(){
             </ul>
 
             <div className="d-flex">
-					<ul className="navbar-nav ms-md-auto">
-						<li className="nav-item">
-						<a className="btn btn-outline-light rounded-pill ms-4  me-3 ps-4 pe-4"
-							href="/login"
-						>
-							Login
-							</a>
-						</li>
-						<li className="nav-item">
-							<a className="btn btn-outline-warning rounded-pill ps-4 pe-4"
-							href="/cadastre-se"
-						>
-							Cadastre-se
-							</a>
-						</li>
-					</ul>
-				</div>
+				<ul className="navbar-nav ms-md-auto d-none">			
+					<li className="nav-item dropdown ms-5">
+						<a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+							<div className="avatar avatar-p p-0 me-2"><img className="avatar-img rounded-circle" src={''} alt="avatar" /></div>
+							Nome Usuário...
+							<i className="ms-1 bi bi-chevron-down"></i>
+						</a>
+						
+						<ul className="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+							<li className="px-3 mb-3">
+								<div className="d-flex align-items-center">
+									<div className="avatar me-3">
+										<img className="avatar-img rounded-circle shadow" src={''} alt="avatar" />
+									</div>
+									<div>
+										<p className="m-0"><strong>Nome Usuário...</strong></p>
+										<p className="small m-0">email@email.com.br</p>
+									</div>
+								</div>
+							</li>
+	
+							<li> <hr className="dropdown-divider" /></li>
+							<li><a className="dropdown-item" href="/me/profile"><i className="bi bi-person fa-fw me-2"></i>Minha conta</a></li>
+							<li><a className="dropdown-item" href="/me/booking"><i className="bi bi-bookmark-check fa-fw me-2"></i>Minhas reservas</a></li>
+
+							<li><a className="dropdown-item bg-danger-soft-hover" href="/logout"><i className="bi bi-power fa-fw me-2"></i>Logout</a></li>
+							<li><hr className="dropdown-divider" /></li>
+
+						</ul>
+					</li>
+				</ul>
+			
+			</div>
           </div>
         </div>
       </nav>
@@ -115,4 +131,4 @@ function Navbar(){
 
 }
 
-export default Navbar;
+export default Navuser;
