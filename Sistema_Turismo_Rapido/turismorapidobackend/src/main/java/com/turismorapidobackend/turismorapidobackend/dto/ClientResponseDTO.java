@@ -1,8 +1,10 @@
 package com.turismorapidobackend.turismorapidobackend.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.turismorapidobackend.turismorapidobackend.model.Client;
+import com.turismorapidobackend.turismorapidobackend.model.Role;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,6 +19,7 @@ public class ClientResponseDTO {
     Long tel_number;
     String mail;
     String username;
+    List<Role> roles;
 
     public ClientResponseDTO(Client client){
         this.name = client.getName();
@@ -26,5 +29,6 @@ public class ClientResponseDTO {
         this.tel_number = client.getTel_number();
         this.mail = client.getMail();
         this.username = client.getUsername();
+        this.roles = client.getRoles();
     }
 }
