@@ -38,6 +38,7 @@ const MainRouter = () => {
 		<Route path='/me/profile' element={<Profile />} />
 		<Route path='/me/booking' element={<Booking />} />
 		<Route path='/pesquisar-roteiro' element={<ItinerarySearch />} />
+    <Route path={'/roteiro'} element={<Result />} />
         <Route
           path=''
           errorElement={<NotFound />}
@@ -46,9 +47,8 @@ const MainRouter = () => {
             </RequireAuth>
           }
         >
-		 <Route path={'dashboard'} element={<Dashboard />} />
-		  {/*<Route path={'pesquisar-roteiro'} element={<ItinerarySearch />} />*/}
-		  <Route path={'roteiro'} element={<Result />} />
+		      <Route path={'dashboard'} element={<Dashboard />} />
+		      {/*<Route path={'pesquisar-roteiro'} element={<ItinerarySearch />} />*/}
         </Route>
       </Route>
     </Routes>

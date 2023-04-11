@@ -5,7 +5,10 @@ import { useAPI } from 'data/API'
 import OuroPreto from '../../../assets/img/destinations/ouro-preto.jpg'
 import Pelorinho from '../../../assets/img/destinations/pelourinho.jpg'
 
-interface Cidade {
+interface Roteiro {
+  numberOfDays: number
+  valor: number
+  cidade: any
   id: number
   name: string
   cep: string
@@ -16,15 +19,15 @@ interface Cidade {
 
 function ItinerarySearch() {
   const api = useAPI()
-  const [cidades, setCidades] = useState<any[]>([])
+  const [roteiros, setRoteiros] = useState<any[]>([])
 
   useEffect(() => {
-    api.get('/cidades/', {}).then((res: Cidade[]) => {
-      setCidades(res)
+    api.get('/roteiros', {}).then((res: Roteiro[]) => {
+      setRoteiros(res)
     })
-  }, [api, setCidades])
+  }, [api, setRoteiros])
 
-  const [resultadosPesquisa, setResultadosPesquisa] = useState<Array<Cidade>>([])
+  const [resultadosPesquisa, setResultadosPesquisa] = useState<Array<Roteiro>>([])
 
   const handleSearch = () => {
     const searchInput = document.getElementById('search') as HTMLInputElement
@@ -35,7 +38,7 @@ function ItinerarySearch() {
       return
     }
 
-    const filteredCidades = cidades.filter((cidade) => cidade.name.toLowerCase().includes(query))
+    const filteredCidades = roteiros.filter((roteiro) => roteiro.cidade.name.toLowerCase().includes(query))
 
     if (filteredCidades.length > 0) {
       setResultadosPesquisa(filteredCidades)
@@ -236,8 +239,8 @@ function ItinerarySearch() {
               <h3 className='h3 text-center fw-bold border-bottom pb-5 mb-5'>Resultados</h3>
 
               {resultadosPesquisa.length > 0 ? (
-                resultadosPesquisa.map((cidade) => (
-                  <div className='tour-list' key={cidade.id}>
+                resultadosPesquisa.map((roteiro) => (
+                  <div className='tour-list' key={roteiro.id}>
                     <div className='row mb-4 border-bottom pb-5'>
                       <div className='col-md-4 col-sm-6'>
                         <img src={OuroPreto} className='w-100 rounded-4' alt='Ouro Preto' />
@@ -245,28 +248,28 @@ function ItinerarySearch() {
                       <div className='col-md-8 col-sm-6 pt-3'>
                         <div>
                           <h4 className='h4 fw-bold'>
-                            {cidade.name}
+                            {roteiro.cidade.name}
                             <span>
                               15 <i className='bi bi-hand-thumbs-up'></i> 0{' '}
                               <i className='bi bi-hand-thumbs-down'></i>
                             </span>
                           </h4>
                           <p>
-                            Exemplo de descrição: Ouro Preto é uma das primeiras cidades tombadas
+                            Ouro Preto é uma das primeiras cidades tombadas
                             pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título
                             de Patrimônio Mundial, conferido pela Unesco, em 1980 [...]
                           </p>
                           <p className='mb-1'>
                             <span className='btn btn-secondary rounded-5'>
-                              <i className='bi bi-calendar3'></i> 2 dias
+                              <i className='bi bi-calendar3'></i> {roteiro.numberOfDays} dia(s)
                             </span>{' '}
                             <span className='btn btn-secondary rounded-5'>
                               <i className='bi bi-cash-coin'></i> A partir de{' '}
-                              <strong>R$ 140,99</strong>
+                              <strong>R$ {roteiro.valor}</strong>
                             </span>
                           </p>
-                          <p className='m-0'>Coordenadas - Latitude: {cidade.latitude} - Longitude: {cidade.longitude}</p>
-                          <p className='mb-3'>@criador</p>
+                          {/* <p className='m-0'>Coordenadas - Latitude: {cidade.latitude} - Longitude: {cidade.longitude}</p>
+                          <p className='mb-3'>@criador</p> */}
                           <a
                             href='/roteiro'
                             className='btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4'
