@@ -28,6 +28,8 @@ public class Cidade {
 
     String description;
 
+    String photo;
+
     @OneToMany(targetEntity = Roteiro.class, cascade = CascadeType.ALL, mappedBy = "cidade")
     Set<Roteiro> roteiros;
 

@@ -37,6 +37,7 @@ public class CidadeService {
         cidade.setHotels(new HashSet<>());
         cidade.setLongitude(cidadeRequestDTO.getLongitude());
         cidade.setLatitude(cidadeRequestDTO.getLatitude());
+        cidade.setPhoto(cidadeRequestDTO.getPhoto());
 
         cidadeRepository.save(cidade);
 

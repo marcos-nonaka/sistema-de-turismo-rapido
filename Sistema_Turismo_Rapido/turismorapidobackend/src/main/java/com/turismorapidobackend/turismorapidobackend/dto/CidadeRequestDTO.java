@@ -19,6 +19,8 @@ public class CidadeRequestDTO extends AbstractRequestDTO {
 
     Long cep;
 
+    String photo;
+
     @NotBlank(message="Campo longitude não pode ser vazio")
     @NotNull(message="Campo longitude precisa ser preenchido")
     Double longitude;
