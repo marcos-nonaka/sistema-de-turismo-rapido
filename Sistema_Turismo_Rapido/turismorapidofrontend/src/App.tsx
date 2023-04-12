@@ -21,7 +21,7 @@ import {
 const RequireAuth = ({ children }: { children: any }) => {
 	const session = getUserLocalStorage()
 	const auth = useContext(AuthContext)
-	console.log(session)
+	//console.log(session)
 	if(!session){
 	//if(!auth.user) {
 		return <Navigate to='/login' />

@@ -2,7 +2,7 @@ import React, {useEffect, useContext, useState} from 'react'
 import axios, { AxiosError } from 'axios'
 import { Meheader, Menav, Menavgist, Footer } from '../../../components'
 import Alertify from "../../../components/alertify/Alertify";
-import { useNavigate } from 'react-router-dom'
+import {Navigate, useNavigate} from 'react-router-dom';
 import { getUserLocalStorage } from '../../../store/util'
 import { ReactComponent as Loader } from '../../../assets/img/loader.svg'
 
@@ -18,7 +18,7 @@ type UserData = {
 
 function RegisterDestination(){
 	const [loading, setloading] = useState(false)
-	const userData = getUserLocalStorage()
+	const session = getUserLocalStorage()
 	const token = getUserLocalStorage().token
 	const [state, setState] = useState<UserData>({
 		city: '',
@@ -42,7 +42,7 @@ function RegisterDestination(){
 	}, []);
 
   const handleClick = (e: any) => {
-    console.log(e.target.value)
+    //console.log(e.target.value)
 	const target = e.target.value
   }
   
@@ -52,13 +52,13 @@ function RegisterDestination(){
 	setloading(true)
 	
 	const data = JSON.stringify({
-		"city": state.city,
-		"attraction": state.attraction,
-		"food": state.food,
-		"hotel": state.hotel,
-		"price": state.price,
-		"days": state.days,	
-		"name": state.name,	  
+		"id_cidade": state.city,
+		"id_atracao": state.attraction,
+		"id_alimentacao": state.food,
+		"id_hotel": state.hotel,
+		"valor": state.price,
+		"numberOfDays": state.days,	
+		"id_client": session.user_id,  
 	});	
 	
 
@@ -68,15 +68,17 @@ function RegisterDestination(){
 		'Content-Type': 'application/json'
       }
     }
-	console.log(headers)
+	//console.log(headers)
 	console.log(data)
 
 	axios.post('http://localhost:3000/roteiros', data, headers).then((response) => {
-		if(response.status == 200){
+		if(response.status == 200 || response.status == 201){
 			setloading(false)
 			Alertify.alert("", "Cadastro realizado com sucesso!")
+			navigate('/me/meus-roteiros');
 		}else{
-			console.log('Erro ao tentar realizar cadastro!')
+			setloading(false)
+			console.log(response)
 			Alertify.alert('Erro ao tentar realizar cadastro!');	
 		}
 	})
@@ -91,7 +93,7 @@ function RegisterDestination(){
 			<div className="container">				
 				<div className="row">
 					<div className="col-md-3 col-sm-12">
-						{ userData.role == 'ROLE_TURISTA' ? <Menav /> : <Menavgist /> }
+						{ session.role == 'ROLE_TURISTA' ? <Menav /> : <Menavgist /> }
 					</div>
 					<div className="col-md-9 col-sm-12">
 						<h2 className="h2 fw-bold mb-2">Cadastrar roteiro</h2>
@@ -132,7 +134,7 @@ function RegisterDestination(){
 										</div>
 										<div className="col-md-12">
 											{/*<label htmlFor="name" className="form-label">Nome</label>*/}
-											<input type="hidden" className="form-control" id="name" value={userData.name} onChange={(e) => updateState(e, 'name')} />
+											<input type="hidden" className="form-control" id="name" value={session.name} onChange={(e) => updateState(e, 'name')} />
 										</div>										
 										<div className="col-12">
 											<button type="submit" className="btn btn-warning rounded-5 ps-3 pe-3 float-end">{loading ? <Loader className="spinner" /> : 'Salvar roteiro'}</button>
