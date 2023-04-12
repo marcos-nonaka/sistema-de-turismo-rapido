@@ -14,7 +14,7 @@ public class CidadeRequestDTO extends AbstractRequestDTO {
 
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Nome precisa ser preenchido")
-    @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
     String name;
 
     Long cep;

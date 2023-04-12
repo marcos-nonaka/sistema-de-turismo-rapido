@@ -19,6 +19,7 @@ public class ClientResponseDTO {
     Long tel_number;
     String mail;
     String username;
+    Long cpf;
     List<Role> roles;
 
     public ClientResponseDTO(Client client){
@@ -30,5 +31,6 @@ public class ClientResponseDTO {
         this.mail = client.getMail();
         this.username = client.getUsername();
         this.roles = client.getRoles();
+        this.cpf = client.getCpf();
     }
 }

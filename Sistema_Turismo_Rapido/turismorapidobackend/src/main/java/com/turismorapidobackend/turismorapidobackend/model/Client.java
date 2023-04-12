@@ -26,6 +26,7 @@ public class Client implements UserDetails {
     String username;
     String password;
     String photo;
+    Long cpf;
 
 
     //@ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")

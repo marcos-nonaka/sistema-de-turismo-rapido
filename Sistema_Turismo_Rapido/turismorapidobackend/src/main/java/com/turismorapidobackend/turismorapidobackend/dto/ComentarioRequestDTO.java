@@ -14,7 +14,7 @@ public class ComentarioRequestDTO extends AbstractRequestDTO {
 
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Descrição precisa ser preenchido")
-    @Size(min = 10, max = 300, message = "Descrição tem tamanho mínimo de 10 e máximo de 300")
+    @Size(min = 10, max = 1000, message = "Descrição tem tamanho mínimo de 10 e máximo de 1000")
     String comentario;
     
     Long id_client;

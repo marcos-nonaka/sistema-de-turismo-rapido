@@ -16,11 +16,11 @@ public class AlimentacaoRequestDTO extends AbstractRequestDTO {
 
     Long id_cidade;
 
-    @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
     @NotBlank(message = "O campo nome do local é obrigatório")
     String local_name;
 
-    @Size(min = 50, max = 200, message = "Nome tem tamanho mínimo de 50 e máximo de 200")
+    @Size(min = 50, max = 500, message = "Nome tem tamanho mínimo de 50 e máximo de 500")
     @NotBlank(message = "O campo Descrição é obrigatório")
     String description;
 
@@ -31,12 +31,12 @@ public class AlimentacaoRequestDTO extends AbstractRequestDTO {
 
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Rua precisa ser preenchido")
-    @Size(min = 3, max = 10, message = "Rua tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 100, message = "Rua tem tamanho mínimo de 3 e máximo de 100")
     String street_name;
 
     @NotBlank(message="Campo rua não pode ser vazio")
     @NotNull(message="Campo Municipio precisa ser preenchido")
-    @Size(min = 3, max = 10, message = "Municipio tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 100, message = "Municipio tem tamanho mínimo de 3 e máximo de 100")
     String street_district;
 
     @Digits(integer = 4, fraction = 0, message="Verifique se o numero da rua está correto")

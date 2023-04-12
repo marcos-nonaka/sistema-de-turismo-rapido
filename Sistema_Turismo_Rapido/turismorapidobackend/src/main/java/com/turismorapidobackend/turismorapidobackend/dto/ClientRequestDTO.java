@@ -25,7 +25,7 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Nome precisa ser preenchido")
-    @Size(min = 3, max = 10, message = "Nome tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
     String name;
 
     // @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$", message = "Formato de data inválida")
@@ -44,17 +44,19 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     String mail;
 
     @NotBlank(message = "Usuário é obrigatório")
-    @Size(min = 5, max = 10, message="Usuário tem tamanho mínimo de 5 e máximo de 10")
+    @Size(min = 5, max = 50, message="Usuário tem tamanho mínimo de 5 e máximo de 50")
     @NotNull(message="Insira um nome de usuário")
     String username;
 
-    @Size(min = 3, max = 10, message = "Password tem tamanho mínimo de 3 e máximo de 10")
+    @Size(min = 3, max = 50, message = "Password tem tamanho mínimo de 3 e máximo de 50")
     @NotBlank(message = "Password é obrigatório")
     String password;
     
     String photo;
 
     RoleName rolename;
+
+    Long cpf;
 
     List<Role> roles;
 
