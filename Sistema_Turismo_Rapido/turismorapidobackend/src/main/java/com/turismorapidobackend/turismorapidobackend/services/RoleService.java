@@ -29,14 +29,6 @@ public class RoleService {
             throw new Error("Usuário não encontrado!");
         }
 
-//        roles = roleRequestDTO.getId_roles().stream().map(role -> {
-//            return new Role(role);
-//        }).collect(Collectors.toList());
-//
-
-//        clientRequestDTO.setRoles(roles);
-
         return new ClientResponseDTO(clientRepository.save(optionalClient.get()));
-
     }
 }

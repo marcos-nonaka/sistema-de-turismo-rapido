@@ -1,7 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
 import com.turismorapidobackend.turismorapidobackend.dto.AlimentacaoRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.AlimentacaoService;
 
 import jakarta.validation.Valid;
@@ -29,11 +28,6 @@ public class AlimentacaoController {
     public ResponseEntity<Object> find(@PathVariable(name = "id") Optional<Long> id) {
         return alimentacaoService.find(id);
     }
-
-//    @GetMapping("/")
-//    public ResponseEntity<Object> findAll(){
-//        return alimentacaoService.findAll();
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@NonNull @PathVariable(name = "id") Optional<Long> id){

@@ -10,5 +10,4 @@ import java.util.List;
 public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
     List<Comentario> findByComentarioContainingIgnoreCase(String comentario);
     List <Comentario>  findByIdComentarioAndComentarioContainingIgnoreCase(Long id, String comentario);
-
 }

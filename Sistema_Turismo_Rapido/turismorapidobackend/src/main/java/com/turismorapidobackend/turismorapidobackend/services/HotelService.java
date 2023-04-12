@@ -27,9 +27,6 @@ public class HotelService {
     CidadeRepository cidadeRepository;
     @Transactional
     public ResponseEntity<Object> save(HotelRequestDTO hotelRequestDTO) {
-        /*CidadeRequestDTO cidadeRequestDTO = new CidadeRequestDTO();
-        BeanUtils.copyProperties(hotelRequestDTO, cidadeRequestDTO);
-        Cidade cidade = cidadeRequestDTO.toCidade();*/
         Cidade cidade = cidadeRepository.findById(hotelRequestDTO.getIdCidade()).get();
 
         Hotel hotel = new Hotel();
@@ -45,7 +42,6 @@ public class HotelService {
 
         hotel.setCidade(cidade);
         hotel = hotelRepository.save(hotel);
-
 
         cidade.getHotels().add(hotel);
         cidadeRepository.save(cidade);
@@ -68,6 +64,7 @@ public class HotelService {
         if (list.isEmpty()) {
             throw new ObjectNotFoundException();
         }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(HotelResponseDTO:: new).toList());
     }
 
@@ -77,18 +74,21 @@ public class HotelService {
         if (id.isPresent()) {
             return hotel.orElseThrow(() -> new ObjectNotFoundException(id.get()));
         }
+
         return null;
     }
 
     @Transactional
     public ResponseEntity<Object> delete(Optional<Long> id) {
         hotelRepository.delete(this.findById(id));
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
     public ResponseEntity<Object> update(Optional<Long> id, HotelRequestDTO hotelRequestDTO) {
         Hotel hotel = this.findById(id);
+        
         return ResponseEntity.status(HttpStatus.CREATED).body(new HotelResponseDTO(hotelRepository.save((Hotel) hotelRequestDTO.toObject(hotel))));
     }
 }

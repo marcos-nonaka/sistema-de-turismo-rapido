@@ -1,6 +1,5 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoteiroRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.RoteiroService;
 

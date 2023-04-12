@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ErrorDTO {
-
     Instant timestamp;
     Integer status;
     String error;
@@ -18,5 +17,4 @@ public class ErrorDTO {
     public ErrorDTO(){
 
     }
-    
 }

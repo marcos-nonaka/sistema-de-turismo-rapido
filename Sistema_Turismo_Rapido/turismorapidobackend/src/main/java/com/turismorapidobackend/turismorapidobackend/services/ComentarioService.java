@@ -18,16 +18,20 @@ import java.util.Optional;
 public class ComentarioService {
     @Autowired
     ComentarioRepository comentarioRepository;
+
     @Autowired
     ClientRepository clientRepository;
+
     @Autowired
     RoteiroRepository roteiroRepository;
+
     public ResponseEntity<Object> save(ComentarioRequestDTO comentarioRequestDTO) {
         Comentario comentario = new Comentario();
         comentario.setComentario(comentarioRequestDTO.getComentario());
         comentario.setClient(clientRepository.findById(comentarioRequestDTO.getId_client()).get());
         comentario.setRoteiro(roteiroRepository.findById(comentarioRequestDTO.getId_roteiro()).get());
         comentario = comentarioRepository.save(comentario);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new ComentarioResponseDTO(comentario));
     }
 
@@ -46,6 +50,7 @@ public class ComentarioService {
         if (list.isEmpty()) {
             throw new ObjectNotFoundException();
         }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(ComentarioResponseDTO:: new).toList());
     }
 
@@ -62,12 +67,14 @@ public class ComentarioService {
     @Transactional
     public ResponseEntity<Object> delete(Optional<Long> id) {
         comentarioRepository.delete(this.findById(id));
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
     public ResponseEntity<Object> update(Optional<Long> id, ComentarioRequestDTO comentarioRequestDTO) {
         Comentario comentario = this.findById(id);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new ComentarioResponseDTO(comentarioRepository.save((Comentario) comentarioRequestDTO.toObject(comentario))));
     }
 

@@ -1,6 +1,5 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.services.ClientService;
 import com.turismorapidobackend.turismorapidobackend.services.RoleService;
 

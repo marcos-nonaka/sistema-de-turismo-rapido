@@ -15,7 +15,6 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestControllerAdvice
 public class ValidationExceptionHandler {
-
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<ErrorDTO> handleNotValid(
@@ -39,18 +38,16 @@ public class ValidationExceptionHandler {
 @ResponseStatus(code = HttpStatus.NOT_FOUND)
 @ExceptionHandler(Exception.class)
 public ErrorDTO handleException(
-    Exception exception, 
-    HttpServletRequest request) {
-    ErrorDTO errorDTO = new ErrorDTO();
-    errorDTO.setTimestamp(Instant.now());
-    errorDTO.setStatus(HttpStatus.NOT_FOUND.value());
-    errorDTO.setError("resource not found");
-    errorDTO.setMessage(exception.getMessage());
-    errorDTO.setPath(request.getRequestURI());
-    return errorDTO;
-}
-
-
+        Exception exception,
+        HttpServletRequest request) {
+        ErrorDTO errorDTO = new ErrorDTO();
+        errorDTO.setTimestamp(Instant.now());
+        errorDTO.setStatus(HttpStatus.NOT_FOUND.value());
+        errorDTO.setError("resource not found");
+        errorDTO.setMessage(exception.getMessage());
+        errorDTO.setPath(request.getRequestURI());
+        return errorDTO;
+    }
 }
 
 

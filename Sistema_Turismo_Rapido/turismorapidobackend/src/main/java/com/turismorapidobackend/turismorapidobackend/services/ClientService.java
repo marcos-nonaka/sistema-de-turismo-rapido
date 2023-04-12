@@ -1,15 +1,12 @@
 package com.turismorapidobackend.turismorapidobackend.services;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import com.turismorapidobackend.turismorapidobackend.dto.CidadeResponseDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.RoleRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
-import com.turismorapidobackend.turismorapidobackend.model.Cidade;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 import com.turismorapidobackend.turismorapidobackend.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
-import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ErrorDTO;
 import com.turismorapidobackend.turismorapidobackend.exceptionhandler.ObjectNotFoundException;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
@@ -26,8 +22,6 @@ import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.repository.ClientRepository;
 
 import jakarta.transaction.Transactional;
-
-
 
 @Service
 public class ClientService {
@@ -37,7 +31,6 @@ public class ClientService {
 
     @Autowired
     RoleRepository roleRepository;
-
 
     @Transactional
     public ResponseEntity<Object> find(Long id, Optional<String> name) {
@@ -70,7 +63,6 @@ public class ClientService {
 
     @Transactional
     public ResponseEntity<Object> save(ClientRequestDTO clientRequestDTO){
-        // Verificação de regras
         Client client = (Client) clientRequestDTO.toObject(new Client());
 
         Optional<Client> optionalClient = clientRepository.findByUsername(clientRequestDTO.getUsername());
@@ -80,13 +72,15 @@ public class ClientService {
             if(roleName == RoleName.ROLE_ADMIN){
                 throw new Error("Acesso não autorizado!");
             }
+
             Role role = roleRepository.findByRole(roleName).orElseThrow(() -> new NoSuchElementException("Role não encontrada"));
             client.setRoles( List.of(role) );
             clientRepository.save(client);
+
             return ResponseEntity.status(HttpStatus.OK).build();
         }
+
         throw new Error("Usuário já existe!");
-        
     }
 
     public ClientResponseDTO addRole(RoleRequestDTO roleRequestDTO) {
@@ -104,16 +98,15 @@ public class ClientService {
     public ResponseEntity<Object> delete(Long id) {
         Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Cliente Não encontrado"));
         clientRepository.delete(client);
+
         return ResponseEntity.status(HttpStatus.OK).build();
-
-
-        
     }
 
     @Transactional
     public ResponseEntity<Object> update(Long id, ClientRequestDTO clientRequestDTO) {
         Client client = clientRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Cliente Não encontrado"));
         clientRequestDTO.setPassword(passwordEncoder().encode(clientRequestDTO.getPassword()));
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new ClientResponseDTO(clientRepository.save((Client) clientRequestDTO.toObject(client))));
     }
 }
