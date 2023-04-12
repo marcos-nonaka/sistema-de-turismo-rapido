@@ -1,7 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
 import com.turismorapidobackend.turismorapidobackend.dto.CidadeRequestDTO;
-import com.turismorapidobackend.turismorapidobackend.dto.ClientRequestDTO;
 import com.turismorapidobackend.turismorapidobackend.services.CidadeService;
 
 import jakarta.validation.Valid;

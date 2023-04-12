@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,6 @@ public class Hotel {
 
     @Column(name = "hotel_name")
     String hotelName;
-
 
     Long phone_number;
 
@@ -40,5 +40,4 @@ public class Hotel {
 
     @ManyToMany(targetEntity = Roteiro.class, mappedBy = "hoteis")
     List<Roteiro> roteiros;
-
 }

@@ -28,7 +28,6 @@ public class Client implements UserDetails {
     String photo;
     Long cpf;
 
-
     //@ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
     @ManyToMany(targetEntity = Roteiro.class)
     @JoinTable(name = "client_roteiro",
@@ -74,5 +73,4 @@ public class Client implements UserDetails {
         // TODO Auto-generated method stub
         return true;
     }
-    
 }

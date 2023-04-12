@@ -23,11 +23,8 @@ public class Role implements GrantedAuthority {
     @Column(name = "role")
     RoleName role;
 
-    
-
     @Override
     public String getAuthority() {
         return role.toString();
     }
-    
 }

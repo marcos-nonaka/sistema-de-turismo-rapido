@@ -3,26 +3,19 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.turismorapidobackend.turismorapidobackend.enums.RoleName;
-import com.turismorapidobackend.turismorapidobackend.model.Client;
 import com.turismorapidobackend.turismorapidobackend.model.Role;
 import com.turismorapidobackend.turismorapidobackend.model.Roteiro;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.beans.BeanUtils;
-
-import static com.turismorapidobackend.turismorapidobackend.utils.Utils.getNullPropertyNames;
 
 @Data
 @AllArgsConstructor
 public class ClientRequestDTO extends AbstractRequestDTO {
-    
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Nome precisa ser preenchido")
     @Size(min = 3, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
@@ -65,12 +58,4 @@ public class ClientRequestDTO extends AbstractRequestDTO {
     public ClientRequestDTO(){
 
     }
-
-//    public Client toClient(){
-//        Client client = new Client();
-//        BeanUtils.copyProperties(this, client, getNullPropertyNames(this));
-//        // client.setRolename(rolename);
-//        return client;
-//    }
-
 }

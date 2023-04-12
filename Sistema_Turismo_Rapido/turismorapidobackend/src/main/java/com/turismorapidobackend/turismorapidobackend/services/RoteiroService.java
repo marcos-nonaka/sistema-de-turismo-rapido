@@ -38,9 +38,6 @@ public class RoteiroService {
         Optional<Atracao> atracaoOptional = atracaoRepository.findById(roteiroRequestDTO.getId_atracao());
         Optional<Hotel> hotelOptional = hotelRepository.findById(roteiroRequestDTO.getId_hotel());
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(roteiroRequestDTO.getId_cidade());
-         /*if (alimentacaoOptional.isEmpty()) {
-             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Alimentacao não encontrado");
-         }*/
 
         roteiro.setValor(roteiroRequestDTO.getValor());
 
@@ -78,6 +75,7 @@ public class RoteiroService {
         if (list.isEmpty()) {
             throw new ObjectNotFoundException();
         }
+
         return ResponseEntity.status(HttpStatus.CREATED).body(list.stream().map(RoteiroResponseDTO:: new).toList());
     }
 
@@ -87,18 +85,21 @@ public class RoteiroService {
         if (id.isPresent()) {
             return roteiro.orElseThrow(() -> new ObjectNotFoundException(id.get()));
         }
+
         return null;
     }
 
     @Transactional
     public ResponseEntity<Object> delete(Optional<Long> id) {
         roteiroRepository.delete(this.findById(id));
+
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Transactional
     public ResponseEntity<Object> update(Optional<Long> id, RoteiroRequestDTO roteiroRequestDTO) {
         Roteiro roteiro = this.findById(id);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiroRepository.save((Roteiro) roteiroRequestDTO.toObject(roteiro))));
     }
 }
