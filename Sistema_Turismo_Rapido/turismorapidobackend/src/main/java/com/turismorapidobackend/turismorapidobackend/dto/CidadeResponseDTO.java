@@ -16,6 +16,7 @@ public class CidadeResponseDTO {
     List<IdNameDTO> alimentacoes;
     List<IdNameDTO> hotels;
     String photo;
+    String description;
 
     public CidadeResponseDTO() {
     }
@@ -27,5 +28,6 @@ public class CidadeResponseDTO {
         this.atracoes = cidade.getAtracoes().stream().map(atracao -> new IdNameDTO(atracao.getIdAtracao(), atracao.getName())).toList();
         this.alimentacoes = cidade.getAlimentacoes().stream().map(alimentacao -> new IdNameDTO(alimentacao.getId_alimentacao(), alimentacao.getLocal_name())).toList();
         this.hotels = cidade.getHotels().stream().map(hotel -> new IdNameDTO(hotel.getIdHotel(), hotel.getHotelName()) ).toList();
+        this.description = cidade.getDescription();
     }
 }

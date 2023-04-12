@@ -38,6 +38,7 @@ public class CidadeService {
         cidade.setLongitude(cidadeRequestDTO.getLongitude());
         cidade.setLatitude(cidadeRequestDTO.getLatitude());
         cidade.setPhoto(cidadeRequestDTO.getPhoto());
+        cidade.setDescription(cidadeRequestDTO.getDescription());
 
         cidadeRepository.save(cidade);
 
