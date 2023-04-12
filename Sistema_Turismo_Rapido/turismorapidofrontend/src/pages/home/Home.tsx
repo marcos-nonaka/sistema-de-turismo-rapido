@@ -3,7 +3,7 @@ import { Navbar, Navuser, Slider, Content, Footer } from '../../components'
 import { getUserLocalStorage } from '../../store/util'
 
 function Home() {
-	const userData = getUserLocalStorage()
+	const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
 	
     return(
 		<div>
