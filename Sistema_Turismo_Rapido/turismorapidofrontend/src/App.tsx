@@ -44,6 +44,7 @@ function App() {
 				<Route path='/logout' element={<Logout />} />
 				<Route path='/cadastre-se' element={<Signup />} />
 				<Route path={'pesquisar-roteiro'} element={<ItinerarySearch />} />
+				<Route path='/roteiro' element={<Result />} />
 				<Route path={'detalhes'} element={<Result />} />
 				<Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}></Route>
 				<Route path='/me/profile' element={<RequireAuth><Profile /></RequireAuth>}></Route>
