@@ -55,6 +55,8 @@ public class RoteiroService {
 
         roteiro.setCidade(cidadeOptional.get());
 
+        roteiro.setDays(roteiroRequestDTO.getDays());
+
         roteiroRepository.save(roteiro);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new RoteiroResponseDTO(roteiro));

@@ -22,7 +22,7 @@ public class Roteiro {
 
     String name;
 
-    Integer numberOfDays;
+    Long days;
 
     String description;
 

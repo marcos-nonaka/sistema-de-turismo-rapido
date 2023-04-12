@@ -18,7 +18,7 @@ public class RoteiroResponseDTO {
 
     String name;
 
-    Integer numberOfDays;
+    Long days;
 
     public RoteiroResponseDTO(Roteiro roteiro){
         this.idRoteiro = roteiro.getIdRoteiro();
@@ -28,6 +28,6 @@ public class RoteiroResponseDTO {
         this.cidade = new CidadeResponseDTO(roteiro.getCidade());
         this.valor = roteiro.getValor();
         this.name = roteiro.getName();
-        this.numberOfDays = roteiro.getNumberOfDays();
+        this.days = roteiro.getDays();
     }
 }
