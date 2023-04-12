@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getUserLocalStorage } from '../../../store/util'
-
+import avatar from "../../../assets/img/profile_pic.png";
 import LogoTop from "../../../assets/img/logo-top.svg";
 
-
 function Navuser(){
+	const userData = getUserLocalStorage()
 	const [isNavbarNormal, setIsNavbarNormal] = useState(false);
-	//const [isLogged, setIsLogged] = useState(false);
-	//const [currentUser, setCurrentUser] = useState(false);
-	
+
 	const url = useLocation();
 	let internas = '';
 
@@ -30,14 +28,6 @@ function Navuser(){
 			},
 		);
 	}, []);
-  
-	/*const session = getUserLocalStorage()
-	if(!session){
-		setIsLogged(false)
-	}else{
-		setIsLogged(true)
-	}*/
-  
   
     return(
     <div id="header" className={`${isNavbarNormal ? "min" : ""} ${internas}`}>
@@ -78,11 +68,6 @@ function Navuser(){
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/cadastre-se">
-                  Seja um turismólogo
-                </a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link" href="/fale-conosco">
                   Fale conosco
                 </a>
@@ -90,11 +75,11 @@ function Navuser(){
             </ul>
 
             <div className="d-flex">
-				<ul className="navbar-nav ms-md-auto d-none">			
+				<ul className="navbar-nav ms-md-auto">			
 					<li className="nav-item dropdown ms-5">
 						<a href="#" id="dropdown-menu" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-							<div className="avatar avatar-p p-0 me-2"><img className="avatar-img rounded-circle" src={''} alt="avatar" /></div>
-							Nome Usuário...
+							<div className="avatar avatar-p p-0 me-2"><img className="avatar-img rounded-circle" src={avatar} alt="avatar" /></div>
+							{userData.name}
 							<i className="ms-1 bi bi-chevron-down"></i>
 						</a>
 						
@@ -102,11 +87,11 @@ function Navuser(){
 							<li className="px-3 mb-3">
 								<div className="d-flex align-items-center">
 									<div className="avatar me-3">
-										<img className="avatar-img rounded-circle shadow" src={''} alt="avatar" />
+										<img className="avatar-img rounded-circle shadow" src={avatar} alt="avatar" />
 									</div>
 									<div>
-										<p className="m-0"><strong>Nome Usuário...</strong></p>
-										<p className="small m-0">email@email.com.br</p>
+										<p className="m-0"><strong>{userData.name}...</strong></p>
+										<p className="small m-0">{userData.mail}</p>
 									</div>
 								</div>
 							</li>

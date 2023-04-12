@@ -1,6 +1,5 @@
 //import axios from 'axios'
 //import { Api } from '../services/api'
-//import { IUser } from './types'
 
 export interface user{
 	email?: string;

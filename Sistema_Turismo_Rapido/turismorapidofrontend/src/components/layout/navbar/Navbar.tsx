@@ -7,9 +7,7 @@ import LogoTop from "../../../assets/img/logo-top.svg";
 
 function Navbar(){
 	const [isNavbarNormal, setIsNavbarNormal] = useState(false);
-	//const [isLogged, setIsLogged] = useState(false);
-	//const [currentUser, setCurrentUser] = useState(false);
-	
+
 	const url = useLocation();
 	let internas = '';
 
@@ -30,14 +28,6 @@ function Navbar(){
 			},
 		);
 	}, []);
-  
-	/*const session = getUserLocalStorage()
-	if(!session){
-		setIsLogged(false)
-	}else{
-		setIsLogged(true)
-	}*/
-  
   
     return(
     <div id="header" className={`${isNavbarNormal ? "min" : ""} ${internas}`}>
@@ -75,11 +65,6 @@ function Navbar(){
               <li className="nav-item">
                 <a className="nav-link" href="/pesquisar-roteiro">
                   Roteiros
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/cadastre-se">
-                  Seja um turismólogo
                 </a>
               </li>
               <li className="nav-item">

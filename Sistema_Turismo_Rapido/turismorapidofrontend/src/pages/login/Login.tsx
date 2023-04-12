@@ -52,29 +52,12 @@ function Login(){
             }
         }
 
-/*
-		try{
-			console.log(headers)
-			axios.get('http://localhost:3000/quatour/user', headers).then((response) => {
-				console.log(response)
-				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: '' }
-				//console.log(session)
-				auth.updateUser ? auth.updateUser({...session}) : null;
-				setUserLocalStorage(session)
-				navigate('/me/profile');
-			})			
-		}catch(error){
-			console.log('Invalid email or password')
-			Alertify.alert('Erro', 'Usuário ou senha inválidos!');
-		}
-*/
-
 		if(state.email != '' && state.password != ''){
 			axios.get('http://localhost:3000/quatour/user', headers).then(response => { 
 				console.log(response)
 				setloading(false)
 				
-				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: '' }
+				const session = { user_id: response.data.idClient, name: response.data.name, username: state.email, mail: response.data.mail, phone: response.data.tel_number, birthdate: response.data.data_nascimento,  token: token, role: response.data.roles[0].authority }
 				auth.updateUser ? auth.updateUser({...session}) : null;
 				setUserLocalStorage(session)
 				navigate('/me/profile');				
@@ -86,10 +69,6 @@ function Login(){
 		}else{
 			Alertify.alert('Erro', 'Digite seus dados de acesso!');
 		}
-
-
-
-
 
 	}
 

@@ -1,4 +1,3 @@
-//import React, {useState} from 'react'
 import React, { useState, useContext } from 'react'
 import { AuthContext, User } from './store/authContext'
 import { Navigate, BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -10,18 +9,18 @@ import {
 	Login,
 	Signup,
 	Logout,
-	//Itinerary,
 	Dashboard,
 	ItinerarySearch,
 	Result,
 	Profile,
 	Booking,
+	RegisterDestination,
+	MyItineraries,
 } from './pages'
 
 const RequireAuth = ({ children }: { children: any }) => {
 	const session = getUserLocalStorage()
 	const auth = useContext(AuthContext)
-	console.log('Session: ')
 	console.log(session)
 	if(!session){
 	//if(!auth.user) {
@@ -43,12 +42,14 @@ function App() {
 				<Route path='/fale-conosco' element={<Contact />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/logout' element={<Logout />} />
-				<Route path='/cadastre-se' element={<Signup />} />				
+				<Route path='/cadastre-se' element={<Signup />} />
+				<Route path={'pesquisar-roteiro'} element={<ItinerarySearch />} />
+				<Route path={'detalhes'} element={<Result />} />
 				<Route path='/dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}></Route>
-				<Route path={'pesquisar-roteiro'} element={<RequireAuth><ItinerarySearch /></RequireAuth>}></Route>
-				<Route path={'detalhes'} element={<RequireAuth><Result /></RequireAuth>}></Route>
 				<Route path='/me/profile' element={<RequireAuth><Profile /></RequireAuth>}></Route>
 				<Route path='/me/booking' element={<RequireAuth><Booking /></RequireAuth>}></Route>
+				<Route path='/me/cadastrar-roteiro' element={<RequireAuth><RegisterDestination /></RequireAuth>}></Route>
+				<Route path='/me/meus-roteiros' element={<RequireAuth><MyItineraries /></RequireAuth>}></Route>
 			</Routes>
 		</BrowserRouter>
 	</AuthContext.Provider>

@@ -1,9 +1,10 @@
 import React, {useEffect, useContext, useState} from 'react'
 import axios, { AxiosError } from 'axios'
-import { Meheader, Menav, Footer } from '../../../components'
+import { Meheader, Menav, Menavgist, Footer } from '../../../components'
 import Alertify from "../../../components/alertify/Alertify";
 import { useNavigate } from 'react-router-dom'
 import { getUserLocalStorage } from '../../../store/util'
+import { ReactComponent as Loader } from '../../../assets/img/loader.svg'
 
 type UserData = {
   city: string
@@ -16,6 +17,8 @@ type UserData = {
 }
 
 function RegisterDestination(){
+	const [loading, setloading] = useState(false)
+	const userData = getUserLocalStorage()
 	const token = getUserLocalStorage().token
 	const [state, setState] = useState<UserData>({
 		city: '',
@@ -46,6 +49,8 @@ function RegisterDestination(){
   function handleSubmit(e: any){
     e.preventDefault()
 	
+	setloading(true)
+	
 	const data = JSON.stringify({
 		"city": state.city,
 		"attraction": state.attraction,
@@ -63,15 +68,18 @@ function RegisterDestination(){
 		'Content-Type': 'application/json'
       }
     }
+	console.log(headers)
+	console.log(data)
 
 	axios.post('http://localhost:3000/roteiros', data, headers).then((response) => {
 		if(response.status == 200){
+			setloading(false)
 			Alertify.alert("", "Cadastro realizado com sucesso!")
 		}else{
 			console.log('Erro ao tentar realizar cadastro!')
 			Alertify.alert('Erro ao tentar realizar cadastro!');	
 		}
-	})	
+	})
 
   }
 
@@ -83,7 +91,7 @@ function RegisterDestination(){
 			<div className="container">				
 				<div className="row">
 					<div className="col-md-3 col-sm-12">
-						<Menav />
+						{ userData.role == 'ROLE_TURISTA' ? <Menav /> : <Menavgist /> }
 					</div>
 					<div className="col-md-9 col-sm-12">
 						<h2 className="h2 fw-bold mb-2">Cadastrar roteiro</h2>
@@ -123,16 +131,15 @@ function RegisterDestination(){
 											<input type="text" className="form-control" id="days" value={state.days} onChange={(e) => updateState(e, 'days')} />
 										</div>
 										<div className="col-md-12">
-											<label htmlFor="name" className="form-label">Nome</label>
-											<input type="text" className="form-control" id="name" value={state.name} onChange={(e) => updateState(e, 'name')} />
+											{/*<label htmlFor="name" className="form-label">Nome</label>*/}
+											<input type="hidden" className="form-control" id="name" value={userData.name} onChange={(e) => updateState(e, 'name')} />
 										</div>										
 										<div className="col-12">
-											<button type="submit" className="btn btn-warning rounded-5 ps-3 pe-3 float-end">Salvar roteiro</button>
+											<button type="submit" className="btn btn-warning rounded-5 ps-3 pe-3 float-end">{loading ? <Loader className="spinner" /> : 'Salvar roteiro'}</button>
 										</div>
 									</form>
 								</div>
-							</div>
-													
+							</div>	
 						</div>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 import React, {useEffect, useContext, useState} from 'react'
-import { Meheader, Menav, Footer } from '../../../components'
+import { Meheader, Menav, Menavgist, Footer } from '../../../components'
 import { getUserLocalStorage } from '../../../store/util'
 
 function Profile(){
@@ -18,7 +18,7 @@ function Profile(){
 			<div className="container">				
 				<div className="row">
 					<div className="col-md-3 col-sm-12">
-						<Menav />
+						 { userData.role == 'ROLE_TURISTA' ? <Menav /> : <Menavgist /> }
 					</div>
 					<div className="col-md-9 col-sm-12">
 						<h2 className="h2 fw-bold mb-2">Configurações da conta</h2>

@@ -1,14 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios, { AxiosError } from 'axios'
 import Alertify from "../../components/alertify/Alertify";
-import { useNavigate } from 'react-router-dom'
+import {Navigate, useNavigate} from 'react-router-dom';
 import { Navbar, Footer } from '../../components'
-//import '../../assets/css/signup-login.css';
 import { useAPI } from '../../data/API'
 import {AuthContext} from "../../store/authContext";
 
 import LogoQuatour from "../../assets/img/logo-color.svg";
-//import spinner from "../../assets/img/loader.svg";
 import { ReactComponent as Loader } from '../../assets/img/loader.svg'
 
 type UserData = {
@@ -21,7 +19,6 @@ type UserData = {
   password: string
   rolename: string
 }
-
 
 function Signup() {
 	const auth = useContext(AuthContext)
@@ -45,7 +42,7 @@ function Signup() {
 	const [checked, setChecked] = useState(false)
 	const [role, setRole] = useState("ROLE_TURISTA")
 
-	const basicAuth = 'Basic ' + btoa('doug:123')
+	//const basicAuth = 'Basic ' + btoa('usuario:senha')
 	//Authorization: auth.user?.basicAuth,
 	
 	useEffect(() => {
@@ -77,19 +74,19 @@ function Signup() {
 		
   }
   
-  function handleSubmit(e: any) {
+  function handleSubmit(e: any){
     e.preventDefault()
 	
 	setloading(true)
 	
 	const data = JSON.stringify({
 	  "name": state.name,
-	  "cpf": state.cpf,
 	  "data_nascimento": state.data_nascimento,
 	  "tel_number": state.tel_number,
 	  "mail": state.mail,
 	  "username": state.username,
 	  "password": state.password,
+	  "photo": '',
 	  "rolename": role
 	});	
 	
@@ -106,10 +103,10 @@ function Signup() {
 			setloading(false)
 			//console.log("Cadastro efetuado com sucesso!")
 			Alertify.alert("", "Cadastro realizado com sucesso!")
+			navigate('/login');
 		}else{
 			console.log('Erro ao tentar realizar cadastro!')
-			//Alertify.alert('Erro ao tentar realizar cadastro!');
-				
+			Alertify.alert('Erro ao tentar realizar cadastro!');	
 		}
 	})	
 
