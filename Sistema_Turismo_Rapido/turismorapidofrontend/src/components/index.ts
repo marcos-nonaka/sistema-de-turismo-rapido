@@ -9,3 +9,5 @@ export {default as Menav} from './layout/menav/Menav';
 export {default as Menavgist} from './layout/menavgist/Menavgist';
 
 export {default as NavbarPainel} from './layout/navbarPainel/NavbarPainel';
+export {default as NoItinerary} from './layout/noItinerary/NoItinerary';
+export {default as ItineraryTableData} from './layout/itineraryTableData/ItineraryTableData';

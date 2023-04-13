@@ -73,7 +73,42 @@ function Signup() {
 		}
 		
   }
-  
+
+
+  function onKeyPress(e: any){
+    const input = e.target;
+    if(e.charCode < 47 || e.charCode > 57) {
+      e.preventDefault();
+    }
+    const len = input.value.length;
+
+    if(len !== 1 || len !== 3) {
+      if(e.charCode == 47) {
+        e.preventDefault();
+      }
+    }
+
+    if(len === 2) {
+      input.value += '/';
+    }
+
+    if(len === 5) {
+      input.value += '/';
+    }
+  }
+
+	function formatDate(data: any) {
+	  const day 	= data.split("/")[0];
+	  const month 	= data.split("/")[1];
+	  const year 	= data.split("/")[2];
+
+	  return year + '-' + ("0"+month).slice(-2) + '-' + ("0"+day).slice(-2);
+	}
+
+
+	//console.log(formatDate('25/12/2020'));
+
+ 
   function handleSubmit(e: any){
     e.preventDefault()
 	
@@ -81,7 +116,7 @@ function Signup() {
 	
 	const data = JSON.stringify({
 	  "name": state.name,
-	  "data_nascimento": state.data_nascimento,
+	  "data_nascimento": formatDate(state.data_nascimento),
 	  "tel_number": state.tel_number,
 	  "mail": state.mail,
 	  "username": state.username,
@@ -90,6 +125,7 @@ function Signup() {
 	  "rolename": role
 	});	
 	
+	console.log(data)
 
     const headers = {
       headers: {
@@ -99,16 +135,19 @@ function Signup() {
     }
 
 	axios.post('/clients', data, headers).then((response) => {
+		console.log('Status: ' + response.status)
 		if(response.status == 200){
 			setloading(false)
 			//console.log("Cadastro efetuado com sucesso!")
 			Alertify.alert("", "Cadastro realizado com sucesso!")
 			navigate('/login');
 		}else{
+			setloading(false)
 			console.log('Erro ao tentar realizar cadastro!')
 			Alertify.alert('Erro ao tentar realizar cadastro!');	
 		}
-	})	
+		setloading(false)
+	})
 
   }
 
@@ -190,6 +229,9 @@ function Signup() {
 									  type="text"
 									  className="form-control"
 									  id="data_nascimento" value={state.data_nascimento} onChange={(e) => updateState(e, 'data_nascimento')}
+									  placeholder="dd/mm/yyyy"
+									  maxLength={10}
+									  onKeyPress={(e) => onKeyPress(e)}
 									/>
 								  </div>
 								  <div className="col-md-3">

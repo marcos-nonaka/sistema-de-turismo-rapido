@@ -1,22 +1,38 @@
 import React, {useEffect, useContext, useState} from 'react'
 import axios, { AxiosError } from 'axios'
-import { Meheader, Menav, Menavgist, Footer } from '../../../components'
+import { Meheader, Menav, Menavgist, Footer, NoItinerary, ItineraryTableData } from '../../../components'
 import Alertify from "../../../components/alertify/Alertify";
 import { useNavigate } from 'react-router-dom'
 import { getUserLocalStorage } from '../../../store/util'
-import error from "../../../assets/img/error.png";
+//import error from "../../../assets/img/error.png";
 
 function MyItineraries(){
 	const userData = getUserLocalStorage()
 	const token = getUserLocalStorage().token
-
+	const [data, setData] = useState<any[]>()
 	const navigate = useNavigate()
-	
+	//const [dataItineraries, setDataItineraries] = useState<any[]>()
+/*	
 	useEffect(() => {
 		document.body.classList.remove('bg-internas-login');
 		document.body.classList.add('bg-internas-dashboard');
-	}, []);
+		
+		//carregar requisicao axios get
 
+        const headers = {
+            headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': 'Basic ' + token,
+            }
+        }
+
+		axios.get('http://localhost:3000/roteiros', headers).then(response => {
+			setDataItineraries(response.data)
+		})
+		
+	}, []);
+*/
 
     return(
 		<>
@@ -32,10 +48,8 @@ function MyItineraries(){
 						<p className="mb-4">Administre sua experiência na Quatour</p>
 				
 						<div className="dashboard-content rounded-4 bg-white p-5 mb-5">
-							<p className="text-center mt-5"><img src={error} width="200" /></p>
-							<h4 className="h4 fw-bold text-center mt-5">Nenhum roteiro encontrada</h4>
-							<p className="mb-5 text-center fw-bold">Que cadastrar um roteiro?</p>
-							<p className="text-center mb-5"><a href="/me/cadastrar-roteiro" className="btn btn-warning rounded-5">Cadastrar roteiro</a></p>
+							{<ItineraryTableData /> ? <ItineraryTableData /> : <NoItinerary />}
+							
 						</div>
 					</div>
 				</div>

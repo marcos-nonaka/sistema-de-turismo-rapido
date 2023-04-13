@@ -65,9 +65,11 @@ function Login(){
 			.catch(error => {
 				console.log(error.response)
 				Alertify.alert('Erro', 'Usuário ou senha inválidos!');
+				setloading(false)
 			});
 		}else{
 			Alertify.alert('Erro', 'Digite seus dados de acesso!');
+			setloading(false)
 		}
 
 	}
