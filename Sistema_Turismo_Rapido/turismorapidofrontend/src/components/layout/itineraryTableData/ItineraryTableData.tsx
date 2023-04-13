@@ -21,7 +21,7 @@ function ItineraryTableData(){
             }
         }
 
-		axios.get('http://localhost:3000/roteiros?name='+userID, headers).then(response => {
+		axios.get('http://localhost:3000/roteiros?id_client='+userID, headers).then(response => {
 			setDataItineraries(response.data)
 			/*if(response.status != 204){
 				setDataItineraries(response.data)
@@ -33,7 +33,8 @@ function ItineraryTableData(){
 		
 	}, []);
 	
-	//console.log(dataItineraries)
+console.log(dataItineraries)
+
   return (
 		<table className={'table'}>
 			<thead>
