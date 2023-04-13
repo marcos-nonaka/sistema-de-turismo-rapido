@@ -6,7 +6,7 @@ function ItineraryTableData(){
 	const [dataItineraries, setDataItineraries] = useState<any[]>()
 	const token = getUserLocalStorage().token
 	const userID = getUserLocalStorage().user_id
-	console.log(userID)
+
 	useEffect(() => {
 		document.body.classList.remove('bg-internas-login');
 		document.body.classList.add('bg-internas-dashboard');
@@ -23,7 +23,12 @@ function ItineraryTableData(){
 
 		axios.get('http://localhost:3000/roteiros?name='+userID, headers).then(response => {
 			setDataItineraries(response.data)
-			console.log(response.data)
+			/*if(response.status != 204){
+				setDataItineraries(response.data)
+			}else{
+				setDataItineraries([])
+			}*/
+			//console.log(response.data)
 		})
 		
 	}, []);

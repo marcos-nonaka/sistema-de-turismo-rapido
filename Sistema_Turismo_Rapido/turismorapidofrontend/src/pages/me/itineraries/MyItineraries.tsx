@@ -9,10 +9,12 @@ import { getUserLocalStorage } from '../../../store/util'
 function MyItineraries(){
 	const userData = getUserLocalStorage()
 	const token = getUserLocalStorage().token
+	const userID = getUserLocalStorage().user_id
 	const [data, setData] = useState<any[]>()
 	const navigate = useNavigate()
+	const [isAvaliable, setIsAvaliable] = useState(false);
 	//const [dataItineraries, setDataItineraries] = useState<any[]>()
-/*	
+
 	useEffect(() => {
 		document.body.classList.remove('bg-internas-login');
 		document.body.classList.add('bg-internas-dashboard');
@@ -27,12 +29,17 @@ function MyItineraries(){
             }
         }
 
-		axios.get('http://localhost:3000/roteiros', headers).then(response => {
-			setDataItineraries(response.data)
+		axios.get('http://localhost:3000/roteiros?name='+userID, headers).then(response => {
+		console.log(response.status)
+			if(response.status == 204){
+				setIsAvaliable(false)
+			}else{
+				setIsAvaliable(true)
+			}
 		})
 		
 	}, []);
-*/
+
 
     return(
 		<>
@@ -48,7 +55,7 @@ function MyItineraries(){
 						<p className="mb-4">Administre sua experiência na Quatour</p>
 				
 						<div className="dashboard-content rounded-4 bg-white p-5 mb-5">
-							{<ItineraryTableData /> ? <ItineraryTableData /> : <NoItinerary />}
+							{isAvaliable ? <ItineraryTableData /> : <NoItinerary />}
 							
 						</div>
 					</div>
