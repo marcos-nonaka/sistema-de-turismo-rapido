@@ -5,7 +5,7 @@ import { getUserLocalStorage } from '../../store/util'
 import ouroPreto1 from '../../assets/img/destinations/ouro-preto/img1.jpg'
 import ouroPreto2 from '../../assets/img/destinations/ouro-preto/img2.jpg'
 import ouroPreto3 from '../../assets/img/destinations/ouro-preto/img3.jpg'
-import profilePic from '../../assets/img/profile_pic.jpg'
+import profilePic from '../../assets/img/profile_pic.png'
 
 function Result() {
 		const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
@@ -335,23 +335,21 @@ function Result() {
 							<div className='d-flex gap-2 w-100 justify-content-between'>
 							  <div>
 								<p className='m-0'>
-								  <strong>@nome_do_usuario</strong>
+								  <strong>@gilmar</strong>
 								</p>
 								<p>
-								  <small>17 de Março de 2023</small>
+								  <small>13 de Abril de 2023</small>
 								</p>
 								<p>
 								  <i className='bi bi-star-fill color'></i>
 								  <i className='bi bi-star-fill color'></i>
 								  <i className='bi bi-star-fill color'></i>
-								  <i className='bi bi-star-fill'></i>
-								  <i className='bi bi-star-fill'></i>
+								  <i className='bi bi-star-fill color'></i>
+								  <i className='bi bi-star-fill color'></i>
 								</p>
 								<p>
-								  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-								  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-								  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-								  rebum. Stet clita kasd gubergren, no sea takimata
+								  Ouro Preto é um museu a céu aberto,com suas Igrejas,morros,e muita história.Destaque para a Igreja de São Francisco de Assis e a casa dos contos.A sua universidade,construída um pouco á semelhança da universidade de Coimbra,Portugal,atrai estudantes de todo o Brasil.
+Muitas pousadas onde se hospedar,bem como hotéis e restaurantes.O carnaval de Ouro Preto é também um evento que aconselho vivamente.
 								</p>
 							  </div>
 							</div>
@@ -367,23 +365,22 @@ function Result() {
 							<div className='d-flex gap-2 w-100 justify-content-between'>
 							  <div>
 								<p className='m-0'>
-								  <strong>@nome_do_usuario</strong>
+								  <strong>@doug</strong>
 								</p>
 								<p>
-								  <small>17 de Março de 2023</small>
+								  <small>10 de Abril de 2023</small>
 								</p>
 								<p>
-								  <i className='bi bi-star-fill color'></i>
 								  <i className='bi bi-star-fill color'></i>
 								  <i className='bi bi-star-fill color'></i>
 								  <i className='bi bi-star-fill'></i>
 								  <i className='bi bi-star-fill'></i>
+								  <i className='bi bi-star-fill'></i>
 								</p>
 								<p>
-								  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-								  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-								  sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-								  rebum. Stet clita kasd gubergren, no sea takimata
+								  Ouro Preto, é quase o oposto de Tiradentes. Transito complicado, cheguei bem no horário de pico e mesmo para um cidade pequena o transito é caótico, ainda mais quando recebe algum evento. Mas isso não é nada. Basta sair do carro para trabalhar as panturrilhas e ver o quanto a cidade é charmosa, e tamanha a beleza do lugar. O quanto de história essa cidade carrega. Adorei conhecer cada canto que fui. A casa do Aleijadinho, com cachaça de ouro, e muitos móveis antigos, alguns originais da própria casa. Restaurantes ótimos com comida caseira de fogão a lenha. Além de gostoso, lindo! Viajar para Ouro
+
+Para Ouro Preto foi para mim uma experiência memorável.
 								</p>
 							  </div>
 							</div>
