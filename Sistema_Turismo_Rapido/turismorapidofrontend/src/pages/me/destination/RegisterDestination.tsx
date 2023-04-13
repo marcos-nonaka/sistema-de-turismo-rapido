@@ -139,10 +139,19 @@ function RegisterDestination(){
 		"id_alimentacao": foodsID,
 		"id_hotel": hotelsID,
 		"valor": state.price,
-		"numberOfDays": state.days,	
+		"days": state.days,	
 		"id_client": session.user_id,  
 	});	
 	
+/*
+    "valor": 1.9,
+    "id_cidade": 1,
+    "id_hotel": 1,
+    "id_alimentacao": 1,
+    "id_atracao": 1,
+    "id_client": 3,
+    "days": 2
+*/
 
     const headers = {
       headers: {
