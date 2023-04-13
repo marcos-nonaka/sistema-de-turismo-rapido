@@ -1,11 +1,14 @@
 import React from "react";
-import { Navbar, Footer } from '../../components'
+import { Navbar, Navuser, Footer } from '../../components'
+import { getUserLocalStorage } from '../../store/util'
 
 function Contact() {
+	const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+	
     return(
 		<div>
-			<Navbar />
-
+			{ userData.username ? <Navuser /> : <Navbar /> }
+		
 		  <div id="main">
 			<div className="w-100 top-internas">
 			  <h3 className="text-center fw-bold">Fale conosco</h3>

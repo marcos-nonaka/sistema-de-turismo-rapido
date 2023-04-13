@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Navbar, Footer } from '../../../components'
+import { Navbar, Navuser, Footer } from '../../../components'
+import { getUserLocalStorage } from '../../../store/util'
 import { useAPI } from 'data/API'
 
 import OuroPreto from '../../../assets/img/destinations/ouro-preto.jpg'
@@ -20,6 +21,7 @@ interface Roteiro {
 function ItinerarySearch() {
   const api = useAPI()
   const [roteiros, setRoteiros] = useState<any[]>([])
+  const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
 
   useEffect(() => {
     api.get('/roteiros', {}).then((res: Roteiro[]) => {
@@ -49,7 +51,7 @@ function ItinerarySearch() {
 
   return (
     <div>
-      <Navbar />
+      { userData.username ? <Navuser /> : <Navbar /> }
       <div id='main'>
         <div className='w-100 top-internas'>
           <h3 className='text-center fw-bold'>Pesquisa de roteiros</h3>
