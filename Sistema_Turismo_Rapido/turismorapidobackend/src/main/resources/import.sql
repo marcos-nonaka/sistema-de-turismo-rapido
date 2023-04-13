@@ -23,7 +23,7 @@ INSERT INTO CLIENT_ROLE(CLIENT_ID, ROLE_ID) VALUES (3, 3);
 INSERT INTO CIDADE(NAME, CEP, LATITUDE, LONGITUDE, PHOTO, DESCRIPTION) VALUES ('Florianópolis', 88000000, 27.5948, 48.5569, 'http://algumsite', 'Cidade de praia');
 INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME, PHOTO, DESCRIPTION) VALUES (1, 2.1, 1.2, 'São Paulo', 'http://algumsite', 'Megalopole');
 INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME, PHOTO, DESCRIPTION) VALUES (2, 2.1, 2.2, 'Rio de Janeiro', 'http://algumsite', 'Cidade de praia');
-INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME, PHOTO, DESCRIPTION) VALUES (3, 3.1, 3.2, 'Ouro Preto', 'http://algumsite', 'Cidade histórica');
+INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME, PHOTO, DESCRIPTION) VALUES (3, -20.3861900, -43.5037300, 'Ouro Preto', 'http://algumsite', 'Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco, em 1980 [...]');
 
 INSERT INTO ATRACAO(NAME, TEL_NUMBER, ENDERECO, DESCRICAO, TIPO, LATITUDE, LONGITUDE, cidade_id) VALUES ('Praia Mole', 123123123, 'Rodovia Sc 403', 'Praia para surf', 'Praia', 27.6022, 48.4327, 1);
 INSERT INTO ALIMENTACAO(local_name, phone_number, street_name, description, street_district, street_number, latitude, longitude, cidade_id) VALUES ('Bar do Boni', 123123123, 'Av. Rendeiras', 'Bar com frutos do mar', 'Lagoa da conceição', 2600, 27.607, 48.441, 1);
