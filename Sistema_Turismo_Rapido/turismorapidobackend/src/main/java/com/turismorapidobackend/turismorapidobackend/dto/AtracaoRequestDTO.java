@@ -34,11 +34,9 @@ public class AtracaoRequestDTO extends AbstractRequestDTO {
 
     String tipo;
 
-    @NotBlank(message="Campo longitude não pode ser vazio")
     @NotNull(message="Campo longitude precisa ser preenchido")
     Double longitude;
 
-    @NotBlank(message="Campo latitude não pode ser vazio")
     @NotNull(message="Campo latitude precisa ser preenchido")
     Double latitude;
 

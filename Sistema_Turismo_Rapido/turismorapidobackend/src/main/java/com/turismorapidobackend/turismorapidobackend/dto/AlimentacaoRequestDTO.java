@@ -42,11 +42,9 @@ public class AlimentacaoRequestDTO extends AbstractRequestDTO {
     @NotNull(message="Campo numero da rua precisa ser preenchido")
     int street_number;
 
-    @NotBlank(message="Campo longitude não pode ser vazio")
     @NotNull(message="Campo longitude precisa ser preenchido")
     Double longitude;
 
-    @NotBlank(message="Campo latitude não pode ser vazio")
     @NotNull(message="Campo latitude precisa ser preenchido")
     Double latitude;
 

@@ -34,11 +34,9 @@ public class HotelRequestDTO extends AbstractRequestDTO {
     @Size(min = 10, max = 1000, message = "Descrição tem tamanho mínimo de 10 e máximo de 1000")
     String description_hotel;
 
-    @NotBlank(message="Campo longitude não pode ser vazio")
     @NotNull(message="Campo longitude precisa ser preenchido")
     Double longitude;
 
-    @NotBlank(message="Campo latitude não pode ser vazio")
     @NotNull(message="Campo latitude precisa ser preenchido")
     Double latitude;
 
