@@ -1,6 +1,6 @@
 import React from "react";
 
-import ouroPreto from "../../../assets/img/destinations/ouro-preto.jpg";
+import ouroPreto from "../../../assets/img/destinations/ouro-preto.png";
 import rioDeJaneiro from "../../../assets/img/destinations/rio-de-janeiro.jpg";
 import pelourinho from "../../../assets/img/destinations/pelourinho.jpg";
 import curitiba from "../../../assets/img/destinations/curitiba.jpg";
@@ -112,7 +112,7 @@ function Content(){
                         />
                       </div>
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title fw-bold">
                           Ouro Preto{" "}
                           <button className="btn btn-light heart float-end">
                             <i className="bi bi-heart-fill"></i>{" "}
@@ -120,9 +120,7 @@ function Content(){
                           </button>
                         </h5>
                         <p className="card-text">
-                          This is a longer card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
+                          Ouro Preto é uma cidade colonial na Serra do Espinhaço, na zona leste do Brasil. É conhecida pela arquitetura barroca, que inclui pontes, fontes e praças, e pelas ruas calcetadas [...]
                         </p>
                         <p className="mb-1">
                           <span className="btn btn-secondary rounded-5">
@@ -146,16 +144,14 @@ function Content(){
                         alt="Rio de Janeiro"
                       />
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title fw-bold">
                           Rio de Janeiro{" "}
                           <button className="btn btn-light heart float-end">
                             <i className="bi bi-heart-fill"></i> <span>75</span>
                           </button>
                         </h5>
                         <p className="card-text">
-                          This is a longer card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
+                          O Rio de Janeiro é uma grande cidade brasileira à beira-mar, famosa pelas praias de Copacabana e Ipanema, pela estátua de 38 metros de altura do Cristo Redentor [...]
                         </p>
                         <p className="mb-1">
                           <span className="btn btn-secondary rounded-5">
@@ -179,16 +175,14 @@ function Content(){
                         alt="Pelourinho"
                       />
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title fw-bold">
                           Salvador{" "}
                           <button className="btn btn-light heart float-end">
                             <i className="bi bi-heart-fill"></i> <span>20</span>
                           </button>
                         </h5>
                         <p className="card-text">
-                          This is a longer card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
+                          Salvador, a capital do estado da Bahia no nordeste do Brasil, é conhecida pela arquitetura colonial portuguesa, pela cultura afrobrasileira e pelo litoral tropical. O bairro do Pelourinho é seu [...]
                         </p>
                         <p className="mb-1">
                           <span className="btn btn-secondary rounded-5">
@@ -212,16 +206,14 @@ function Content(){
                         alt="Curitiba"
                       />
                       <div className="card-body">
-                        <h5 className="card-title">
+                        <h5 className="card-title fw-bold">
                           Curitiba{" "}
                           <button className="btn btn-light heart float-end">
                             <i className="bi bi-heart-fill"></i> <span>35</span>
                           </button>
                         </h5>
                         <p className="card-text">
-                          This is a longer card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
+                          Curitiba é a capital do estado do Paraná, na região sul do Brasil. A Torre Panorâmica, que tem um observatório em sua parte superior, destaca-se na silhueta da cidade. Conhecida como centro [...]
                         </p>
                         <p className="mb-1">
                           <span className="btn btn-secondary rounded-5">
@@ -548,6 +540,18 @@ function Content(){
               Explorar mais
             </a>
           </p>
+			<div className="mx-auto text-center py-5 bg-white rounded-4 mb-5">
+			<h2 className="mb-4 text-center">Inscreva-se e receba descontos especiais</h2>
+
+			<p className="mb-4">Inscreva-se em nossa newsletter e receba semalmente as melhores sugestões de roteiros com os melhores preços. É grátis! ; )</p>
+
+			<div className="m-auto d-block" style={{width: "50%"}}>
+			<div className="input-group mb-3">
+			<input type="text" className="form-control" placeholder="Seu melhor email" aria-label="Seu melhor email" aria-describedby="button-addon2" />
+			<button className="btn btn-outline-secondary" type="button" id="button-addon2">Inscrever-se</button>
+			</div>
+			</div>
+			</div>
         </div>
       </div>
     </div>
