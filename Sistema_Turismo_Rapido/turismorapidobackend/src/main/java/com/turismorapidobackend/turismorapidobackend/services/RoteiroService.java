@@ -31,6 +31,9 @@ public class RoteiroService {
     @Autowired
     HotelRepository hotelRepository;
 
+    @Autowired
+    ClientRepository clientRepository;
+
     public ResponseEntity<Object> save(RoteiroRequestDTO roteiroRequestDTO) {
         Roteiro roteiro = new Roteiro();
 
@@ -38,6 +41,7 @@ public class RoteiroService {
         Optional<Atracao> atracaoOptional = atracaoRepository.findById(roteiroRequestDTO.getId_atracao());
         Optional<Hotel> hotelOptional = hotelRepository.findById(roteiroRequestDTO.getId_hotel());
         Optional<Cidade> cidadeOptional = cidadeRepository.findById(roteiroRequestDTO.getId_cidade());
+        Optional<Client> clientOptional = clientRepository.findById(roteiroRequestDTO.getId_client());
 
         roteiro.setValor(roteiroRequestDTO.getValor());
 
@@ -52,6 +56,10 @@ public class RoteiroService {
         List<Hotel> hoteis = new ArrayList<>();
         hoteis.add(hotelOptional.get());
         roteiro.setHoteis(hoteis);
+
+        List<Client> clients = new ArrayList<>();
+        clients.add(clientOptional.get());
+        roteiro.setClients(clients);
 
         roteiro.setCidade(cidadeOptional.get());
         roteiro.setDays(roteiroRequestDTO.getDays());

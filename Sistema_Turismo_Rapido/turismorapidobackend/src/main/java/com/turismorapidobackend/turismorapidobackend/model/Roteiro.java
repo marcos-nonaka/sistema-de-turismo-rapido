@@ -53,5 +53,5 @@ public class Roteiro {
     @ManyToMany(
             targetEntity = Client.class,
             mappedBy = "roteiros")
-    Set<Client> clients;
+    List<Client> clients;
 }
