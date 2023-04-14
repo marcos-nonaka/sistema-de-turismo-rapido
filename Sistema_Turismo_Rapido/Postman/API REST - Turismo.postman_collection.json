@@ -1154,6 +1154,14 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/quatour/roteirossalvos",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		}
@@ -1162,13 +1170,13 @@
 		"type": "basic",
 		"basic": [
 			{
-				"key": "password",
-				"value": "123",
+				"key": "username",
+				"value": "rafa",
 				"type": "string"
 			},
 			{
-				"key": "username",
-				"value": "doug",
+				"key": "password",
+				"value": "123",
 				"type": "string"
 			}
 		]
