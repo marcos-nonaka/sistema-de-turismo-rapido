@@ -100,7 +100,7 @@ function RegisterDestination(){
 		//console.log(option)
 		
 		setState((state) => ({ ...state, ['city']: option }))
-		console.log(dataCity)
+		//console.log(dataCity)
 		
 		dataCity?.map((item) => {
 			if(item.idCidade == option){
@@ -140,18 +140,23 @@ function RegisterDestination(){
 		"id_hotel": hotelsID,
 		"valor": state.price,
 		"days": state.days,	
-		"id_client": session.user_id,  
+		"id_client": session.user_id, 
+		"name": session.name,
 	});	
 	
 /*
-    "valor": 1.9,
+{
+    "valor": 1000,
     "id_cidade": 1,
     "id_hotel": 1,
     "id_alimentacao": 1,
     "id_atracao": 1,
-    "id_client": 3,
-    "days": 2
+    "id_client": 2,
+    "days": 1,
+    "name": "divertido"
+}
 */
+
 
     const headers = {
       headers: {

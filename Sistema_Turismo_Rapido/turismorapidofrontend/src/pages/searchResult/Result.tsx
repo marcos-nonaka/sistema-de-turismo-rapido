@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios, { AxiosError } from 'axios'
 import { Navbar, Navuser, Footer } from '../../components'
 import { getUserLocalStorage } from '../../store/util'
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import "leaflet/dist/leaflet.css";
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
+import {Icon} from 'leaflet'
 
 import ouroPreto1 from '../../assets/img/destinations/ouro-preto/img1.jpg'
 import ouroPreto2 from '../../assets/img/destinations/ouro-preto/img2.jpg'
 import ouroPreto3 from '../../assets/img/destinations/ouro-preto/img3.jpg'
 import profilePic from '../../assets/img/profile_pic.png'
 
+const coordinators = {
+'latitude': -20.3861900,
+'longitude': -43.5037300
+}
+
 function Result() {
-		const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+	const [coordinates, setCordinates] = useState<any[]>()
+	
+	const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+	
 	  return (
 		<div>
 		  { userData.username ? <Navuser /> : <Navbar /> }
@@ -91,7 +104,19 @@ function Result() {
 						</div>
 					  </div>
 					  <div className='col-md-6'>
-						<iframe
+						<MapContainer center={[coordinators.latitude, coordinators.longitude]} zoom={12} scrollWheelZoom={false}>
+							<TileLayer
+							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+							/>
+							<Marker position={[coordinators.latitude, coordinators.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+								<Popup>
+									<p>Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco, em 1980. Tal reconhecimento deve-se, principalmente, ao fato da cidade ser um sítio urbano completo e pouco alterado em relação à sua essência: formação espontânea a partir de um sistema minerador, seguido por uma marcada presença dos poderes religioso e governamental, e fortes expressões artísticas que se destacam por sua relevância internacional.</p>
+								</Popup>
+							</Marker>
+						</MapContainer>
+						
+						{/*<iframe
 						  src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29918.370353159757!2d-43.50164564999999!3d-20.391287249999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa40b1d2c57b55b%3A0xd984d1131d83d5fc!2sOuro%20Preto%2C%20MG%2C%2035400-000!5e0!3m2!1spt-PT!2sbr!4v1679627374114!5m2!1spt-PT!2sbr'
 						  width='100%'
 						  height='100%'
@@ -99,7 +124,7 @@ function Result() {
 						  loading='lazy'
 						  referrerPolicy='no-referrer-when-downgrade'
 						  className='rounded-4'
-						></iframe>
+						></iframe>*/}
 					  </div>
 					</div>
 

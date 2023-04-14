@@ -34,7 +34,9 @@ function ItinerarySearch() {
   const handleSearch = () => {
     const searchInput = document.getElementById('search') as HTMLInputElement
     const query = searchInput.value.toLowerCase().trim()
-
+	
+	
+	
     if (!query) {
       setResultadosPesquisa([])
       return
@@ -47,7 +49,12 @@ function ItinerarySearch() {
     } else {
       setResultadosPesquisa([])
     }
+	
+	console.log(resultadosPesquisa)
+	
   }
+
+
 
   return (
     <div>
