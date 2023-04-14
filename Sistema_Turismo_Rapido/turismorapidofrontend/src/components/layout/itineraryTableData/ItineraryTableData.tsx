@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios, { AxiosError } from 'axios'
-import { getUserLocalStorage } from '../../../store/util'
+import { getUserLocalStorage } from 'store/util'
 
 function ItineraryTableData(){
 	const [dataItineraries, setDataItineraries] = useState<any[]>()

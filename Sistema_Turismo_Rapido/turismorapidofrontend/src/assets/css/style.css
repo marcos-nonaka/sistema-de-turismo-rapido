@@ -347,6 +347,13 @@ h4 span{
 .pagination .page-link{color: #2e4b73;}
 
 
+
+#search-result{
+	min-height: 351px;
+}
+
+
+
 footer{
 	background-color: #2e4b73;
     font-size: 13px;
