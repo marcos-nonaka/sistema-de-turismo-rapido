@@ -22,7 +22,7 @@ function MyItineraries(){
 		//carregar requisicao axios get
 
 		//console.log(userID)
-		//console.log(userData)
+		console.log(userData)
 		
         const headers = {
             headers: {
@@ -32,7 +32,7 @@ function MyItineraries(){
             }
         }
 
-		axios.get('http://localhost:3000/roteiros/'+userID, headers).then(response => {
+		axios.get('http://localhost:3000/roteiros?id='+userID, headers).then(response => {
 		console.log(response.status)
 			if(response.status == 204){
 				setIsAvaliable(false)
