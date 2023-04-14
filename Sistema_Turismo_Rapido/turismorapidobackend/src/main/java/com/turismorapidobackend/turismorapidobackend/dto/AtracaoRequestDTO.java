@@ -15,7 +15,7 @@ public class AtracaoRequestDTO extends AbstractRequestDTO {
 
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Nome precisa ser preenchido")
-    @Size(min = 3, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
+    @Size(min = 1, max = 100, message = "Nome tem tamanho mínimo de 3 e máximo de 100")
     String name;
 
     // @Pattern(regexp = "\\d{2}) \\d{4}-\\d{4}", message="Telefone inválido")
@@ -25,10 +25,10 @@ public class AtracaoRequestDTO extends AbstractRequestDTO {
 
     @NotBlank(message="Campo não pode ser vazio")
     @NotNull(message="Campo Rua precisa ser preenchido")
-    @Size(min = 3, max = 100, message = "Rua tem tamanho mínimo de 3 e máximo de 100")
+    @Size(min = 1, max = 100, message = "Rua tem tamanho mínimo de 3 e máximo de 100")
     String endereco;
 
-    @Size(min = 50, max = 500, message = "Nome tem tamanho mínimo de 50 e máximo de 500")
+    @Size(min = 1, max = 500, message = "Nome tem tamanho mínimo de 50 e máximo de 500")
     @NotBlank(message = "O campo Descrição é obrigatório")
     String descricao;
 
