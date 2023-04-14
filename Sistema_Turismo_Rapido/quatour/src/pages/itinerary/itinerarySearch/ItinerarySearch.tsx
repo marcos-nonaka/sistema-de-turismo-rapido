@@ -4,8 +4,14 @@ import { Navbar, Navuser, Footer, ImageComponent } from '../../../components'
 import { getUserLocalStorage } from '../../../store/util'
 import { useAPI } from 'data/API'
 
-import OuroPreto from '../../../assets/img/destinations/ouro-preto.jpg'
-import Pelorinho from '../../../assets/img/destinations/pelourinho.jpg'
+import Florianopolis from '../../../assets/img/destinations/florianopolis.png'
+import SaoPaulo from '../../../assets/img/destinations/sao-paulo.png'
+import RiodeJaneiro from '../../../assets/img/destinations/rio-de-janeiro.png'
+import OuroPreto from '../../../assets/img/destinations/ouro-preto.png'
+import Curitiba from '../../../assets/img/destinations/curitiba.png'
+import Olinda from '../../../assets/img/destinations/olinda.png'
+import Salvador from '../../../assets/img/destinations/salvador.png'
+
 //import ImageComponent from '../../../components/img';
 
 interface Roteiro {
@@ -33,7 +39,7 @@ function ItinerarySearch() {
 	const [loading, setloading] = useState(false);
 	const [result, setResult] = useState(true);
 	//const token = getUserLocalStorage().token
-	//const token = 'Basic ' + btoa('doug:123')
+	//const token = 'Basic ' + btoa('admin:123')
 	
 	const onUpdate = (e: React.ChangeEvent<any>, name: 'query') => {
 		setState((state) => ({ ...state, [name]: e.target.value }))
@@ -52,7 +58,7 @@ function ItinerarySearch() {
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
-				'Authorization': 'Basic ' + btoa('doug:123'),
+				'Authorization': 'Basic ' + btoa('admin:123'),
 			}
 		}
 		
@@ -309,15 +315,16 @@ function ItinerarySearch() {
 						
 						<div className="tour-list" key={item.idRoteiro}>
 							<div className="row mb-4 border-bottom pb-5">
-								<div className="col-md-4 col-sm-6">
-									<img src={OuroPreto} className='w-100 rounded-4' alt='Ouro Preto' />
+								<div className="col-md-4 col-sm-6" >
+								<div className="city-img" style={{ backgroundImage:`url(${OuroPreto})` }} ></div>
+									{/*<img src={OuroPreto} className='w-100 rounded-4' alt='Ouro Preto' />*/}
 								</div>
 								<div className="col-md-8 col-sm-6 pt-3">
 									<h4 className="h4 fw-bold">{item.cidade.name}</h4>
 									<p>{item.cidade.description}</p>
 									<p className="mb-1"><span className="btn btn-secondary rounded-5"><i className="bi bi-calendar3"></i> {item.days} dias</span> <span className="btn btn-secondary rounded-5"><i className="bi bi-cash-coin"></i> A partir de <strong>R$ {item.valor}</strong></span></p>
-									<p className="m-0">Coordenadas</p>
-									<p className="mb-3">@turismologo</p>
+									<p className="m-0">Latitude: {item.cidade.latitude} Longitude: {item.cidade.latitude}</p>
+									<p className="mb-3">Cadastrado por: Gilmar</p>
 									<a href={'roteiro?id='+item.idRoteiro} className="btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4">Ver roteiro</a>
 								</div>   
 							</div>

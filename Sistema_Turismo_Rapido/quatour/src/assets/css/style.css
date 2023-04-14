@@ -442,6 +442,8 @@ footer .final-nav i{
 .menav .disabled{opacity: .5}
 .menav .bi{ font-size: 1.2em; }
 /*.dashboard-content{height: 100vh;}*/
+
+.dashboard-content{min-height: 720px;}
 .dashboard-content .card-header{ font-size: 1.2em; font-weight: bold; }
 
 .dashboard-content .card-header{
@@ -450,7 +452,13 @@ footer .final-nav i{
 	padding: 15px;
 }
 
-
+.city-img{
+	width: 100%;
+	display: block;
+	height: 100%;
+	background-size: cover;
+	border-radius: 8px;
+}
 
 /* Loader */
 .spinner {

@@ -9,10 +9,21 @@ import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
 import Alertify from "../../components/alertify/Alertify";
 
-import ouroPreto1 from '../../assets/img/destinations/ouro-preto/img1.jpg'
-import ouroPreto2 from '../../assets/img/destinations/ouro-preto/img2.jpg'
-import ouroPreto3 from '../../assets/img/destinations/ouro-preto/img3.jpg'
+//import OuroPreto1 from '../../assets/img/destinations/ouro-preto2.jpg'
+//import OuroPreto2 from '../../assets/img/destinations/img2.jpg'
+//import OuroPreto3 from '../../assets/img/destinations/img3.jpg'
+
+//import SaoPaulo from '../../assets/img/destinations/sao-paulo.png'
+
 import profilePic from '../../assets/img/profile_pic.png'
+
+import Florianopolis from '../../assets/img/destinations/florianopolis2.png'
+import SaoPaulo from '../../assets/img/destinations/sao-paulo2.png'
+import RiodeJaneiro from '../../assets/img/destinations/rio-de-janeiro2.png'
+import OuroPreto from '../../assets/img/destinations/ouro-preto2.png'
+import Curitiba from '../../assets/img/destinations/curitiba2.png'
+import Olinda from '../../assets/img/destinations/olinda2.png'
+import Salvador from '../../assets/img/destinations/salvador2.png'
 
 const coordinators = {
 'latitude': -20.3861900,
@@ -41,7 +52,7 @@ function Result() {
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
-				'Authorization': 'Basic ' + btoa('doug:123'),
+				'Authorization': 'Basic ' + btoa('admin:123'),
 			}
 		}
 
@@ -58,6 +69,9 @@ function Result() {
 			
 			setCoordinates(coordinateslatlong)*/
 		})
+		
+		
+		
 	}, []);
 
 	
@@ -92,7 +106,7 @@ function Result() {
 				<div className='col-md-12 col-sm-12'>
 				  <div className='rounded-4 p-5 mb-5 destination-details'>
 					<h3 className='h3 fw-bold'>{queyResult?.map((item) => item.cidade.name)}</h3>
-					<p>{'UF'}</p>
+					<p>{''}</p>
 
 					<div className='row mb-4'>
 					  <div className='col-md-6'>
@@ -117,30 +131,31 @@ function Result() {
 	
 						  </div>
 						  <div className='carousel-inner'>
-							<div className='carousel-item active'>
-							  <img
-								src={ouroPreto1}
+							<img
+								src={OuroPreto}
 								className='d-block w-100 rounded-4'
 								alt='Ouro Preto'
 							  />
-							</div>
+
+							
 
 						  </div>
 						</div>
 					  </div>
 					  <div className='col-md-6'>
-						<MapContainer center={[parseFloat('-20.3861900'), parseFloat('-43.5037300')]} zoom={12} scrollWheelZoom={false}>
-							<TileLayer
-							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-							/>
-							<Marker position={[parseFloat('-20.3861900'), parseFloat('-43.5037300')]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
-								<Popup>
-									<p>Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco, em 1980. Tal reconhecimento deve-se, principalmente, ao fato da cidade ser um sítio urbano completo e pouco alterado em relação à sua essência: formação espontânea a partir de um sistema minerador, seguido por uma marcada presença dos poderes religioso e governamental, e fortes expressões artísticas que se destacam por sua relevância internacional.</p>
-								</Popup>
-							</Marker>
-						</MapContainer>
-						
+						{queyResult?.map((item) => (
+							<MapContainer center={[item.cidade.latitude, item.cidade.longitude]} zoom={12} scrollWheelZoom={false} key={item.idRoteiro}>
+								<TileLayer
+								attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+								/>
+								<Marker position={[item.cidade.latitude, item.cidade.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+									<Popup>
+										<p>{item.cidade.description}</p>
+									</Popup>
+								</Marker>						
+							</MapContainer>
+						))}
 					  </div>
 					</div>
 
@@ -149,8 +164,8 @@ function Result() {
 							<p className="mb-3">{item.cidade.description}</p>
 							
 							<p className="mb-1"><span className="btn btn-secondary rounded-5"><i className="bi bi-calendar3"></i> {item.days} dias</span> <span className="btn btn-secondary rounded-5"><i className="bi bi-cash-coin"></i> A partir de <strong>R$ {item.valor}</strong></span></p>
-							<p className="m-0">Coordenadas</p>
-							<p className="mb-3">@turismologo</p>
+							<p className="m-0">Latitude: {item.cidade.latitude} Longitude: {item.cidade.longitude}</p>
+							<p className="mb-3">Cadastrado por: Gilmar</p>
 							
 							{/*<a href={'book?id='+item.idRoteiro} className='btn btn-warning rounded-pill me-2 ps-4 pe-4'>
 							  Fazer reserva

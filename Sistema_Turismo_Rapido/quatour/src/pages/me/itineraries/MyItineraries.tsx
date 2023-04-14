@@ -18,7 +18,7 @@ function MyItineraries(){
 	useEffect(() => {
 		document.body.classList.remove('bg-internas-login');
 		document.body.classList.add('bg-internas-dashboard');
-		
+		//document.body.classList.add('city-img');
 		//carregar requisicao axios get
 
 		//console.log(userID)
@@ -32,7 +32,7 @@ function MyItineraries(){
             }
         }
 
-		axios.get('http://localhost:3000/roteiros?id='+userID, headers).then(response => {
+		axios.get('http://localhost:3000/quatour/roteirossalvos', headers).then(response => {
 		console.log(response.status)
 			if(response.status == 204){
 				setIsAvaliable(false)

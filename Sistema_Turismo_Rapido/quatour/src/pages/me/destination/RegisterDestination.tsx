@@ -69,7 +69,7 @@ function RegisterDestination(){
 		
 	}, []);
 	
-	//console.log(dataCity)
+	console.log(dataCity)
 /*	
 	function getData(endpoint: string, token: string){
         const headers = {
@@ -139,9 +139,9 @@ function RegisterDestination(){
 		"id_alimentacao": foodsID,
 		"id_hotel": hotelsID,
 		"valor": state.price,
-		"days": state.days,	
-		"id_client": session.user_id, 
-		"name": session.name,
+		//"days": state.days,	
+		"id_client": session.user_id 
+		//"name": session.name,
 	});	
 	
 /*
@@ -154,6 +154,8 @@ function RegisterDestination(){
     "id_client": 2,
     "days": 1,
     "name": "divertido"
+	
+	valor\": 1.9,\n    \"id_cidade\": 1,\n    \"id_hotel\": 1,\n    \"id_alimentacao\": 1,\n    \"id_atracao\": 1,\n    \"id_client\": 3\n}",
 }
 */
 
@@ -165,7 +167,7 @@ function RegisterDestination(){
       }
     }
 	//console.log(headers)
-	//console.log(data)
+	console.log(data)
 
 	axios.post('http://localhost:3000/roteiros', data, headers).then((response) => {
 		if(response.status == 200 || response.status == 201){
@@ -218,18 +220,18 @@ function RegisterDestination(){
 										<div className="col-md-12">
 											<label htmlFor="attraction" className="form-label">Atrações</label>
 											<input type="hidden" className="form-control" id="attraction" value={attractionsID} onChange={(e) => updateState(e, 'attraction')} />
-											<span className="form-control d-block">{attractions ? attractions : '{}'}</span>
+											<span className="form-control d-block">{attractions ? attractions : '{atração}'}</span>
 										</div>	
 				
 										<div className="col-md-12">
 											<label htmlFor="food" className="form-label">Alimentação</label>
 											<input type="hidden" className="form-control" id="food" value={foodsID} onChange={(e) => updateState(e, 'food')} />
-											<span className="form-control d-block">{foods ? foods : '{}'}</span>
+											<span className="form-control d-block">{foods ? foods : '{restaurante}'}</span>
 										</div>
 										<div className="col-md-12">
 											<label htmlFor="hotel" className="form-label">Hotéis</label>
 											<input type="hidden" className="form-control" id="hotel" value={hotelsID} onChange={(e) => updateState(e, 'hotel')} />
-											<span className="form-control d-block">{hotels ? hotels : '{}'}</span>
+											<span className="form-control d-block">{hotels ? hotels : '{hotel}'}</span>
 										</div>
 										
 										
