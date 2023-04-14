@@ -29,7 +29,7 @@ public class Client implements UserDetails {
     Long cpf;
 
     //@ManyToMany(targetEntity = Roteiro.class, mappedBy = "client")
-    @ManyToMany(targetEntity = Roteiro.class)
+    @ManyToMany(targetEntity = Roteiro.class, fetch = FetchType.EAGER)
     @JoinTable(name = "client_roteiro",
     joinColumns = @JoinColumn(name = "client_id"),
     inverseJoinColumns = @JoinColumn(name = "roteiro_id"))

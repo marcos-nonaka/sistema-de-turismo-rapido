@@ -1,5 +1,6 @@
 package com.turismorapidobackend.turismorapidobackend.controller;
 
+import com.turismorapidobackend.turismorapidobackend.dto.ClientResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,10 +47,8 @@ public class QuatourController {
         .getPrincipal();
 
         if(principal instanceof Client client){
-            Long client_id = client.getIdClient();
-
             return ResponseEntity.status(HttpStatus.OK)
-                .body(clientService.findById(client.getIdClient()).getBody());
+            .body(new ClientResponseDTO(client));
         }
         else{
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
