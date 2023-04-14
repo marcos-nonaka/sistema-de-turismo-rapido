@@ -171,7 +171,7 @@ function RegisterDestination(){
 		if(response.status == 200 || response.status == 201){
 			setloading(false)
 			Alertify.alert("", "Cadastro realizado com sucesso!")
-			navigate('/me/meus-roteiros');
+			navigate('/me/cadastrar-roteiro');
 		}else{
 			setloading(false)
 			console.log(response)
