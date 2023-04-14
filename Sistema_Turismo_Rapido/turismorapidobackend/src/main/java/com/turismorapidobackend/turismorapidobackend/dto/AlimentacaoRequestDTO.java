@@ -39,7 +39,7 @@ public class AlimentacaoRequestDTO extends AbstractRequestDTO {
 
     //@Digits(integer = 1, fraction = 0, message="Verifique se o numero da rua está correto")
     //@NotBlank(message="Campo numero da rua não pode ser vazio")
-    //@NotNull(message="Campo numero da rua precisa ser preenchido")
+     //@NotNull(message="Campo numero da rua precisa ser preenchido")
     Integer street_number;
 
     @NotNull(message="Campo longitude precisa ser preenchido")

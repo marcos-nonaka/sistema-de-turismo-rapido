@@ -38,5 +38,4 @@ public class Alimentacao {
 
     @ManyToMany(targetEntity = Roteiro.class, mappedBy = "alimentacao")
     List<Roteiro> roteiros;
-
 }
