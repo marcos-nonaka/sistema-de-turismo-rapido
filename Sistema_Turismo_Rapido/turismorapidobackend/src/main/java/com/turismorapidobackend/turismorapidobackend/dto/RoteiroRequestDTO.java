@@ -18,6 +18,7 @@ public class RoteiroRequestDTO extends AbstractRequestDTO {
     Long id_client;
     Long days;
     String name;
+    String description;
 
     public RoteiroRequestDTO() {
     }
