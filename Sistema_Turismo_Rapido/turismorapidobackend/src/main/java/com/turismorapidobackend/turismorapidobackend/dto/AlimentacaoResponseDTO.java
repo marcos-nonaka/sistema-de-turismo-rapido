@@ -12,6 +12,8 @@ public class AlimentacaoResponseDTO {
     String nameCidade;
     String local_name;
     String description;
+    Double longitude;
+    Double latitude;
 
     public AlimentacaoResponseDTO(Alimentacao alimentacao) {
         this.id_alimentacao = alimentacao.getId_alimentacao();
@@ -19,5 +21,7 @@ public class AlimentacaoResponseDTO {
         this.nameCidade = alimentacao.getCidade().getName();
         this.local_name = alimentacao.getLocal_name();
         this.description = alimentacao.getDescription();
+        this.longitude = alimentacao.getLongitude();
+        this.latitude = alimentacao.getLatitude();
     }
 }

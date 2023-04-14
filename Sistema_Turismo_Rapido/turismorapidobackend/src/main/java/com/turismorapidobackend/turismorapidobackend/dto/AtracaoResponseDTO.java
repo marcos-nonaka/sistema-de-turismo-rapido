@@ -12,6 +12,8 @@ public class AtracaoResponseDTO {
     String name;
     String nameCidade;
     String descricao;
+    Double longitude;
+    Double latitude;
 
     public AtracaoResponseDTO() {
     }
@@ -22,5 +24,7 @@ public class AtracaoResponseDTO {
         this.name = atracao.getName();
         this.nameCidade = atracao.getCidade().getName();
         this.descricao = atracao.getDescricao();
+        this.longitude = atracao.getLongitude();
+        this.latitude = atracao.getLatitude();
     }
 }

@@ -12,12 +12,16 @@ public class HotelResponseDTO {
     Long idCidade;
     String hotelName;
     String description_hotel;
+    Double longitude;
+    Double latitude;
 
     public HotelResponseDTO(Hotel hotel){
         this.idHotel = hotel.getIdHotel();
         this.idCidade = hotel.getCidade().getIdCidade();
         this.hotelName = hotel.getHotelName();
         this.description_hotel = hotel.getDescription_hotel();
+        this.longitude = hotel.getLongitude();
+        this.latitude = hotel.getLatitude();
     }
     
 }
