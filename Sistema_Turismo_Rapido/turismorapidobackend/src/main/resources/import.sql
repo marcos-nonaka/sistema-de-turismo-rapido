@@ -27,6 +27,7 @@ INSERT INTO CIDADE (CEP, LATITUDE, LONGITUDE, NAME, PHOTO, DESCRIPTION) VALUES (
 
 INSERT INTO ATRACAO(NAME, TEL_NUMBER, ENDERECO, DESCRICAO, TIPO, LATITUDE, LONGITUDE, cidade_id) VALUES ('Praia Mole', 123123123, 'Rodovia Sc 403', 'Praia para surf', 'Praia', 27.6022, 48.4327, 1);
 INSERT INTO ALIMENTACAO(local_name, phone_number, street_name, description, street_district, street_number, latitude, longitude, cidade_id) VALUES ('Bar do Boni', 123123123, 'Av. Rendeiras', 'Bar com frutos do mar', 'Lagoa da conceição', 2600, 27.607, 48.441, 1);
+INSERT INTO ALIMENTACAO(local_name, phone_number, street_name, description, street_district, street_number, latitude, longitude, cidade_id) VALUES ('Restaurante Jacubas', 31987250113, 'Rua Bernardo de Vasconcelos', 'Somos especialistas em gastronomia autenticamente mineira Nos encontramos no centro histórico de Ouro Preto Venha nos visitar', 'Ouro Preto', 98, -20.3861900, -43.5037300, 5);
 INSERT INTO HOTEL(hotel_name, phone_number, street_name, street_district, street_number, description_hotel, latitude, longitude, cidade_id) VALUES ('Hotel Praia Mole', 123123123, 'Rodovia Sc 403', 'Lagoa da Conceição', 260, 'Hotel a beira mar', 27.604, 48.436, 1);
 
 INSERT INTO ROTEIRO (VALOR, CIDADE_ID, DESCRIPTION, NAME, DAYS) VALUES (1209.99, 1, 'Viagem dos sonhos', 'Só vai', 10);
