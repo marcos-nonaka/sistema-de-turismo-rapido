@@ -10,4 +10,5 @@ import java.util.List;
 public interface RoteiroRepository extends JpaRepository<Roteiro, Long> {
     List<Roteiro> findByNameContainingIgnoreCase(String hotelName);
     List<Roteiro>  findByIdRoteiroAndNameContainingIgnoreCase(Long id, String name);
+    List<Roteiro> findByCidadeNameContainingIgnoreCase(String string);
 }

@@ -71,7 +71,7 @@ public class RoteiroService {
         } else if (id.isPresent()) {
             list.add(this.findById(id));
         } else if (name.isPresent()) {
-            list = roteiroRepository.findByNameContainingIgnoreCase(name.get());
+            list = roteiroRepository.findByCidadeNameContainingIgnoreCase(name.get());
         } else {
             list = roteiroRepository.findAll();
         }
