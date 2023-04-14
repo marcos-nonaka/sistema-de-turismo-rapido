@@ -24,7 +24,7 @@ public class Hotel {
 
     String street_name;
 
-    int street_number;
+    Integer street_number;
 
     String street_district;
 
