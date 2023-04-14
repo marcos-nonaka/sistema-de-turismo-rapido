@@ -17,6 +17,8 @@ public class CidadeResponseDTO {
     List<IdNameDTO> hotels;
     String photo;
     String description;
+    Double longitude;
+    Double latitude;
 
     public CidadeResponseDTO() {
     }
@@ -29,5 +31,8 @@ public class CidadeResponseDTO {
         this.alimentacoes = cidade.getAlimentacoes().stream().map(alimentacao -> new IdNameDTO(alimentacao.getId_alimentacao(), alimentacao.getLocal_name())).toList();
         this.hotels = cidade.getHotels().stream().map(hotel -> new IdNameDTO(hotel.getIdHotel(), hotel.getHotelName()) ).toList();
         this.description = cidade.getDescription();
+        this.longitude = cidade.getLongitude();
+        this.latitude = cidade.getLatitude();
+
     }
 }
