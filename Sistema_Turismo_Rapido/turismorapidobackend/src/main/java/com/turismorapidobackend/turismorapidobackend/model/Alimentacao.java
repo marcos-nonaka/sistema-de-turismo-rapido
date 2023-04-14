@@ -26,7 +26,7 @@ public class Alimentacao {
 
     String street_district;
 
-    int street_number;
+    Integer street_number;
 
     Double longitude;
 
