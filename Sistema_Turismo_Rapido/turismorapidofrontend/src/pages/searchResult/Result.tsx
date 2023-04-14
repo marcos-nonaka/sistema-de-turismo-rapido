@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios, { AxiosError } from 'axios'
 import { Navbar, Navuser, Footer } from '../../components'
 import { getUserLocalStorage } from '../../store/util'
@@ -6,6 +7,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
+import Alertify from "../../components/alertify/Alertify";
 
 import ouroPreto1 from '../../assets/img/destinations/ouro-preto/img1.jpg'
 import ouroPreto2 from '../../assets/img/destinations/ouro-preto/img2.jpg'
@@ -17,10 +19,53 @@ const coordinators = {
 'longitude': -43.5037300
 }
 
+type CoordinateData = {
+  latitude: any;
+  longitude: any;
+}
+
 function Result() {
-	const [coordinates, setCordinates] = useState<any[]>()
-	
+	const location = useLocation()
+	const [coordinates, setCoordinates] = useState<any>()
+	const [latitude, setLatitude] = useState<number>()
+	const [longitude, setLongitude] = useState<number>()
+	const [queyResult, setQueryResult] = useState<any[]>([])
 	const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+	const navigate = useNavigate()
+	
+	const queryParams = new URLSearchParams(location.search);
+	const id = queryParams.get('id');
+  
+	useEffect(() => {
+		const headers = {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': 'Basic ' + btoa('doug:123'),
+			}
+		}
+
+		setLatitude(-20.3861900)
+		setLongitude(-43.5037300)
+			
+		axios.get('http://localhost:3000/roteiros/'+id, headers).then(response => {
+			setQueryResult(response.data)
+			console.log(response.data)
+			/*
+		  const coordinateslatlong = [
+				{latitude: -20.3861900, longitude: -43.5037300}
+			];	
+			
+			setCoordinates(coordinateslatlong)*/
+		})
+	}, []);
+
+	
+	function handleClick(){
+		Alertify.alert('Reserva efetuada com sucesso!');
+		//navigate('/me/booking')
+	}
+	
 	
 	  return (
 		<div>
@@ -46,11 +91,15 @@ function Result() {
 			  <div className='row'>
 				<div className='col-md-12 col-sm-12'>
 				  <div className='rounded-4 p-5 mb-5 destination-details'>
-					<h3 className='h3 fw-bold'>Ouro Preto</h3>
-					<p>Minas Gerais</p>
+					<h3 className='h3 fw-bold'>{queyResult?.map((item) => item.cidade.name)}</h3>
+					<p>{'UF'}</p>
 
 					<div className='row mb-4'>
 					  <div className='col-md-6'>
+						{/*{queyResult?.map((item) => (
+
+						))}*/}
+				
 						<div
 						  id='carousel-destination'
 						  className='carousel slide'
@@ -65,18 +114,7 @@ function Result() {
 							  aria-current='true'
 							  aria-label='Slide 1'
 							></button>
-							<button
-							  type='button'
-							  data-bs-target='#carousel-destination'
-							  data-bs-slide-to='1'
-							  aria-label='Slide 2'
-							></button>
-							<button
-							  type='button'
-							  data-bs-target='#carousel-destination'
-							  data-bs-slide-to='2'
-							  aria-label='Slide 3'
-							></button>
+	
 						  </div>
 						  <div className='carousel-inner'>
 							<div className='carousel-item active'>
@@ -86,84 +124,52 @@ function Result() {
 								alt='Ouro Preto'
 							  />
 							</div>
-							<div className='carousel-item'>
-							  <img
-								src={ouroPreto2}
-								className='d-block w-100 rounded-4'
-								alt='Ouro Preto'
-							  />
-							</div>
-							<div className='carousel-item'>
-							  <img
-								src={ouroPreto3}
-								className='d-block w-100 rounded-4'
-								alt='Ouro Preto'
-							  />
-							</div>
+
 						  </div>
 						</div>
 					  </div>
 					  <div className='col-md-6'>
-						<MapContainer center={[coordinators.latitude, coordinators.longitude]} zoom={12} scrollWheelZoom={false}>
+						<MapContainer center={[parseFloat('-20.3861900'), parseFloat('-43.5037300')]} zoom={12} scrollWheelZoom={false}>
 							<TileLayer
 							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 							/>
-							<Marker position={[coordinators.latitude, coordinators.longitude]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
+							<Marker position={[parseFloat('-20.3861900'), parseFloat('-43.5037300')]} icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})}>
 								<Popup>
 									<p>Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco, em 1980. Tal reconhecimento deve-se, principalmente, ao fato da cidade ser um sítio urbano completo e pouco alterado em relação à sua essência: formação espontânea a partir de um sistema minerador, seguido por uma marcada presença dos poderes religioso e governamental, e fortes expressões artísticas que se destacam por sua relevância internacional.</p>
 								</Popup>
 							</Marker>
 						</MapContainer>
 						
-						{/*<iframe
-						  src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29918.370353159757!2d-43.50164564999999!3d-20.391287249999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa40b1d2c57b55b%3A0xd984d1131d83d5fc!2sOuro%20Preto%2C%20MG%2C%2035400-000!5e0!3m2!1spt-PT!2sbr!4v1679627374114!5m2!1spt-PT!2sbr'
-						  width='100%'
-						  height='100%'
-						  style={{ border: '0' }}
-						  loading='lazy'
-						  referrerPolicy='no-referrer-when-downgrade'
-						  className='rounded-4'
-						></iframe>*/}
 					  </div>
 					</div>
 
-					<p>
-					  Ouro Preto é uma das primeiras cidades tombadas pelo Iphan, em 1938, e a primeira
-					  cidade brasileira a receber o título de Patrimônio Mundial, conferido pela Unesco,
-					  em 1980. Tal reconhecimento deve-se, principalmente, ao fato da cidade ser um
-					  sítio urbano completo e pouco alterado em relação à sua essência: formação
-					  espontânea a partir de um sistema minerador, seguido por uma marcada presença dos
-					  poderes religioso e governamental, e fortes expressões artísticas que se destacam
-					  por sua relevância internacional.{' '}
-					</p>
-					<p className='text-end'>
-					  <small>Fonte: IPHAN (http://portal.iphan.gov.br/pagina/detalhes/373/)</small>
-					</p>
+					{queyResult?.map((item) => (
+						<div key={item.idRoteiro}>
+							<p className="mb-3">{item.cidade.description}</p>
+							
+							<p className="mb-1"><span className="btn btn-secondary rounded-5"><i className="bi bi-calendar3"></i> {item.days} dias</span> <span className="btn btn-secondary rounded-5"><i className="bi bi-cash-coin"></i> A partir de <strong>R$ {item.valor}</strong></span></p>
+							<p className="m-0">Coordenadas</p>
+							<p className="mb-3">@turismologo</p>
+							
+							{/*<a href={'book?id='+item.idRoteiro} className='btn btn-warning rounded-pill me-2 ps-4 pe-4'>
+							  Fazer reserva
+							</a>*/}
+							<button type="button" className='btn btn-warning rounded-pill me-2 ps-4 pe-4' onClick={handleClick}>Fazer reserva</button>
+						</div>
+						))}
 
-					<p className='mb-5'>
-					  <span className='btn btn-light rounded-5'>
-						<i className='bi bi-calendar3'></i> 2 dias
-					  </span>{' '}
-					  <span className='btn btn-light rounded-5'>
-						<i className='bi bi-cash-coin ms-3'></i> A partir de <strong>R$ 140,99</strong>
-					  </span>
-					</p>
-
-					<a href='#' className='btn btn-warning rounded-pill me-2 ps-4 pe-4'>
-					  Fazer reserva
-					</a>
 				  </div>
 
 				  <div className='accordion mb-5 rounded-4' id='accordionExample'>
 					<div className='accordion-item'>
 					  <h2 className='accordion-header' id='headingOne'>
 						<button
-						  className='accordion-button'
+						  className='accordion-button collapsed'
 						  type='button'
 						  data-bs-toggle='collapse'
 						  data-bs-target='#collapseOne'
-						  aria-expanded='true'
+						  aria-expanded='false'
 						  aria-controls='collapseOne'
 						>
 						  <i className='bi bi-calendar2-event me-2'></i> Quando ir?
@@ -171,7 +177,7 @@ function Result() {
 					  </h2>
 					  <div
 						id='collapseOne'
-						className='accordion-collapse collapse show'
+						className='accordion-collapse collapse'
 						aria-labelledby='headingOne'
 						data-bs-parent='#accordionExample'
 					  >

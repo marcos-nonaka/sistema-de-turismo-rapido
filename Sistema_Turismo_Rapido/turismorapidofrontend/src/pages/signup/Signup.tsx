@@ -50,7 +50,7 @@ function Signup() {
 	}, [])
 
   const handleClick = (e: any) => {
-    console.log(e.target.value)
+    //console.log(e.target.value)
 	const target = e.target.value
 
 	
@@ -65,10 +65,10 @@ function Signup() {
  
   const handleTermsClick = (e: any) => {
         if (e.target.checked) {
-            console.log('checked')
+            //console.log('checked')
 			setChecked(true)
         }else{
-			console.log('unchecked')
+			//console.log('unchecked')
 			setChecked(false)
 		}
 		

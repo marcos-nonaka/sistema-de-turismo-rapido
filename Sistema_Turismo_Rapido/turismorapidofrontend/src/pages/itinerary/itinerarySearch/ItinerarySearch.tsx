@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Navbar, Navuser, Footer } from '../../../components'
+import axios from 'axios'
+import { Navbar, Navuser, Footer, ImageComponent } from '../../../components'
 import { getUserLocalStorage } from '../../../store/util'
 import { useAPI } from 'data/API'
 
 import OuroPreto from '../../../assets/img/destinations/ouro-preto.jpg'
 import Pelorinho from '../../../assets/img/destinations/pelourinho.jpg'
+//import ImageComponent from '../../../components/img';
 
 interface Roteiro {
   numberOfDays: number
@@ -18,13 +20,62 @@ interface Roteiro {
   // outras propriedades da cidade
 }
 
-function ItinerarySearch() {
-  const api = useAPI()
-  const [roteiros, setRoteiros] = useState<any[]>([])
-  const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+type QueryData = {
+  query: string;
+}
 
+
+function ItinerarySearch() {
+	const api = useAPI()
+	const [queyResult, setQueryResult] = useState<any[]>([])
+	const [state, setState] = useState<QueryData>({ query: '' })
+	const userData = getUserLocalStorage() != null ? getUserLocalStorage() : ''
+	const [loading, setloading] = useState(false);
+	const [result, setResult] = useState(true);
+	//const token = getUserLocalStorage().token
+	//const token = 'Basic ' + btoa('doug:123')
+	
+	const onUpdate = (e: React.ChangeEvent<any>, name: 'query') => {
+		setState((state) => ({ ...state, [name]: e.target.value }))
+	}
+	
+	function encode_utf8(s: any) {
+	  return unescape(encodeURIComponent(s));
+	}
+
+	function handleSubmit(e: any){
+		e.preventDefault()
+		
+		//setloading(true)
+
+		const headers = {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+				'Authorization': 'Basic ' + btoa('doug:123'),
+			}
+		}
+		
+		axios.get('http://localhost:3000/roteiros?name='+state.query, headers).then(response => {
+			console.log(response.data)
+			
+			if(response.status == 204){
+				setResult(false)
+			}else{
+				setResult(true)
+				setQueryResult(response.data)
+			}
+		})
+
+		//console.log(roteiros)
+	}
+
+
+
+
+/*
   useEffect(() => {
-    api.get('/roteiros', {}).then((res: Roteiro[]) => {
+    api.get('/roteiros?name=Flori', {}).then((res: Roteiro[]) => {
       setRoteiros(res)
     })
   }, [api, setRoteiros])
@@ -54,7 +105,7 @@ function ItinerarySearch() {
 	
   }
 
-
+*/
 
   return (
     <div>
@@ -80,7 +131,8 @@ function ItinerarySearch() {
           <div className='row'>
             <div className='col-md-12 col-sm-12'>
               <div className='w-100 rounded-4 bg-white p-5 mb-5'>
-                <div className='input-group mb-3'>
+                <form onSubmit={handleSubmit}>
+				<div className='input-group mb-3'>
                   <input
                     type='text'
                     className='form-control rounded-5'
@@ -88,16 +140,19 @@ function ItinerarySearch() {
                     placeholder='Pesquisar por cidade com algum roteiro'
                     aria-label='Pesquisar roteiro'
                     aria-describedby='button-addon2'
+					name='query'
+					value={state.query}
+						onChange={(e) => onUpdate(e, 'query')}
                   />
                   <button
                     className='btn btn-outline-secondary btn-lg'
-                    type='button'
+                    type='submit'
                     id='button-search'
-                    onClick={handleSearch}
                   >
                     <i className='bi bi-search'></i>
                   </button>
-                </div>
+				  
+                </div></form>
                 <div id='filters'>
                   <div className='btn-group'>
                     <button
@@ -244,109 +299,39 @@ function ItinerarySearch() {
                   </button>
                 </div>
               </div>
+			  
+			  <div className="p-5 pt-0" id="search-result">
+				<h3 className="h3 text-center fw-bold border-bottom pb-5 mb-5">Resultados</h3>
+				
+				{result ? (
+					queyResult?.map((item) => (
+						//let img = item.cidade.photo
+						
+						<div className="tour-list" key={item.idRoteiro}>
+							<div className="row mb-4 border-bottom pb-5">
+								<div className="col-md-4 col-sm-6">
+									<img src={OuroPreto} className='w-100 rounded-4' alt='Ouro Preto' />
+								</div>
+								<div className="col-md-8 col-sm-6 pt-3">
+									<h4 className="h4 fw-bold">{item.cidade.name}</h4>
+									<p>{item.cidade.description}</p>
+									<p className="mb-1"><span className="btn btn-secondary rounded-5"><i className="bi bi-calendar3"></i> {item.days} dias</span> <span className="btn btn-secondary rounded-5"><i className="bi bi-cash-coin"></i> A partir de <strong>R$ {item.valor}</strong></span></p>
+									<p className="m-0">Coordenadas</p>
+									<p className="mb-3">@turismologo</p>
+									<a href={'roteiro?id='+item.idRoteiro} className="btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4">Ver roteiro</a>
+								</div>   
+							</div>
+						</div>
 
-              <h3 className='h3 text-center fw-bold border-bottom pb-5 mb-5'>Resultados</h3>
+					))
 
-              {resultadosPesquisa.length > 0 ? (
-                resultadosPesquisa.map((roteiro) => (
-                  <div className='tour-list' key={roteiro.id}>
-                    <div className='row mb-4 border-bottom pb-5'>
-                      <div className='col-md-4 col-sm-6'>
-                        <img src={OuroPreto} className='w-100 rounded-4' alt='Ouro Preto' />
-                      </div>
-                      <div className='col-md-8 col-sm-6 pt-3'>
-                        <div>
-                          <h4 className='h4 fw-bold'>
-                            {roteiro.cidade.name}
-                            <span>
-                              15 <i className='bi bi-hand-thumbs-up'></i> 0{' '}
-                              <i className='bi bi-hand-thumbs-down'></i>
-                            </span>
-                          </h4>
-                          <p>
-                            Ouro Preto é uma das primeiras cidades tombadas
-                            pelo Iphan, em 1938, e a primeira cidade brasileira a receber o título
-                            de Patrimônio Mundial, conferido pela Unesco, em 1980 [...]
-                          </p>
-                          <p className='mb-1'>
-                            <span className='btn btn-secondary rounded-5'>
-                              <i className='bi bi-calendar3'></i> {roteiro.numberOfDays} dia(s)
-                            </span>{' '}
-                            <span className='btn btn-secondary rounded-5'>
-                              <i className='bi bi-cash-coin'></i> A partir de{' '}
-                              <strong>R$ {roteiro.valor}</strong>
-                            </span>
-                          </p>
-                          {/* <p className='m-0'>Coordenadas - Latitude: {cidade.latitude} - Longitude: {cidade.longitude}</p>
-                          <p className='mb-3'>@criador</p> */}
-                          <a
-                            href='/roteiro'
-                            className='btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4'
-                          >
-                            Ver roteiro
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <p style={{ textAlign: 'center' }}>
-                  Nenhum roteiro encontrado para a pesquisa realizada.
-                </p>
-              )}
-              {/* <div className='tour-list'>
-                <div className='row mb-4 border-bottom pb-5'>
-                  <div className='col-md-4 col-sm-6'>
-                    <img src={Pelorinho} className='w-100 rounded-4' alt='Ouro Preto' />
-                  </div>
-                  <div className='col-md-8 col-sm-6 pt-3'>
-                    <h4 className='h4 fw-bold'>
-                      Salvador{' '}
-                      <span>
-                        15 <i className='bi bi-hand-thumbs-up'></i> 0{' '}
-                        <i className='bi bi-hand-thumbs-down'></i>
-                      </span>
-                    </h4>
-                    <p>
-                      Salvador, a capital do estado da Bahia no nordeste do Brasil, é conhecida pela
-                      arquitetura colonial portuguesa, pela cultura afrobrasileira e pelo litoral
-                      tropical. O bairro [...]
-                    </p>
-                    <p className='mb-1'>
-                      <span className='btn btn-secondary rounded-5'>
-                        <i className='bi bi-calendar3'></i> 2 dias
-                      </span>{' '}
-                      <span className='btn btn-secondary rounded-5'>
-                        <i className='bi bi-cash-coin'></i> A partir de <strong>R$ 140,99</strong>
-                      </span>
-                    </p>
-                    <p className='m-0'>Coordenadas</p>
-                    <p className='mb-3'>@criador</p>
-                    <a
-                      href='/roteiro'
-                      className='btn btn-warning btn-lg rounded-pill me-2 ps-4 pe-4'
-                    >
-                      Ver roteiro
-                    </a>
-                  </div>
-                </div>
-              </div> */}
+				) : (
+					<div className="alert alert-danger text-center" role="alert">
+					  <i className="bi bi-exclamation-triangle me-2"></i> Nenhum roteiro encontrado para a pesquisa realizada!
+					</div>
+				)}
+			  </div>
 
-              <nav className='mb-5 mt-5' aria-label='Pagination'>
-                <ul className='pagination justify-content-center'>
-                  <li className='page-item disabled'>
-                    <a className='page-link' href='#'>
-                      <i className='bi bi-chevron-left'></i> Anterior
-                    </a>
-                  </li>
-                  <li className='page-item'>
-                    <a className='page-link' href='#'>
-                      <i className='bi bi-chevron-right'></i> Próximo
-                    </a>
-                  </li>
-                </ul>
-              </nav>
             </div>
           </div>
         </div>
