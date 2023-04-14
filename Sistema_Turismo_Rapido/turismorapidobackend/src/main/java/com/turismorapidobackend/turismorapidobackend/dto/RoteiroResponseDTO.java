@@ -15,9 +15,8 @@ public class RoteiroResponseDTO {
     List<AlimentacaoResponseDTO> alimentacoes;
     List<HotelResponseDTO> hotels;
     Double valor;
-
+    String description;
     String name;
-
     Long days;
 
     public RoteiroResponseDTO(Roteiro roteiro){
@@ -29,5 +28,6 @@ public class RoteiroResponseDTO {
         this.valor = roteiro.getValor();
         this.name = roteiro.getName();
         this.days = roteiro.getDays();
+        this.description = roteiro.getDescription();
     }
 }

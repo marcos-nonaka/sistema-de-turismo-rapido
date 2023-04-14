@@ -56,6 +56,7 @@ public class RoteiroService {
         roteiro.setCidade(cidadeOptional.get());
         roteiro.setDays(roteiroRequestDTO.getDays());
         roteiro.setName(roteiroRequestDTO.getName());
+        roteiro.setDescription(roteiroRequestDTO.getDescription());
 
         roteiroRepository.save(roteiro);
 
